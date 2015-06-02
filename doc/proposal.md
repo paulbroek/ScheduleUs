@@ -36,6 +36,7 @@ Vergelijkbare applicaties
 -------------
 * Doodle, werkt met vaste blokken
 * 
+
 Globale eerste schets
 ---------------
 ![Eerste schets](sketch1.jpg)
