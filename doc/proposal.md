@@ -38,4 +38,4 @@ Vergelijkbare applicaties
 * 
 Globale eerste schets
 ---------------
-![Eerste schets](sketch1.png)
+![Eerste schets](sketch1.jpg)
