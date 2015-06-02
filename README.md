@@ -1,6 +1,7 @@
 # ScheduleUs
 
 Paul Broek, 10279741, Android
+
 **proposal.md file staat in doc directory!**
 
 Korte omschrijving
