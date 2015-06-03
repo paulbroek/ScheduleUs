@@ -6,13 +6,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by Paul on 2-6-2015.
+ * Created by Paul Broek on 1-6-2015.
+ * 10279741
+ * pauliusbroek@hotmail.com
  * DrawingViews are Views where user can draw a line for user input
  */
+
 public class DrawingView extends View {
 
     public int width;
@@ -50,6 +54,35 @@ public class DrawingView extends View {
         mPaint.setStrokeWidth(12);
 
 
+    }
+
+    public DrawingView(Context c, AttributeSet attrs) {
+        super(c, attrs);
+        context = c;
+
+        mPath = new Path();
+        mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+        circlePaint = new Paint();
+        circlePath = new Path();
+        circlePaint.setAntiAlias(true);
+        circlePaint.setColor(Color.BLUE);
+        circlePaint.setStyle(Paint.Style.STROKE);
+        circlePaint.setStrokeJoin(Paint.Join.MITER);
+        circlePaint.setStrokeWidth(4f);
+
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
+        mPaint.setColor(Color.GREEN);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaint.setStrokeWidth(12);
+    }
+
+    public DrawingView(Context c, AttributeSet attrs, int defStyle) {
+        super(c, attrs, defStyle);
+        context = c;
     }
 
     @Override
