@@ -39,6 +39,13 @@ Vergelijkbare applicaties
 * Calendly.com, synchroniseert met Google Calendar, zodat ook nieuwe gezamenlijke afspraken meteen worden "opgeschreven" in ieders agenda. Werkt handig met repeterende of periodieke afspraken. 
 * needtomeet.com lijkt het meest op mijn concept plan. Ze richten zich op grote groepen mensen, die allen per dag blokken selecteren waarin ze beschikbaar zijn.
 
+Planning
+---------------
+* Week 1: swipe gestures vertalen naar kloktijden, kalender invoer
+* Week 2: SQLite opzetten en syncen met app
+* Week 3: Facebook / Whatsapp invites
+* Week 4: 
+
 Globale eerste schets
 ---------------
 ![Eerste schets](sketch1.jpg)
