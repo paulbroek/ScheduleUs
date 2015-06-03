@@ -1,18 +1,15 @@
 package nl.mprog.scheduleus;
 
-import android.graphics.Bitmap;
-import android.graphics.Path;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.view.MotionEvent;
-import android.view.View;
 
+/**
+ * Created by Paul Broek on 1-6-2015.
+ * 10279741
+ * pauliusbroek@hotmail.com
+ */
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -27,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
 
         dv = (DrawingView) findViewById(R.id.mondayView);
         //dv = new DrawingView(this);
-        setContentView(dv);
+        // setContentView(dv);
         /*mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
