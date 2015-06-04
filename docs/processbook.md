@@ -11,3 +11,4 @@ Eerste klasse DrawableView implementeren. Lijkt nu op een mini paint-fragment wa
 
 Dag 3, woensdag 3 juni
 -----------------------------
+**Vanaf nu in wiki**
