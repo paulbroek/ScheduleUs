@@ -12,7 +12,7 @@ import android.view.View;
 
 /**
  * Created by Paul Broek on 1-6-2015.
- * 10279741
+ * 10279741 asdf
  * pauliusbroek@hotmail.com
  * DrawingViews are Views where user can draw a line for user input
  */
