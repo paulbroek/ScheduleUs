@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 /**
  * Created by Paul Broek on 1-6-2015.
@@ -13,7 +14,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private DrawingView dv ;
+    private DrawingView dv;
+    private TextView outputView;
 
     // private DrawingManager mDrawingManager=null;
 
@@ -23,6 +25,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         dv = (DrawingView) findViewById(R.id.mondayView);
+        outputView = (TextView) findViewById(R.id.outputView);
+        outputView.setText("" + dv.getTimeSize());
+
         //dv = new DrawingView(this);
         // setContentView(dv);
         /*mPaint = new Paint();
@@ -33,8 +38,6 @@ public class MainActivity extends ActionBarActivity {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(12);*/
-
-
     }
 
     @Override

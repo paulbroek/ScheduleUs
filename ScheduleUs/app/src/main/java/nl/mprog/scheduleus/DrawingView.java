@@ -9,12 +9,13 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by Paul Broek on 1-6-2015.
- * 10279741 asdf
+ * 10279741
  * pauliusbroek@hotmail.com
- * DrawingViews are Views where user can draw a line for user input
+ * DrawingViews are Views where user can draw a line for user time input
  */
 
 public class DrawingView extends View {
@@ -28,12 +29,16 @@ public class DrawingView extends View {
     Context context;
     private Paint circlePaint;
     private Path circlePath;
-
-    Paint       mPaint;
+    private Paint mPaint;
+    private Paint mLines;
+    private TextView up;
+    private int[] pixels;
 
     public DrawingView(Context c) {
         super(c);
         context=c;
+        up = new TextView(c);
+        up.setText("Test");
         mPath = new Path();
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
         circlePaint = new Paint();
@@ -60,6 +65,9 @@ public class DrawingView extends View {
         super(c, attrs);
         context = c;
 
+        up = new TextView(c);
+        up.setText("Test");
+
         mPath = new Path();
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
         circlePaint = new Paint();
@@ -78,6 +86,10 @@ public class DrawingView extends View {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(12);
+
+        mLines = new Paint();
+        mLines.setColor(Color.BLACK);
+        mLines.setStrokeWidth(2);
     }
 
     public DrawingView(Context c, AttributeSet attrs, int defStyle) {
@@ -91,16 +103,20 @@ public class DrawingView extends View {
 
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
+        pixels = new int[w*h];
+        width = w;
+        height = h;
+        int n_lines = 15;
+        for (int i = 0; i < n_lines; i++)
+            mCanvas.drawLine(w,i*h/n_lines,w/2,i*h/n_lines,mLines);
+
 
     }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         canvas.drawBitmap( mBitmap, 0, 0, mBitmapPaint);
-
         canvas.drawPath( mPath,  mPaint);
-
         canvas.drawPath( circlePath,  circlePaint);
     }
 
@@ -154,5 +170,32 @@ public class DrawingView extends View {
                 break;
         }
         return true;
+    }
+
+    public float getWhiteLines() {
+        int lines = 0;
+
+        for (int i = 0; i < 4; i++) {
+            /*if (mBitmap.getPixel(0,0) != 0)
+                height++;*/
+            //height = mBitmap.getPixel(5,5);
+        }
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (mBitmap.getPixel(x,y) == -1)
+                    lines++;
+            }
+        }
+        /*int test = 0;
+        if (mBitmap.getWidth() > 3)
+            test = mBitmap.getWidth();
+        return test;*/
+
+        return 0;
+    }
+    public float getTimeSize() {
+        return getWhiteLines();
     }
 }
