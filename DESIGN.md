@@ -18,6 +18,10 @@ Features
 
 Classes & public methods
 --------------------
+* MainActivity, openingsscherm met buttons naar MyEvents en NewEvent
+* MyEvents, lijst met events waar gebruiker bij betrokken is
+* NewEvent, CalendarView waar gebruiker data selecteert, verwijst vervolgens naar PickTime activity
+* PickTime, swipen over een dag geeft de beschikbaren tijden van die dag
 * CalendarView, maar moet worden aangepast voor het selecteren van meerdere dagen
 * ListViews met adapter voor het weergeven van involved events
 * DbHelper.java, Android interface voor interactie met SQLite databse. Overrides SQLiteOpenHelper.
