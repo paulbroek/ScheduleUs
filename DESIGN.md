@@ -14,6 +14,20 @@ Features
 * Swipe-invoer EN handmatig
 * Facebook en WhatsApp invites sturen en ontvangen.
 * Synchroniseren met SQLite database voor lijst met events
+* 
+
+Classes & public methods
+--------------------
+* CalendarView, maar moet worden aangepast voor het selecteren van meerdere dagen
+* ListViews met adapter voor het weergeven van involved events
+* DbHelper.java, Android interface voor interactie met SQLite databse. Overrides SQLiteOpenHelper.
+* StatusContract.java, constante waarden van database *ScheduleData.db*
+* RefreshService.java, verbinden met cloud en ophalen van data naar locale database
+
+APIs
+-----------------
+* Facebook, invitable_friends
+* Android content providers
 
 Data
 -------------
@@ -46,6 +60,6 @@ Planning
 * Week 3: Facebook / Whatsapp invites
 * Week 4: 
 
-Globale eerste schets
+Overzicht van activities
 ---------------
-![Eerste schets](docs/sketch1.jpg)
+![Eerste schets](docs/sketch2.jpg)
