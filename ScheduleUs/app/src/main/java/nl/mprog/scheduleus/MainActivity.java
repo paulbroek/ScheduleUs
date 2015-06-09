@@ -1,10 +1,25 @@
 package nl.mprog.scheduleus;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Paul Broek on 1-6-2015.
@@ -14,30 +29,50 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private DrawingView dv;
     private TextView outputView;
-
-    // private DrawingManager mDrawingManager=null;
+    private Button NewEventButton, MyEventsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dv = (DrawingView) findViewById(R.id.mondayView);
         outputView = (TextView) findViewById(R.id.outputView);
-        outputView.setText("" + dv.getTimeSize());
+        NewEventButton = (Button) findViewById(R.id.NewEventButton);
+        MyEventsButton = (Button) findViewById(R.id.MyEventsButton);
+        final Intent getNewEventScreen = new Intent(this, NewEventActivity.class);
+        final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
 
-        //dv = new DrawingView(this);
-        // setContentView(dv);
-        /*mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setDither(true);
-        mPaint.setColor(Color.GREEN);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(12);*/
+        // Preferences
+        SharedPreferences prefs = getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        NewEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(getNewEventScreen);
+            }
+        });
+
+        MyEventsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(getMyEventsScreen);
+            }
+        });
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
     }
 
     @Override

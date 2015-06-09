@@ -1,10 +1,10 @@
 package nl.mprog.scheduleus;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 
 public class MyEventsActivity extends ActionBarActivity {
 
@@ -12,6 +12,8 @@ public class MyEventsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_events);
+
+        Intent activityThatCalled = getIntent();
     }
 
     @Override

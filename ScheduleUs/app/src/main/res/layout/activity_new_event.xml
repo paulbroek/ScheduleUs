@@ -15,20 +15,40 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <CalendarView
+    <DatePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/calendarView"
+        android:id="@+id/datePicker"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/datePicker"
+        android:id="@+id/new_event_LinearLayout"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add date"
+            android:id="@+id/AddDateButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go to time selection"
+            android:id="@+id/SelectDateButton" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datelistView"
+        android:layout_below="@id/new_event_LinearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp" />
+        android:orientation="vertical" />
+
 </RelativeLayout>

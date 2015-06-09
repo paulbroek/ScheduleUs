@@ -2,11 +2,25 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jar="C:\Users\Paul\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-c0f8efc79231ee06334662bad3b7dfa3e223b7b5.jar" />
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-0e0106c047f9bd2bf1a72e395c2dccbfacaa952e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-ed4f3fa69a79fe37a7b2afadb1890d6377515883.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\ParseCrashReporting-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="83f3b1e397f1cc3f05cb9db078d9e364b5f5e218">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\ParseCrashReporting-1.9.2-67e9eb4c7217b6e91eb895f6244b12dc19450700.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
@@ -23,11 +37,32 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-0a787e3d173a8d72f85c99f29a288c54d11b1018.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\Parse-1.9.2.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-0e0106c047f9bd2bf1a72e395c2dccbfacaa952e.jar" />
+        sha1="fe739334780fe321141e62720822c2d456061899">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\Parse-1.9.2-0cec3c3ecbf134c6ef0d95fa0c80d791db5d7384.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\bolts-android-1.2.0-javadoc.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0b98cf117d6ed838f776a7f0765c7f04191d7b8e">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-javadoc-6f8722d1d7c106c29c60112c657a099da4458d84.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-c0f8efc79231ee06334662bad3b7dfa3e223b7b5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\ParseFacebookUtilsV4-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="bab281cc21f6a68152e11ab53b053790ccfd6764">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\ParseFacebookUtilsV4-1.9.2-2f5f26d90b9972c48c2a886e6d8feef612d3210d.jar" />
     </item>
 
 </items>
