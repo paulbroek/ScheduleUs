@@ -1,6 +1,10 @@
 package nl.mprog.scheduleus;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,11 +13,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
+import com.parse.DeleteCallback;
+import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,18 +35,59 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class NewEventActivity extends ActionBarActivity {
 
     private TextView textView;
     private Button SelectDateButton, AddDateButton;
+    private AlertDialog.Builder dialogBuilder;
     private DatePicker datePicker;
     private ListView datelistView;
     private List dateList;
     private List display_dateList;
+    private String eventName = "";
     JSONArray dates;
+
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+
+    private void eventNameDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final EditText eventNameInput = new EditText(this);
+
+        // Process
+        dialogBuilder.setTitle("Event name");
+        dialogBuilder.setMessage("Please enter an event name");
+        dialogBuilder.setView(eventNameInput);
+        dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eventName = eventNameInput.getText().toString();
+                Display();
+                Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eventName = "unnamed";
+                Display();
+                Toast.makeText(getApplicationContext(), "Event has not been named.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Output
+        AlertDialog dialogEventName = dialogBuilder.create();
+        dialogEventName.show();
+    }
+
+    public void Display() {
+        textView.setText("Please pick some dates for " + eventName);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +99,16 @@ public class NewEventActivity extends ActionBarActivity {
         SelectDateButton = (Button) findViewById(R.id.SelectDateButton);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         datelistView = (ListView) findViewById(R.id.datelistView);
+
         final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
 
         dateList = new ArrayList();
         display_dateList = new ArrayList();
 
+        prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
+        editor = prefs.edit();
+
+        eventNameDialog();
 
         // Adding a date to a temporary list, which is displayed below the DatePicker
         AddDateButton.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +131,7 @@ public class NewEventActivity extends ActionBarActivity {
 
                 // Copy ArrayList and sort it, newest up
                 ArrayList outputList = new ArrayList<String>(display_dateList);
+
                 Collections.reverse(outputList);
                 ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, outputList);
                 datelistView.setAdapter(adapter_dates);
@@ -86,21 +143,24 @@ public class NewEventActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (!dateList.isEmpty()) {
+                    // Unpin all items with the "new event" label, so we are certain to have only 1
+                    ParseObject.unpinAllInBackground();
+
+                    Set dateSet = new HashSet(dateList);
+                    editor.putStringSet("event_dates", dateSet).apply();
+                    editor.putString("event_name",eventName).apply();
+
                     ParseObject Events = new ParseObject("Events");
                     Events.put("number_of_dates", dateList.size());
                     dates = new JSONArray(dateList);
-                    /*dates = new JSONArray();
-                    dates.put("hoi");
-                    dates.put(6);*/
                     Events.put("dates", dates);
-                    //Events.pinInBackground();
-                   // Date output_date = makeDate(dateList.get(0).toString());
-                    //Events.put("date1", output_date);
-                    Events.saveInBackground();
+                    Events.put("eventName", eventName);
 
-                    //textView.setText(dateList.get(0).toString());
-                    textView.setText(dateList.get(0).toString());
-                    //startActivity(getSelectTimesScreen);
+                    Events.pinInBackground("new event");
+                    //Events.saveInBackground();
+
+
+                    startActivity(getSelectTimesScreen);
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Voeg tenminste één datum toe", Toast.LENGTH_LONG).show();

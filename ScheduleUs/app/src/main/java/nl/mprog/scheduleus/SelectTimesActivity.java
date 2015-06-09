@@ -1,6 +1,8 @@
 package nl.mprog.scheduleus;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -16,6 +20,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -29,6 +34,15 @@ public class SelectTimesActivity extends ActionBarActivity {
     private TextView outputView;
     private Button ConfirmTimeButton;
 
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+
+    private String current_event_id;
+    private String eventName;
+
+    private Set<String> participants;
+    private Set<String> dates;
+
     // private DrawingManager mDrawingManager=null;
 
     @Override
@@ -41,48 +55,61 @@ public class SelectTimesActivity extends ActionBarActivity {
         ConfirmTimeButton = (Button) findViewById(R.id.ConfirmTimeButton);
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
 
-        Set<String> participants = new HashSet<>();
+        prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
+
+        participants = new HashSet<>();
         participants.add("Johan");
         participants.add("Erik");
         // Get user data from parse.com
-        ParseObject Users = new ParseObject("Users");
-        Users.put("Username", "piet");
+        //ParseObject Users = new ParseObject("Users");
+        //Users.put("Username", "piet");
         //Events.put("participants", participants);
 
+        current_event_id = prefs.getString("current_event_id", null);
+        if (current_event_id == null)
+            Toast.makeText(getApplicationContext(), "No current event was found", Toast.LENGTH_LONG).show();
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
-        query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
+        ParseQuery<ParseObject> query_event = ParseQuery.getQuery("Events");
+        query_event.fromPin("new event");
+        query_event.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> eventList, ParseException e) {
                 if (e == null) {
-                    // object will be your game score
-                    outputView.setText("gelukt1");
+                    String text = "" + eventList.size();
+                    for (ParseObject elem : eventList) {
+                        text += elem.getString("name");
+                        if (eventList.size() == 1)
+                            text += "";
+                    }
+                    //outputView.setText(text);
+
                 } else {
-                    // something went wrong
                     outputView.setText("niet gelukt1");
                 }
             }
         });
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
+        dates = new HashSet<>(prefs.getStringSet("dates", null));
+        eventName = prefs.getString("eventName", null);
+
+       /* ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
         query2.whereEqualTo("Username", "piet");
         query2.getFirstInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (e == null) {
-                    // object will be your game score
                     outputView.setText("gelukt2");
                 } else {
-                    // something went wrong
                     outputView.setText("niet gelukt2");
                 }
             }
-        });
+        });*/
 
-        //outputView.setText("" + dv.getTimeSize());
+
         ConfirmTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(getMyEventsScreen);
+                outputView.setText("" + dv.getTimeSize());
+                //startActivity(getMyEventsScreen);
             }
         });
 

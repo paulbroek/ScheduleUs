@@ -172,28 +172,28 @@ public class DrawingView extends View {
         return true;
     }
 
+    // Returns number of white lines in the DrawableView
     public float getWhiteLines() {
         int lines = 0;
 
-        for (int i = 0; i < 4; i++) {
-            /*if (mBitmap.getPixel(0,0) != 0)
-                height++;*/
-            //height = mBitmap.getPixel(5,5);
-        }
         for (int y = 0; y < height; y++)
         {
+            Boolean white_line = true;
             for (int x = 0; x < width; x++)
             {
-                if (mBitmap.getPixel(x,y) == -1)
-                    lines++;
+                if (mBitmap.getPixel(x,y) != 0)
+                    white_line = false;
             }
+            if (white_line)
+                lines++;
         }
         /*int test = 0;
         if (mBitmap.getWidth() > 3)
             test = mBitmap.getWidth();
         return test;*/
 
-        return 0;
+        int test = mBitmap.getWidth();
+        return (float) lines;
     }
     public float getTimeSize() {
         return getWhiteLines();

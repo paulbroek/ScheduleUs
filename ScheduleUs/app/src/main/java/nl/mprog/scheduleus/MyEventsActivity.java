@@ -1,19 +1,65 @@
 package nl.mprog.scheduleus;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyEventsActivity extends ActionBarActivity {
+
+    private TextView myEventsView;
+    private ListView myEvents_ListView;
+
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_events);
 
+        myEventsView = (TextView) findViewById(R.id.myEventsView);
+        myEvents_ListView = (ListView) findViewById(R.id.myEvents_ListView);
+
         Intent activityThatCalled = getIntent();
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
+        //query.whereEqualTo("playerName", "Joe Bob");
+        //query.fromLocalDatastore();
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> eventList,
+                             ParseException e) {
+                if (e == null) {
+                    myEventsView.setText("" + eventList.get(0).getObjectId());
+                    ArrayList adapterList = new ArrayList<String>();
+
+                    for (int i = 0; i < eventList.size(); i++) {
+                        adapterList.add("" + eventList.get(i).getString("name"));
+                    }
+
+
+                    ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, adapterList);
+                    myEvents_ListView.setAdapter(adapter_events);
+                    Log.d("score", "Retrieved " + eventList.size());
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
     }
 
     @Override
