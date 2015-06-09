@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.parse.Parse;
-import com.parse.ParseObject;
 
 /**
  * Created by Paul on 9-6-2015.
@@ -12,7 +11,8 @@ import com.parse.ParseObject;
  */
 public class Application extends android.app.Application {
 
-    private static SharedPreferences prefs;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
     public Application() {
     }
@@ -21,13 +21,12 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-        //ParseObject.registerSubclass(MainActivity.class);
+        // Preferences
+        prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
-        // Connect wihth Parse.com database
+        // Connect with Parse.com database
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "M32kF53NOX8ARR2z4lYaXsAbZMjkqgzvrG7WSXPC", "caYeMJrgizDJlAnZ30slp8d4yLTPjrpOscLFk2ik");
-
-        //prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
-
     }
 }

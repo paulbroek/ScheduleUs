@@ -45,10 +45,10 @@ public class SelectTimesActivity extends ActionBarActivity {
         participants.add("Johan");
         participants.add("Erik");
         // Get user data from parse.com
-        ParseObject Events = new ParseObject("Users");
-        Events.put("Username", "piet");
+        ParseObject Users = new ParseObject("Users");
+        Users.put("Username", "piet");
         //Events.put("participants", participants);
-        Events.saveInBackground();
+
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
         query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {

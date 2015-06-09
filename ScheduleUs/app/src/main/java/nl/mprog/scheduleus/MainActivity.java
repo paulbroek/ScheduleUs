@@ -43,10 +43,6 @@ public class MainActivity extends ActionBarActivity {
         final Intent getNewEventScreen = new Intent(this, NewEventActivity.class);
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
 
-        // Preferences
-        SharedPreferences prefs = getSharedPreferences("preferences", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
         NewEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
