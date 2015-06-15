@@ -25,18 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Beschikbaar tussen 10 en 14?"
-        android:textColor="@color/green"
-        android:id="@+id/textView2"
-        android:layout_marginTop="94dp"
-        android:layout_alignTop="@+id/mondayView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ma, 23-4"
         android:id="@+id/textView3"
         android:layout_below="@+id/mondayView"
@@ -65,13 +53,41 @@
         android:layout_toRightOf="@+id/mondayView"
         android:layout_toEndOf="@+id/mondayView" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:id="@+id/ConfirmTimeButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Beschikbaar tussen 10 en 14?"
+        android:textColor="@color/green"
+        android:id="@+id/textView2"
+        android:layout_marginTop="94dp"
+        android:layout_alignTop="@+id/mondayView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView3">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:id="@+id/ConfirmTimeButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:id="@+id/ResetButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

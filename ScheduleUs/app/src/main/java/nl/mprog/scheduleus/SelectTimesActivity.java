@@ -33,6 +33,7 @@ public class SelectTimesActivity extends ActionBarActivity {
     private DrawingView dv;
     private TextView outputView;
     private Button ConfirmTimeButton;
+    private Button ResetButton;
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -53,6 +54,7 @@ public class SelectTimesActivity extends ActionBarActivity {
         dv = (DrawingView) findViewById(R.id.mondayView);
         outputView = (TextView) findViewById(R.id.outputView);
         ConfirmTimeButton = (Button) findViewById(R.id.ConfirmTimeButton);
+        ResetButton = (Button) findViewById(R.id.ResetButton);
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
 
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
@@ -103,6 +105,14 @@ public class SelectTimesActivity extends ActionBarActivity {
             }
         });*/
 
+        ResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dv.invalidate();
+
+            }
+        });
 
         ConfirmTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override

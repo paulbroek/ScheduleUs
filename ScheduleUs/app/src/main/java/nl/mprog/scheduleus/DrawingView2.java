@@ -18,7 +18,7 @@ import android.widget.TextView;
  * DrawingViews are Views where user can draw a line for user time input
  */
 
-public class DrawingView extends View {
+public class DrawingView2 extends View {
 
     public int width;
     public  int height;
@@ -34,7 +34,7 @@ public class DrawingView extends View {
     private TextView up;
     private int[] pixels;
 
-    public DrawingView(Context c) {
+    public DrawingView2(Context c) {
         super(c);
         context=c;
         up = new TextView(c);
@@ -61,7 +61,7 @@ public class DrawingView extends View {
 
     }
 
-    public DrawingView(Context c, AttributeSet attrs) {
+    public DrawingView2(Context c, AttributeSet attrs) {
         super(c, attrs);
         context = c;
 
@@ -92,19 +92,11 @@ public class DrawingView extends View {
         mLines.setStrokeWidth(2);
     }
 
-    public DrawingView(Context c, AttributeSet attrs, int defStyle) {
+    public DrawingView2(Context c, AttributeSet attrs, int defStyle) {
         super(c, attrs, defStyle);
         context = c;
     }
 
-    void reDraw() {
-        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        mCanvas = new Canvas(mBitmap);
-        pixels = new int[width*height];
-        int n_lines = 15;
-        for (int i = 0; i < n_lines; i++)
-            mCanvas.drawLine(width,i*height/n_lines,width/2,i*height/n_lines,mLines);
-    }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -129,7 +121,7 @@ public class DrawingView extends View {
     }
 
     private float mX, mY;
-    private static final float TOUCH_TOLERANCE = 0;
+    private static final float TOUCH_TOLERANCE = 4;
 
     private void touch_start(float x, float y) {
         mPath.reset();
@@ -141,15 +133,7 @@ public class DrawingView extends View {
         float dx = Math.abs(x - mX);
         float dy = Math.abs(y - mY);
         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-
-            mPaint.setStyle(Paint.Style.FILL);
-
-            //mCanvas.drawRect(0,20,width,40,mPaint);
-
-            //mCanvas.drawRect(0,150,width,250,mPaint);
-
-            mCanvas.drawRect(0,mY,width,y,mPaint);
-
+            mPath.quadTo(mX, mY, (x + mX)/2, (y + mY)/2);
             mX = x;
             mY = y;
 
@@ -161,8 +145,7 @@ public class DrawingView extends View {
         mPath.lineTo(mX, mY);
         circlePath.reset();
         // commit the path to our offscreen
-        //mCanvas.drawPath(mPath,  mPaint);
-
+        mCanvas.drawPath(mPath,  mPaint);
         // kill this so we don't double draw
         mPath.reset();
     }
@@ -211,30 +194,6 @@ public class DrawingView extends View {
 
         int test = mBitmap.getWidth();
         return (float) lines;
-    }
-
-    // Returns bool array with availability per pixel
-    public boolean[] getAvailabilityArray() {
-        boolean[] availArray = new boolean[height];
-
-        for (int y = 0; y < height; y++)
-        {
-            Boolean white_line = true;
-            for (int x = 0; x < width; x++)
-            {
-                if (mBitmap.getPixel(x,y) != 0)
-                    white_line = false;
-            }
-            if (white_line)
-                availArray[y] = true;
-        }
-        /*int test = 0;
-        if (mBitmap.getWidth() > 3)
-            test = mBitmap.getWidth();
-        return test;*/
-
-        int test = mBitmap.getWidth();
-        return availArray;
     }
 
     public float getTimeSize() {
