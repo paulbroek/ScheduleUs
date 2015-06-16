@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SelectTimesActivity" >
+
+    <TextView
+        android:id="@+id/childTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/green"
+        android:text="test"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/childTextView"
+        android:layout_toEndOf="@+id/childTextView">
+
+        <Button
+            android:id="@+id/child_deleteButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:text="X" />
+
+        <Button
+            android:id="@+id/child_editButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:text="e" />
+    </LinearLayout>
+
+</RelativeLayout>  

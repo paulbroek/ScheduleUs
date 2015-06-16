@@ -57,20 +57,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Beschikbaar tussen 10 en 14?"
+        android:text=""
         android:textColor="@color/green"
-        android:id="@+id/textView2"
-        android:layout_marginTop="94dp"
-        android:layout_alignTop="@+id/mondayView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/availabilityView"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_toRightOf="@+id/textView5" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView3">
+        android:layout_below="@+id/textView3"
+        android:id="@+id/linearLayout">
 
         <Button
             android:layout_width="wrap_content"
@@ -89,17 +89,14 @@
             android:layout_centerHorizontal="true" />
     </LinearLayout>
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Niet beschikbaart tussen 18 en 23?"
-        android:textColor="@color/red"
-        android:layout_marginTop="25dp"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:id="@+id/listView"
+        android:layout_alignTop="@+id/outputView"
+        android:layout_above="@+id/linearLayout"
+        android:layout_toEndOf="@+id/availabilityView"
+        android:layout_toRightOf="@+id/availabilityView" />
 
     <!-- <nl.mprog.scheduleus.DrawingView
          android:layout_width="wrap_content"

@@ -11,6 +11,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Paul Broek on 1-6-2015.
  * 10279741
@@ -21,7 +24,9 @@ import android.widget.TextView;
 public class DrawingView extends View {
 
     public int width;
-    public  int height;
+    public int height;
+    public int min_clocktime;
+    public int max_clocktime;
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Path mPath;
@@ -32,13 +37,12 @@ public class DrawingView extends View {
     private Paint mPaint;
     private Paint mLines;
     private TextView up;
-    private int[] pixels;
+    private float pixels_per_hour;
 
     public DrawingView(Context c) {
         super(c);
         context=c;
-        up = new TextView(c);
-        up.setText("Test");
+
         mPath = new Path();
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
         circlePaint = new Paint();
@@ -58,15 +62,14 @@ public class DrawingView extends View {
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(25);
 
+        min_clocktime = 9;
+        max_clocktime = 24;
 
     }
 
     public DrawingView(Context c, AttributeSet attrs) {
         super(c, attrs);
         context = c;
-
-        up = new TextView(c);
-        up.setText("Test");
 
         mPath = new Path();
         mBitmapPaint = new Paint(Paint.DITHER_FLAG);
@@ -90,6 +93,9 @@ public class DrawingView extends View {
         mLines = new Paint();
         mLines.setColor(Color.BLACK);
         mLines.setStrokeWidth(2);
+
+        min_clocktime = 9;
+        max_clocktime = 24;
     }
 
     public DrawingView(Context c, AttributeSet attrs, int defStyle) {
@@ -100,10 +106,10 @@ public class DrawingView extends View {
     void reDraw() {
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
-        pixels = new int[width*height];
-        int n_lines = 15;
+
+        int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
-            mCanvas.drawLine(width,i*height/n_lines,width/2,i*height/n_lines,mLines);
+            mCanvas.drawLine(width,i*height/n_lines,width-width/4,i*height/n_lines,mLines);
     }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -111,14 +117,15 @@ public class DrawingView extends View {
 
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
-        pixels = new int[w*h];
+
         width = w;
         height = h;
-        int n_lines = 15;
+
+        int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
-            mCanvas.drawLine(w,i*h/n_lines,w/2,i*h/n_lines,mLines);
+            mCanvas.drawLine(w,i*h/n_lines,w-w/4,i*h/n_lines,mLines);
 
-
+        pixels_per_hour = (float) height / (max_clocktime-min_clocktime);
     }
     @Override
     protected void onDraw(Canvas canvas) {
@@ -143,10 +150,6 @@ public class DrawingView extends View {
         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
 
             mPaint.setStyle(Paint.Style.FILL);
-
-            //mCanvas.drawRect(0,20,width,40,mPaint);
-
-            //mCanvas.drawRect(0,150,width,250,mPaint);
 
             mCanvas.drawRect(0,mY,width,y,mPaint);
 
@@ -219,22 +222,69 @@ public class DrawingView extends View {
 
         for (int y = 0; y < height; y++)
         {
-            Boolean white_line = true;
-            for (int x = 0; x < width; x++)
+            availArray[y] = true;
+            boolean white_line = true;
+            for (int x = 0; x < 3; x++)
             {
+                // Pixel not white
                 if (mBitmap.getPixel(x,y) != 0)
                     white_line = false;
             }
-            if (white_line)
-                availArray[y] = true;
-        }
-        /*int test = 0;
-        if (mBitmap.getWidth() > 3)
-            test = mBitmap.getWidth();
-        return test;*/
 
-        int test = mBitmap.getWidth();
+                availArray[y] = !white_line;
+        }
+
         return availArray;
+    }
+
+    private static final int TIME_TOLERANCE = 5;
+    private static final int MINUTE_ENTITY = 15;
+
+    // List with pairs of available times like (10,11)
+    public List<int[]> getTimesList() {
+        boolean[] availArray = getAvailabilityArray();
+
+        List <int[]> AvailableSlots = new ArrayList<int[]>();
+
+        // Search for blocks of available time
+        int j = 0;
+        for (int i = 0; i < availArray.length; i++) {
+            if (availArray[i] && i != (availArray.length-1))
+                j++;
+            else {
+                // Add this time slot if its big enough, convert pixels to clock time
+                if (j > TIME_TOLERANCE) {
+
+                    int begin_hour = (int) (min_clocktime + (i-j) / pixels_per_hour);
+                    int begin_minutes = (int)((((i-j) % pixels_per_hour)/pixels_per_hour)*60);
+                    int begin_quarter = (begin_minutes / 15)*15;
+                    if (Math.abs(begin_quarter - begin_minutes) > 7)
+                        begin_quarter+=15;
+                    if (begin_quarter == 60) {
+                        begin_hour++;
+                        begin_quarter = 0;
+                    }
+                    int end_hour = (int) (min_clocktime + i / pixels_per_hour);
+                    int end_minutes = (int)(((i % pixels_per_hour)/pixels_per_hour)*60);
+                    int end_quarter = (end_minutes / 15)*15;
+                    if (Math.abs(end_quarter-end_minutes) > 7)
+                        end_quarter+=15;
+                    if (end_quarter == 60) {
+                        end_hour++;
+                        end_quarter = 0;
+                    }
+                    int begin_time = begin_hour * 100 + begin_quarter;
+                    int end_time = end_hour * 100 + end_quarter;
+
+                    AvailableSlots.add(new int[]{begin_time,end_time});
+                    //AvailableSlots.add(new int[]{i-j,i});
+
+                }
+                j = 0;
+            }
+        }
+
+        return AvailableSlots;
     }
 
     public float getTimeSize() {

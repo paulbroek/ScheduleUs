@@ -6,4 +6,5 @@
     <string name="title_activity_my_events">My Events</string>
     <string name="title_activity_new_event">New Event</string>
     <string name="title_activity_select_times">SelectTimesActivity</string>
+    <string name="title_activity_select_days">SelectDaysActivity</string>
     </resources>

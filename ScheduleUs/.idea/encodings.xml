@@ -2,6 +2,11 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="windows-1252">
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/core" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/layouts" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/layouts" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/sample" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -100,7 +101,7 @@ public class NewEventActivity extends ActionBarActivity {
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         datelistView = (ListView) findViewById(R.id.datelistView);
 
-        final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
+        final Intent getSelectDaysScreen = new Intent(this, SelectDaysActivity.class);
 
         dateList = new ArrayList();
         display_dateList = new ArrayList();
@@ -127,7 +128,7 @@ public class NewEventActivity extends ActionBarActivity {
                     display_dateList.add(display_date);
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Datum is al toegevoegd", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Date is in list", Toast.LENGTH_LONG).show();
 
                 // Copy ArrayList and sort it, newest up
                 ArrayList outputList = new ArrayList<String>(display_dateList);
@@ -160,10 +161,28 @@ public class NewEventActivity extends ActionBarActivity {
                     //Events.saveInBackground();
 
 
-                    startActivity(getSelectTimesScreen);
+                    startActivity(getSelectDaysScreen);
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Voeg tenminste één datum toe", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Enter at least one date", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        // Delete a date from list when user taps on it
+        datelistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Collections.reverse(dateList);
+                Collections.reverse(display_dateList);
+                dateList.remove(position);
+                display_dateList.remove(position);
+                Collections.reverse(dateList);
+                Collections.reverse(display_dateList);
+                ArrayList outputList = new ArrayList<String>(display_dateList);
+
+                Collections.reverse(outputList);
+                ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, outputList);
+                datelistView.setAdapter(adapter_dates);
             }
         });
     }

@@ -1,5 +1,6 @@
 package nl.mprog.scheduleus;
 
+import nl.mprog.scheduleus.ListAdapter.customButtonListener;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,9 +32,11 @@ import java.util.Set;
  * pauliusbroek@hotmail.com
  */
 
-public class SelectTimesActivity extends ActionBarActivity {
+public class SelectTimesActivity extends ActionBarActivity implements customButtonListener{
     private DrawingView dv;
     private TextView outputView;
+    private TextView availabilityView;
+    private ListView timesListView;
     private Button ConfirmTimeButton;
     private Button ResetButton;
 
@@ -43,6 +48,8 @@ public class SelectTimesActivity extends ActionBarActivity {
 
     private Set<String> participants;
     private Set<String> dates;
+    private ArrayList<String> timesList;
+    private ListAdapter adapter;
 
     // private DrawingManager mDrawingManager=null;
 
@@ -53,6 +60,8 @@ public class SelectTimesActivity extends ActionBarActivity {
 
         dv = (DrawingView) findViewById(R.id.mondayView);
         outputView = (TextView) findViewById(R.id.outputView);
+        availabilityView = (TextView) findViewById(R.id.availabilityView);
+        timesListView = (ListView) findViewById(R.id.listView);
         ConfirmTimeButton = (Button) findViewById(R.id.ConfirmTimeButton);
         ResetButton = (Button) findViewById(R.id.ResetButton);
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
@@ -91,6 +100,7 @@ public class SelectTimesActivity extends ActionBarActivity {
         });
 
         dates = new HashSet<>(prefs.getStringSet("dates", null));
+        timesList = new ArrayList<>();
         eventName = prefs.getString("eventName", null);
 
        /* ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
@@ -109,7 +119,7 @@ public class SelectTimesActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                dv.invalidate();
+                dv.reDraw();
 
             }
         });
@@ -119,6 +129,43 @@ public class SelectTimesActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 outputView.setText("" + dv.getTimeSize());
+                timesList.clear();
+                try {
+                    String result = "";
+                    /*for (int i = 0; i < dv.getTimesList().size(); i++) {
+                        result += dv.getTimesList().get(i)[0] + " ";
+                        result += dv.getTimesList().get(i)[1] + " ";
+                    }*/
+
+                    String availability = "Available between \n";
+                    for (int i = 0; i < dv.getTimesList().size(); i++) {
+                        String time1 = "" + dv.getTimesList().get(i)[0];
+                        if (time1.startsWith("9"))
+                            time1 = "0" + time1;
+                        String time2 = "" + dv.getTimesList().get(i)[1];
+                        if (time2.startsWith("9"))
+                            time2 = "0" + time2;
+                        time1 = time1.substring(0,2) + ":" + time1.substring(2,4);
+                        time2 = time2.substring(0,2) + ":" + time2.substring(2,4);
+                        availability += time1 + " till " + time2 + "\n";
+                        timesList.add(time1 + " till " + time2);
+                    }
+                    //availabilityView.setText(availability);
+
+                    outputView.setText("" + result);
+                } catch (Exception e) {
+                    outputView.setText("fail");
+                }
+
+                adapter = new ListAdapter(getApplicationContext(), timesList);
+                adapter.setCustomButtonListener(SelectTimesActivity.this);
+                timesListView.setAdapter(adapter);
+
+                /*int test = 0;
+                for (int i = 0; i < dv.getAvailabilityArray().length; i ++)
+                    if (dv.getAvailabilityArray()[i])
+                        test ++;
+                outputView.setText("" + test);*/
                 //startActivity(getMyEventsScreen);
             }
         });
@@ -147,5 +194,9 @@ public class SelectTimesActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onButtonClickListener(int position, String value) {
+        Toast.makeText(SelectTimesActivity.this, "Button click " + value,
+                Toast.LENGTH_SHORT).show();
+    }
 }

@@ -44,6 +44,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.mprog.scheduleus.MainActivity" />
         </activity>
+        <activity
+            android:name=".SelectDaysActivity"
+            android:label="@string/title_activity_select_days"
+            android:parentActivityName=".NewEventActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.mprog.scheduleus.NewEventActivity" />
+        </activity>
     </application>
 
 </manifest>
