@@ -3,7 +3,7 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <target>android-21</target>
+        <target>android-22</target>
       </config>
     </shared>
     <layouts>
@@ -27,13 +27,45 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_horizontal_gallery.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d990d6f6-d35c-4c70-bff0-0a0c66855072" name="Default" comment="" />
+    <list default="true" id="d990d6f6-d35c-4c70-bff0-0a0c66855072" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/twowayview_0_1_4.xml" />
+      <change type="DELETED" beforePath="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\src\main\java\nl\mprog\scheduleus\DbHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\src\main\java\nl\mprog\scheduleus\StatusContract.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/outputs/aar/core-debug.aar" afterPath="$PROJECT_DIR$/core/build/outputs/aar/core-debug.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/outputs/aar/core-release.aar" afterPath="$PROJECT_DIR$/core/build/outputs/aar/core-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/core/build/intermediates/resources/resources-debug-androidTest.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/bundles/release/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/bundles/release/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/bundles/release/aapt/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/bundles/release/aapt/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/core/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/build/intermediates/exploded-aar/ScheduleUs/core/unspecified/AndroidManifest.xml" afterPath="$PROJECT_DIR$/layouts/build/intermediates/exploded-aar/ScheduleUs/core/unspecified/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/build/intermediates/exploded-aar/ScheduleUs/core/unspecified/aapt/AndroidManifest.xml" afterPath="$PROJECT_DIR$/layouts/build/intermediates/exploded-aar/ScheduleUs/core/unspecified/aapt/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build.gradle" afterPath="$PROJECT_DIR$/core/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="ScheduleUs.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -169,25 +201,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="activity_select_days.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_select_days.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_select_days.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2155797">
-              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state vertical-scroll-proportion="-3.6551723">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwoWayView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layouts/src/main/java/org/lucasr/twowayview/widget/TwoWayView.java">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.4827585">
+              <caret line="62" column="67" selection-start-line="62" selection-start-column="67" selection-end-line="62" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#963#964#0" expanded="true" />
+                <element signature="e#1028#1029#0" expanded="true" />
+                <element signature="e#1071#1072#0" expanded="true" />
+                <element signature="e#1142#1143#0" expanded="true" />
+                <element signature="e#1182#1183#0" expanded="true" />
+                <element signature="e#1209#1210#0" expanded="true" />
+                <element signature="e#1241#1242#0" expanded="true" />
+                <element signature="e#1274#1275#0" expanded="true" />
+                <element signature="e#1303#1304#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SelectTimesActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
+              <caret line="184" column="100" selection-start-line="184" selection-start-column="100" selection-end-line="184" selection-end-column="100" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,86 +252,85 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1230#1238#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <file leaf-file-name="dayListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+              <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#864#872#0" expanded="true" />
+                <element signature="e#947#973#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrawingShowView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46483704">
+              <caret line="117" column="19" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="19" />
+              <folding>
+                <element signature="e#5913#5914#0" expanded="true" />
+                <element signature="e#5952#5953#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="timeListAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/timeListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+              <folding>
+                <element signature="e#1916#2167#0" expanded="true" />
+                <element signature="e#2166#2167#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrawingView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="251" column="42" selection-start-line="251" selection-start-column="42" selection-end-line="251" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gradle-wrapper.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_my_events.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_events.xml">
+      <file leaf-file-name="list_days.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_days.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.724138">
-              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+            <state vertical-scroll-proportion="-4.6896553">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_new_event.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml">
-          <provider editor-type-id="android-designer">
+      <file leaf-file-name="list_times.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_times.xml">
+          <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.79310346">
-              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
+          <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -287,10 +342,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -709,11 +767,6 @@
                 <option name="name" value="prepareComAndroidSupportAppcompatV72211Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:recyclerview-v7:21.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComAndroidSupportRecyclerviewV72100Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:support-v4:22.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportSupportV42211Library" />
@@ -731,22 +784,17 @@
                 <option name="name" value="prepareDebugUnitTestDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare org.lucasr.twowayview:twowayview:0.1.4" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareOrgLucasrTwowayviewTwowayview014Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareReleaseDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareReleaseUnitTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare ScheduleUs:core:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareScheduleUsCoreUnspecifiedLibrary" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare ScheduleUs:layouts:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareScheduleUsLayoutsUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -921,9 +969,19 @@
                 <option name="name" value="packageReleaseResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:recyclerview-v7:21.0.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportRecyclerviewV72100Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:support-v4:21.0.0" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComAndroidSupportSupportV42100Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare ScheduleUs:core:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareScheduleUsCoreUnspecifiedLibrary" />
               </ExternalTaskPojo>
             </list>
           </value>
@@ -1310,11 +1368,6 @@
                 <option name="name" value="prepareComAndroidSupportAppcompatV72211Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.android.support:recyclerview-v7:21.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareComAndroidSupportRecyclerviewV72100Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.android.support:support-v4:22.1.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareComAndroidSupportSupportV42211Library" />
@@ -1332,22 +1385,17 @@
                 <option name="name" value="prepareDebugUnitTestDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Prepare org.lucasr.twowayview:twowayview:0.1.4" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareOrgLucasrTwowayviewTwowayview014Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareReleaseDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="prepareReleaseUnitTestDependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare ScheduleUs:core:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareScheduleUsCoreUnspecifiedLibrary" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare ScheduleUs:layouts:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareScheduleUsLayoutsUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2503,7 +2551,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="7171126735387" />
+        <entry key="$PROJECT_DIR$" value="7171161774752" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2671,6 +2719,7 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.1.1/appcompat-v7-22.1.1.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lucasr.twowayview/twowayview/0.1.4/2dd63a6b0183edb9ef24e5ecdbdd6ddf2fbdb436/twowayview-0.1.4.aar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-v4/22.1.1/support-v4-22.1.1.aar" />
                             <option value="$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar" />
                             <option value="$MODULE_DIR$/libs/bolts-android-1.2.0-javadoc.jar" />
@@ -3009,31 +3058,39 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/StatusContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DbHelper.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_black_text.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_my_events.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MyEventsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView2.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/ListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/list_times.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/proguard-rules.pro" />
         <option value="$PROJECT_DIR$/layouts/build.gradle" />
-        <option value="$PROJECT_DIR$/core/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/NewEventActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_select_times.xml" />
         <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_horizontal_gallery.xml" />
+        <option value="$PROJECT_DIR$/layouts/src/main/java/org/lucasr/twowayview/widget/TwoWayView.java" />
+        <option value="$PROJECT_DIR$/core/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/list_times.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/timeListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_select_days.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/list_days.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Globals.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_select_times.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Global.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java" />
       </list>
     </option>
   </component>
@@ -3048,10 +3105,11 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1033" />
+    <option name="x" value="-3" />
+    <option name="width" value="1119" />
     <option name="height" value="1040" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -3074,9 +3132,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -3183,6 +3238,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3491,6 +3547,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3739,6 +3797,13 @@
       <option name="number" value="Default" />
       <updated>1433448759930</updated>
     </task>
+    <task id="LOCAL-00001" summary="Global variables in Application.java, dayListAdapter added, DrawingShowView shows a previous initiated DrawingView">
+      <created>1434553593979</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1434553593979</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3751,30 +3816,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1033" height="1040" extended-state="0" />
+    <frame x="-3" y="0" width="1119" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.46848738" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32768363" sideWeight="0.5210689" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2797282" sideWeight="0.48167005" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31030577" sideWeight="0.5652621" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30804077" sideWeight="0.32294616" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.4789916" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33446327" sideWeight="0.4409044" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24519774" sideWeight="0.45483193" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.4696162" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33295584" sideWeight="0.40325865" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24471635" sideWeight="0.45112017" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31030577" sideWeight="0.43473792" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30804077" sideWeight="0.6770538" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3227633" sideWeight="0.5228261" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26104832" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.49658537" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.299339" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.48667377" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39774013" sideWeight="0.4789916" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39637598" sideWeight="0.7118126" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3794,6 +3859,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Global variables in Application.java, dayListAdapter added, DrawingShowView shows a previous initiated DrawingView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Global variables in Application.java, dayListAdapter added, DrawingShowView shows a previous initiated DrawingView" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="2" />
@@ -3801,46 +3870,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MyEventsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="e#286#321#0" expanded="false" />
-            <element signature="e#347#382#0" expanded="false" />
-            <element signature="e#406#439#0" expanded="false" />
-            <element signature="e#466#499#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3860,23 +3889,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/StatusContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../docs/layout-2015-06-05-114207.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -3892,55 +3904,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/StatusContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.08">
-          <caret line="8" column="16" selection-start-line="6" selection-start-column="62" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_black_text.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.551724">
-          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-22/com/android/internal/os/ZygoteInit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4427084">
           <caret line="914" column="9" selection-start-line="914" selection-start-column="9" selection-end-line="914" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3952,66 +3919,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/ListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#744#752#0" expanded="false" />
-            <element signature="e#1908#2159#0" expanded="false" />
-            <element signature="e#2158#2159#0" expanded="false" />
-            <element signature="e#1908#2159#0" expanded="false" />
-            <element signature="e#2158#2159#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_times.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.206897">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="e#233#266#0" expanded="true" />
-            <element signature="e#291#326#0" expanded="true" />
-            <element signature="e#352#387#0" expanded="true" />
-            <element signature="e#411#444#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MyEventsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1313#2239#0" expanded="false" />
-            <element signature="e#1881#1889#0" expanded="false" />
-            <element signature="e#2238#2239#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.12">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar!/bolts/CancellationToken.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19767442">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4027,7 +3938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.56">
           <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4035,7 +3945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4043,7 +3952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4051,7 +3959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4059,7 +3966,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4067,7 +3973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4075,98 +3980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.16">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1447#1614#0" expanded="false" />
-            <element signature="e#1613#1614#0" expanded="false" />
-            <element signature="e#1660#1827#0" expanded="false" />
-            <element signature="e#1826#1827#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="142" column="27" selection-start-line="142" selection-start-column="27" selection-end-line="142" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#8756#8757#0" expanded="false" />
-            <element signature="e#8794#8795#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/NewEventActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="8" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1987#2342#0" expanded="false" />
-            <element signature="e#2341#2342#0" expanded="false" />
-            <element signature="e#2395#2728#0" expanded="false" />
-            <element signature="e#2727#2728#0" expanded="false" />
-            <element signature="e#2877#2878#0" expanded="false" />
-            <element signature="e#2952#2953#0" expanded="false" />
-            <element signature="e#3895#5324#0" expanded="false" />
-            <element signature="e#5153#5161#0" expanded="false" />
-            <element signature="e#5323#5324#0" expanded="false" />
-            <element signature="e#6691#7516#0" expanded="false" />
-            <element signature="e#7345#7353#0" expanded="false" />
-            <element signature="e#7515#7516#0" expanded="false" />
-            <element signature="e#7621#7622#0" expanded="false" />
-            <element signature="e#7686#7687#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="117" column="39" selection-start-line="117" selection-start-column="39" selection-end-line="117" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2900#3499#0" expanded="false" />
-            <element signature="e#3498#3499#0" expanded="false" />
-            <element signature="e#4372#6419#0" expanded="false" />
-            <element signature="e#6418#6419#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_select_times.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.862069">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4174,7 +3987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4182,7 +3994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4190,7 +4001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4198,7 +4008,301 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/android/support/v7/widget/RecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="290" column="47" selection-start-line="290" selection-start-column="47" selection-end-line="290" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#352911#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#9982#9983#0" expanded="false" />
+            <element signature="e#10017#10018#0" expanded="false" />
+            <element signature="e#10081#10082#0" expanded="false" />
+            <element signature="e#10120#10121#0" expanded="false" />
+            <element signature="e#12302#12303#0" expanded="false" />
+            <element signature="e#12374#12375#0" expanded="false" />
+            <element signature="e#12643#12644#0" expanded="false" />
+            <element signature="e#12718#12719#0" expanded="false" />
+            <element signature="e#13109#13110#0" expanded="false" />
+            <element signature="e#13184#13185#0" expanded="false" />
+            <element signature="e#13579#13580#0" expanded="false" />
+            <element signature="e#13645#13646#0" expanded="false" />
+            <element signature="e#15201#15202#0" expanded="false" />
+            <element signature="e#15251#15252#0" expanded="false" />
+            <element signature="e#16130#16131#0" expanded="false" />
+            <element signature="e#16180#16181#0" expanded="false" />
+            <element signature="e#17115#17116#0" expanded="false" />
+            <element signature="e#17159#17160#0" expanded="false" />
+            <element signature="e#17347#17348#0" expanded="false" />
+            <element signature="e#17383#17384#0" expanded="false" />
+            <element signature="e#21394#21395#0" expanded="false" />
+            <element signature="e#21425#21426#0" expanded="false" />
+            <element signature="e#21956#21957#0" expanded="false" />
+            <element signature="e#22000#22001#0" expanded="false" />
+            <element signature="e#26033#26034#0" expanded="false" />
+            <element signature="e#26063#26064#0" expanded="false" />
+            <element signature="e#26523#26524#0" expanded="false" />
+            <element signature="e#26577#26578#0" expanded="false" />
+            <element signature="e#27115#27116#0" expanded="false" />
+            <element signature="e#27166#27167#0" expanded="false" />
+            <element signature="e#28162#28163#0" expanded="false" />
+            <element signature="e#28210#28211#0" expanded="false" />
+            <element signature="e#28446#28447#0" expanded="false" />
+            <element signature="e#28481#28482#0" expanded="false" />
+            <element signature="e#30960#30961#0" expanded="false" />
+            <element signature="e#31004#31005#0" expanded="false" />
+            <element signature="e#32016#32017#0" expanded="false" />
+            <element signature="e#32058#32059#0" expanded="false" />
+            <element signature="e#49942#49943#0" expanded="false" />
+            <element signature="e#50012#50013#0" expanded="false" />
+            <element signature="e#67979#67980#0" expanded="false" />
+            <element signature="e#68015#68016#0" expanded="false" />
+            <element signature="e#116591#116592#0" expanded="false" />
+            <element signature="e#116643#116644#0" expanded="false" />
+            <element signature="e#121892#121893#0" expanded="false" />
+            <element signature="e#121930#121931#0" expanded="false" />
+            <element signature="e#123474#123475#0" expanded="false" />
+            <element signature="e#123512#123513#0" expanded="false" />
+            <element signature="e#123537#123538#0" expanded="false" />
+            <element signature="e#123575#123576#0" expanded="false" />
+            <element signature="e#127681#127682#0" expanded="false" />
+            <element signature="e#127738#127739#0" expanded="false" />
+            <element signature="e#134172#134173#0" expanded="false" />
+            <element signature="e#134238#134239#0" expanded="false" />
+            <element signature="e#149832#149833#0" expanded="false" />
+            <element signature="e#149884#149885#0" expanded="false" />
+            <element signature="e#149926#149927#0" expanded="false" />
+            <element signature="e#149991#149992#0" expanded="false" />
+            <element signature="e#150020#150021#0" expanded="false" />
+            <element signature="e#150066#150067#0" expanded="false" />
+            <element signature="e#171566#171567#0" expanded="false" />
+            <element signature="e#171598#171599#0" expanded="false" />
+            <element signature="e#172703#172704#0" expanded="false" />
+            <element signature="e#172739#172740#0" expanded="false" />
+            <element signature="e#173379#173380#0" expanded="false" />
+            <element signature="e#173423#173424#0" expanded="false" />
+            <element signature="e#175452#175453#0" expanded="false" />
+            <element signature="e#175509#175510#0" expanded="false" />
+            <element signature="e#178702#178703#0" expanded="false" />
+            <element signature="e#178753#178754#0" expanded="false" />
+            <element signature="e#188666#188667#0" expanded="false" />
+            <element signature="e#188702#188703#0" expanded="false" />
+            <element signature="e#195654#195655#0" expanded="false" />
+            <element signature="e#195695#195696#0" expanded="false" />
+            <element signature="e#198486#198487#0" expanded="false" />
+            <element signature="e#198518#198519#0" expanded="false" />
+            <element signature="e#199388#199389#0" expanded="false" />
+            <element signature="e#199420#199421#0" expanded="false" />
+            <element signature="e#199714#199715#0" expanded="false" />
+            <element signature="e#199750#199751#0" expanded="false" />
+            <element signature="e#200038#200039#0" expanded="false" />
+            <element signature="e#200074#200075#0" expanded="false" />
+            <element signature="e#202528#202529#0" expanded="false" />
+            <element signature="e#202603#202604#0" expanded="false" />
+            <element signature="e#203915#203916#0" expanded="false" />
+            <element signature="e#203969#203970#0" expanded="false" />
+            <element signature="e#204875#204876#0" expanded="false" />
+            <element signature="e#204929#204930#0" expanded="false" />
+            <element signature="e#205269#205270#0" expanded="false" />
+            <element signature="e#205311#205312#0" expanded="false" />
+            <element signature="e#205708#205709#0" expanded="false" />
+            <element signature="e#205763#205764#0" expanded="false" />
+            <element signature="e#209002#209003#0" expanded="false" />
+            <element signature="e#209056#209057#0" expanded="false" />
+            <element signature="e#214140#214141#0" expanded="false" />
+            <element signature="e#214208#214209#0" expanded="false" />
+            <element signature="e#216348#216349#0" expanded="false" />
+            <element signature="e#216393#216394#0" expanded="false" />
+            <element signature="e#220088#220089#0" expanded="false" />
+            <element signature="e#220171#220172#0" expanded="false" />
+            <element signature="e#220332#220333#0" expanded="false" />
+            <element signature="e#220416#220417#0" expanded="false" />
+            <element signature="e#222278#222279#0" expanded="false" />
+            <element signature="e#222359#222360#0" expanded="false" />
+            <element signature="e#222627#222628#0" expanded="false" />
+            <element signature="e#222707#222708#0" expanded="false" />
+            <element signature="e#245259#245260#0" expanded="false" />
+            <element signature="e#245294#245295#0" expanded="false" />
+            <element signature="e#254102#254103#0" expanded="false" />
+            <element signature="e#254134#254135#0" expanded="false" />
+            <element signature="e#254689#254690#0" expanded="false" />
+            <element signature="e#254721#254722#0" expanded="false" />
+            <element signature="e#255291#255292#0" expanded="false" />
+            <element signature="e#255323#255324#0" expanded="false" />
+            <element signature="e#255834#255835#0" expanded="false" />
+            <element signature="e#255866#255867#0" expanded="false" />
+            <element signature="e#256413#256414#0" expanded="false" />
+            <element signature="e#256445#256446#0" expanded="false" />
+            <element signature="e#257007#257008#0" expanded="false" />
+            <element signature="e#257039#257040#0" expanded="false" />
+            <element signature="e#259491#259492#0" expanded="false" />
+            <element signature="e#259563#259564#0" expanded="false" />
+            <element signature="e#259703#259704#0" expanded="false" />
+            <element signature="e#259776#259777#0" expanded="false" />
+            <element signature="e#260498#260499#0" expanded="false" />
+            <element signature="e#260533#260534#0" expanded="false" />
+            <element signature="e#269060#269061#0" expanded="false" />
+            <element signature="e#269117#269118#0" expanded="false" />
+            <element signature="e#272457#272458#0" expanded="false" />
+            <element signature="e#272493#272494#0" expanded="false" />
+            <element signature="e#277331#277332#0" expanded="false" />
+            <element signature="e#277372#277373#0" expanded="false" />
+            <element signature="e#288457#288458#0" expanded="false" />
+            <element signature="e#288515#288516#0" expanded="false" />
+            <element signature="e#289233#289234#0" expanded="false" />
+            <element signature="e#289276#289277#0" expanded="false" />
+            <element signature="e#289526#289527#0" expanded="false" />
+            <element signature="e#289564#289565#0" expanded="false" />
+            <element signature="e#289687#289688#0" expanded="false" />
+            <element signature="e#289731#289732#0" expanded="false" />
+            <element signature="e#289760#289761#0" expanded="false" />
+            <element signature="e#289814#289815#0" expanded="false" />
+            <element signature="e#289840#289841#0" expanded="false" />
+            <element signature="e#289897#289898#0" expanded="false" />
+            <element signature="e#289939#289940#0" expanded="false" />
+            <element signature="e#290010#290011#0" expanded="false" />
+            <element signature="e#290055#290056#0" expanded="false" />
+            <element signature="e#290122#290123#0" expanded="false" />
+            <element signature="e#290153#290154#0" expanded="false" />
+            <element signature="e#290207#290208#0" expanded="false" />
+            <element signature="e#290260#290261#0" expanded="false" />
+            <element signature="e#290310#290311#0" expanded="false" />
+            <element signature="e#290341#290342#0" expanded="false" />
+            <element signature="e#290400#290401#0" expanded="false" />
+            <element signature="e#290433#290434#0" expanded="false" />
+            <element signature="e#290491#290492#0" expanded="false" />
+            <element signature="e#290522#290523#0" expanded="false" />
+            <element signature="e#290581#290582#0" expanded="false" />
+            <element signature="e#290610#290611#0" expanded="false" />
+            <element signature="e#290667#290668#0" expanded="false" />
+            <element signature="e#290698#290699#0" expanded="false" />
+            <element signature="e#290757#290758#0" expanded="false" />
+            <element signature="e#290803#290804#0" expanded="false" />
+            <element signature="e#290869#290870#0" expanded="false" />
+            <element signature="e#290905#290906#0" expanded="false" />
+            <element signature="e#290944#290945#0" expanded="false" />
+            <element signature="e#295030#295031#0" expanded="false" />
+            <element signature="e#295069#295070#0" expanded="false" />
+            <element signature="e#295123#295124#0" expanded="false" />
+            <element signature="e#295167#295168#0" expanded="false" />
+            <element signature="e#295225#295226#0" expanded="false" />
+            <element signature="e#295262#295263#0" expanded="false" />
+            <element signature="e#295324#295325#0" expanded="false" />
+            <element signature="e#295361#295362#0" expanded="false" />
+            <element signature="e#295413#295414#0" expanded="false" />
+            <element signature="e#295475#295476#0" expanded="false" />
+            <element signature="e#295768#295769#0" expanded="false" />
+            <element signature="e#295824#295825#0" expanded="false" />
+            <element signature="e#296115#296116#0" expanded="false" />
+            <element signature="e#296169#296170#0" expanded="false" />
+            <element signature="e#296609#296610#0" expanded="false" />
+            <element signature="e#296663#296664#0" expanded="false" />
+            <element signature="e#297083#297084#0" expanded="false" />
+            <element signature="e#297137#297138#0" expanded="false" />
+            <element signature="e#297372#297373#0" expanded="false" />
+            <element signature="e#297428#297429#0" expanded="false" />
+            <element signature="e#298814#298815#0" expanded="false" />
+            <element signature="e#298873#298874#0" expanded="false" />
+            <element signature="e#300261#300262#0" expanded="false" />
+            <element signature="e#300317#300318#0" expanded="false" />
+            <element signature="e#300470#300471#0" expanded="false" />
+            <element signature="e#300515#300516#0" expanded="false" />
+            <element signature="e#301789#301790#0" expanded="false" />
+            <element signature="e#301838#301839#0" expanded="false" />
+            <element signature="e#301963#301964#0" expanded="false" />
+            <element signature="e#302002#302003#0" expanded="false" />
+            <element signature="e#302266#302267#0" expanded="false" />
+            <element signature="e#302312#302313#0" expanded="false" />
+            <element signature="e#303376#303377#0" expanded="false" />
+            <element signature="e#303443#303444#0" expanded="false" />
+            <element signature="e#303564#303565#0" expanded="false" />
+            <element signature="e#303632#303633#0" expanded="false" />
+            <element signature="e#307420#307421#0" expanded="false" />
+            <element signature="e#307490#307491#0" expanded="false" />
+            <element signature="e#307774#307775#0" expanded="false" />
+            <element signature="e#307834#307835#0" expanded="false" />
+            <element signature="e#310143#310144#0" expanded="false" />
+            <element signature="e#310185#310186#0" expanded="false" />
+            <element signature="e#310332#310333#0" expanded="false" />
+            <element signature="e#310374#310375#0" expanded="false" />
+            <element signature="e#310527#310528#0" expanded="false" />
+            <element signature="e#310575#310576#0" expanded="false" />
+            <element signature="e#310765#310766#0" expanded="false" />
+            <element signature="e#310817#310818#0" expanded="false" />
+            <element signature="e#312102#312103#0" expanded="false" />
+            <element signature="e#312154#312155#0" expanded="false" />
+            <element signature="e#315124#315125#0" expanded="false" />
+            <element signature="e#315165#315166#0" expanded="false" />
+            <element signature="e#315402#315403#0" expanded="false" />
+            <element signature="e#315459#315460#0" expanded="false" />
+            <element signature="e#315666#315667#0" expanded="false" />
+            <element signature="e#315723#315724#0" expanded="false" />
+            <element signature="e#315799#315800#0" expanded="false" />
+            <element signature="e#315858#315859#0" expanded="false" />
+            <element signature="e#318037#318038#0" expanded="false" />
+            <element signature="e#318080#318081#0" expanded="false" />
+            <element signature="e#318418#318419#0" expanded="false" />
+            <element signature="e#318473#318474#0" expanded="false" />
+            <element signature="e#318799#318800#0" expanded="false" />
+            <element signature="e#318850#318851#0" expanded="false" />
+            <element signature="e#320823#320824#0" expanded="false" />
+            <element signature="e#320869#320870#0" expanded="false" />
+            <element signature="e#321426#321427#0" expanded="false" />
+            <element signature="e#321474#321475#0" expanded="false" />
+            <element signature="e#323586#323587#0" expanded="false" />
+            <element signature="e#323632#323633#0" expanded="false" />
+            <element signature="e#329751#329752#0" expanded="false" />
+            <element signature="e#329795#329796#0" expanded="false" />
+            <element signature="e#330006#330007#0" expanded="false" />
+            <element signature="e#330058#330059#0" expanded="false" />
+            <element signature="e#330253#330254#0" expanded="false" />
+            <element signature="e#330296#330297#0" expanded="false" />
+            <element signature="e#330502#330503#0" expanded="false" />
+            <element signature="e#330552#330553#0" expanded="false" />
+            <element signature="e#330756#330757#0" expanded="false" />
+            <element signature="e#330802#330803#0" expanded="false" />
+            <element signature="e#331023#331024#0" expanded="false" />
+            <element signature="e#331079#331080#0" expanded="false" />
+            <element signature="e#331283#331284#0" expanded="false" />
+            <element signature="e#331329#331330#0" expanded="false" />
+            <element signature="e#331550#331551#0" expanded="false" />
+            <element signature="e#331606#331607#0" expanded="false" />
+            <element signature="e#331856#331857#0" expanded="false" />
+            <element signature="e#331912#331913#0" expanded="false" />
+            <element signature="e#333521#333522#0" expanded="false" />
+            <element signature="e#333565#333566#0" expanded="false" />
+            <element signature="e#342827#342828#0" expanded="false" />
+            <element signature="e#342873#342874#0" expanded="false" />
+            <element signature="e#343104#343105#0" expanded="false" />
+            <element signature="e#343148#343149#0" expanded="false" />
+            <element signature="e#343378#343379#0" expanded="false" />
+            <element signature="e#343421#343422#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/src/main/java/org/lucasr/twowayview/widget/TwoWayView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#4088#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1294#1295#0" expanded="false" />
+            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1391#1392#0" expanded="false" />
+            <element signature="e#1430#1431#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4210,34 +4314,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/src/main/java/org/lucasr/twowayview/widget/TwoWayView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -4253,25 +4352,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_black_text.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.551724">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.44">
+          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_event.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.79310346">
+        <state vertical-scroll-proportion="-1.4827586">
           <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MyEventsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_select_times.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.965517">
+          <caret line="80" column="15" selection-start-line="80" selection-start-column="15" selection-end-line="80" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/NewEventActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="149" column="20" selection-start-line="149" selection-start-column="20" selection-end-line="149" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1724138">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7586207">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1230#1238#0" expanded="true" />
+            <element signature="e#445#463#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_days.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6896553">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_times.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4280,9 +4462,91 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2155797">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        <state vertical-scroll-proportion="-3.6551723">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/timeListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+          <folding>
+            <element signature="e#1916#2167#0" expanded="true" />
+            <element signature="e#2166#2167#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4827585">
+          <caret line="62" column="67" selection-start-line="62" selection-start-column="67" selection-end-line="62" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="e#1209#1210#0" expanded="true" />
+            <element signature="e#1241#1242#0" expanded="true" />
+            <element signature="e#1274#1275#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="100" selection-start-line="184" selection-start-column="100" selection-end-line="184" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="251" column="42" selection-start-line="251" selection-start-column="42" selection-end-line="251" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#864#872#0" expanded="true" />
+            <element signature="e#947#973#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46483704">
+          <caret line="117" column="19" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="19" />
+          <folding>
+            <element signature="e#5913#5914#0" expanded="true" />
+            <element signature="e#5952#5953#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

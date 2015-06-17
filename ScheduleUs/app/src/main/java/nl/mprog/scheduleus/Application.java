@@ -24,28 +24,23 @@ public class Application extends android.app.Application {
 
     private int data=200;
     private Set<String> daySet;
-    //private boolean[] availabilityList;
-    private Map<String, boolean[]> availabilityMap;
 
-    /*public List<boolean[]> getAvailabilityList() {
-        return this.availabilityList;
-    }*/
+    private Map<String, ArrayList<int[]>> availabilityMap;
 
-    public void putAvailabilityArray(String day, boolean[] a) {
+    public void putAvailabilityList(String day, ArrayList<int[]> l) {
         this.daySet.add(day);
-        //this.availabilityList = l;
-        this.availabilityMap.put(day, a);
+        this.availabilityMap.put(day, l);
     }
 
-    public boolean[] getAvailabilityArray(String day) {
+    public ArrayList<int[]> getAvailabilityList(String day) {
         return availabilityMap.get(day);
     }
 
-    public Map<String, boolean[]> getAvailabilityMap() {
+    public Map<String, ArrayList<int[]>> getAvailabilityMap() {
         return this.availabilityMap;
     }
 
-    public void setAvailabilityMap(Map<String, boolean[]> m) {
+    public void setAvailabilityMap(Map<String, ArrayList<int[]>> m) {
         this.availabilityMap = m;
     }
 
@@ -58,13 +53,15 @@ public class Application extends android.app.Application {
     }
 
     public Application() {
-        this.availabilityMap = new HashMap<String, boolean[]>();
-        this.daySet = new HashSet<String>();
+
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        this.availabilityMap = new HashMap<String, ArrayList<int[]>>();
+        this.daySet = new HashSet<String>();
 
         // Preferences
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);

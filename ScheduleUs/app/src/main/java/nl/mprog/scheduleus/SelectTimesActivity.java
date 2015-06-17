@@ -69,6 +69,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         ConfirmTimesButton = (Button) findViewById(R.id.ConfirmTimesButton);
         ResetButton = (Button) findViewById(R.id.ResetButton);
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
+        final Intent getSelectDaysScreen = new Intent(this, SelectDaysActivity.class);
 
 
         final Application global = (Application)getApplication();
@@ -142,11 +143,15 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
 
                 // Converting DrawingView output to Strings
                 try {
-                    for (int i = 0; i < dv.getTimesList().size(); i++) {
-                        String time1 = "" + dv.getTimesList().get(i)[0];
+                    for (int i = 0; i < dv.getAvailabilityList().size(); i++) {
+                        String time1 = "" + dv.getAvailabilityList().get(i)[0] + dv.getAvailabilityList().get(i)[1];
+                        if (time1.endsWith("0"))
+                            time1 += "0";
                         if (time1.startsWith("9"))
                             time1 = "0" + time1;
-                        String time2 = "" + dv.getTimesList().get(i)[1];
+                        String time2 = "" + dv.getAvailabilityList().get(i)[2] + dv.getAvailabilityList().get(i)[3];
+                        if (time2.endsWith("0"))
+                            time2 += "0";
                         if (time2.startsWith("9"))
                             time2 = "0" + time2;
                         time1 = time1.substring(0,2) + ":" + time1.substring(2,4);
@@ -155,7 +160,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                     }
 
                 } catch (Exception e) {
-                    outputView.setText("fail");
+                    outputView.setText("parse error");
                 }
 
                 // Setting adapter and listView
@@ -176,8 +181,9 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             @Override
             public void onClick(View v) {
 
-                global.putAvailabilityArray(selected_day, dv.getAvailabilityArray());
-                outputView.setText("" + global.getAvailabilityArray("maandag")[0]);
+                // Update Availability Map and go to SelectDaysActivity
+                global.putAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
+                startActivity(getSelectDaysScreen);
             }
         });
 

@@ -36,6 +36,8 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
     private String eventName;
     private String selected_day;
 
+    Application global;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +57,20 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
         dayList = new ArrayList<String>(dateSet);
 
-        dayList_adapter = new dayListAdapter(this, dayList);
+        global = (Application) getApplication();
+        dayList_adapter = new dayListAdapter(this, dayList, global.getAvailabilityMap());
         dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
         twListView.setAdapter(dayList_adapter);
 
-        Application global = (Application) getApplication();
-        global.setData(300);
-        boolean[] test = new boolean[2];
-        test[0] = true;
-        test[1] = true;
-        global.putAvailabilityArray("maandag",test);
+        /*global.setData(300);
+        ArrayList<Boolean> test = new ArrayList<>();
+        test.add(true);
+        test.add(true);
+        global.putAvailabilityList("maandag", test);*/
+
+        String message = "" + global.getAvailabilityMap().containsKey("17-05-2015");
+        Toast.makeText(SelectDaysActivity.this, message,
+                Toast.LENGTH_SHORT).show();
 
         select_timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +87,7 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         dayList.remove(position);
         dateSet = new HashSet(dayList);
         editor.putStringSet("event_dates", dateSet).apply();
-        dayList_adapter = new dayListAdapter(this, dayList);
+        dayList_adapter = new dayListAdapter(this, dayList, global.getAvailabilityMap());
         dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
         twListView.setAdapter(dayList_adapter);
 

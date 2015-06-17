@@ -39,6 +39,7 @@ public class DrawingView extends View implements View.OnClickListener{
     private Paint mLines;
     private TextView up;
     private float pixels_per_hour;
+    List <int[]> AvailableSlots;
 
     public DrawingView(Context c) {
         super(c);
@@ -223,13 +224,13 @@ public class DrawingView extends View implements View.OnClickListener{
     }
 
     // Returns bool array with availability per pixel
-    public boolean[] getAvailabilityArray() {
-        boolean[] availArray = new boolean[height];
+    public Boolean[] getAvailabilityArray() {
+        Boolean[] availArray = new Boolean[height];
 
         for (int y = 0; y < height; y++)
         {
             availArray[y] = true;
-            boolean white_line = true;
+            Boolean white_line = true;
             for (int x = 0; x < 3; x++)
             {
                 // Pixel not white
@@ -243,14 +244,15 @@ public class DrawingView extends View implements View.OnClickListener{
         return availArray;
     }
 
+    // Less than TIME_TOLERANCE will not be considered a time slot
     private static final int TIME_TOLERANCE = 5;
     private static final int MINUTE_ENTITY = 15;
 
     // List with pairs of available times like (10,11)
-    public List<int[]> getTimesList() {
-        boolean[] availArray = getAvailabilityArray();
+    public List<int[]> getAvailabilityList() {
+        Boolean[] availArray = getAvailabilityArray();
 
-        List <int[]> AvailableSlots = new ArrayList<int[]>();
+        AvailableSlots = new ArrayList<int[]>();
 
         // Search for blocks of available time
         int j = 0;
@@ -282,7 +284,7 @@ public class DrawingView extends View implements View.OnClickListener{
                     int begin_time = begin_hour * 100 + begin_quarter;
                     int end_time = end_hour * 100 + end_quarter;
 
-                    AvailableSlots.add(new int[]{begin_time,end_time});
+                    AvailableSlots.add(new int[]{begin_hour,begin_quarter,end_hour,end_quarter});
                 }
                 j = 0;
             }

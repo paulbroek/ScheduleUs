@@ -38,34 +38,14 @@ public class DrawingShowView extends View {
     private Paint mPaint;
     private Paint mLines;
     private TextView up;
-    private float pixels_per_hour;
+    public float pixels_per_hour;
+    private boolean[] availArray;
+    private ArrayList<Boolean> availList;
+    List <int[]> AvailableSlots;
 
     public DrawingShowView(Context c) {
         super(c);
         context=c;
-
-        mPath = new Path();
-        mBitmapPaint = new Paint(Paint.DITHER_FLAG);
-        circlePaint = new Paint();
-        circlePath = new Path();
-        circlePaint.setAntiAlias(true);
-        circlePaint.setColor(Color.BLUE);
-        circlePaint.setStyle(Paint.Style.STROKE);
-        circlePaint.setStrokeJoin(Paint.Join.MITER);
-        circlePaint.setStrokeWidth(4f);
-
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setDither(true);
-        mPaint.setColor(Color.GREEN);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStrokeWidth(25);
-
-        min_clocktime = 9;
-        max_clocktime = 24;
-
     }
 
     public DrawingShowView(Context c, AttributeSet attrs) {
@@ -94,6 +74,9 @@ public class DrawingShowView extends View {
 
         min_clocktime = 9;
         max_clocktime = 24;
+
+
+
     }
 
     public DrawingShowView(Context c, AttributeSet attrs, int defStyle) {
@@ -119,26 +102,59 @@ public class DrawingShowView extends View {
         width = w;
         height = h;
 
-        mCanvas.drawRect(0,50,width,150,mPaint);
+        pixels_per_hour = (float) height / (max_clocktime-min_clocktime);
+
+        // If user input already exists, we can draw this
+        /*if (availList != null)
+            for (int i = 0; i < availList.size(); i++)
+                if (availList.get(i))
+                    mCanvas.drawLine(width,i,0,i,mPaint);*/
+
+        if (AvailableSlots != null)
+            for (int i = 0; i < AvailableSlots.size(); i++) {
+
+                /*for (int p = 0; p < 50*i; p++) {
+                    mCanvas.drawLine(width,p,0,p,mPaint);
+                }*/
+
+
+                int beginhours = AvailableSlots.get(i)[0];
+                int beginquarters = AvailableSlots.get(i)[1];
+                int endhours = AvailableSlots.get(i)[2];
+                int endquarters = AvailableSlots.get(i)[3];
+                double n_hours = endhours + endquarters/60.0 - beginhours - beginquarters/60.0;
+
+                double begin = (beginhours + beginquarters / 60.0 - min_clocktime)*pixels_per_hour;
+                double n_pixels = n_hours*pixels_per_hour;
+                for (int j = 0; j < (int) n_pixels; j++)
+                    mCanvas.drawLine(width,(int)begin+j,0,(int)begin+j,mPaint);
+
+                }
 
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
             mCanvas.drawLine(w,i*h/n_lines,w-w/4,i*h/n_lines,mLines);
 
-        pixels_per_hour = (float) height / (max_clocktime-min_clocktime);
-    }
 
-/*    @Override
-    public void onClick(View view) {
-        Toast.makeText(getContext(), "Werkt", Toast.LENGTH_SHORT).show();
-    }*/
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawBitmap( mBitmap, 0, 0, mBitmapPaint);
-        canvas.drawPath( mPath,  mPaint);
-        canvas.drawPath( circlePath,  circlePaint);
+        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+        canvas.drawPath(mPath, mPaint);
+        canvas.drawPath(circlePath, circlePaint);
+        /*for (int i = 0; i < 50; i++)
+            if (true)
+                canvas.drawLine(width,i,0,i,mPaint);*/
+
+        /*try {
+            for (int i = 0; i < availList.size(); i++) {
+                canvas.drawLine(width,i,0,i,mPaint);
+            }
+        } catch (NullPointerException e)  {
+
+        }*/
     }
 
     private float mX, mY;
@@ -159,12 +175,7 @@ public class DrawingShowView extends View {
             if (white_line)
                 lines++;
         }
-        /*int test = 0;
-        if (mBitmap.getWidth() > 3)
-            test = mBitmap.getWidth();
-        return test;*/
 
-        int test = mBitmap.getWidth();
         return (float) lines;
     }
 
@@ -189,14 +200,18 @@ public class DrawingShowView extends View {
         return availArray;
     }
 
+    public void setAvailabilityList(ArrayList<int[]> l) {
+        this.AvailableSlots = l;
+    }
+
     private static final int TIME_TOLERANCE = 5;
     private static final int MINUTE_ENTITY = 15;
 
     // List with pairs of available times like (10,11)
-    public List<int[]> getTimesList() {
+    public List<int[]> getAvailabilityList() {
         boolean[] availArray = getAvailabilityArray();
 
-        List <int[]> AvailableSlots = new ArrayList<int[]>();
+        AvailableSlots = new ArrayList<int[]>();
 
         // Search for blocks of available time
         int j = 0;
@@ -228,8 +243,7 @@ public class DrawingShowView extends View {
                     int begin_time = begin_hour * 100 + begin_quarter;
                     int end_time = end_hour * 100 + end_quarter;
 
-                    AvailableSlots.add(new int[]{begin_time,end_time});
-                    //AvailableSlots.add(new int[]{i-j,i});
+                    AvailableSlots.add(new int[]{begin_hour,begin_quarter,end_hour,end_quarter});
 
                 }
                 j = 0;

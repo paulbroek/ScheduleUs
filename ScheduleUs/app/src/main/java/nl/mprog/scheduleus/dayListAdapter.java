@@ -1,6 +1,8 @@
 package nl.mprog.scheduleus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,10 +27,12 @@ public class dayListAdapter extends ArrayAdapter<String> {
 
     private Context context;
     private ArrayList<String> data = new ArrayList<String>();
+    private Map<String, ArrayList<int[]>> availabilityMap = new HashMap<String, ArrayList<int[]>>();
 
-    public dayListAdapter(Context context, ArrayList<String> dataItem) {
+    public dayListAdapter(Context context, ArrayList<String> dataItem, Map<String,ArrayList<int[]>> mapItem) {
         super(context, R.layout.list_times, dataItem);
         this.data = dataItem;
+        this.availabilityMap = mapItem;
         this.context = context;
     }
 
@@ -49,24 +53,41 @@ public class dayListAdapter extends ArrayAdapter<String> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        final String temp = getItem(position);
+        final String temp_day = getItem(position);
+        ArrayList<int[]> temp_availList = availabilityMap.get(temp_day);
+
+
+        viewHolder.dsv.setAvailabilityList(temp_availList);
+
+        // Clicked on a day, go to SelectTimes
         viewHolder.dsv.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (customListener != null) {
-                    customListener.onViewClickListener(position, temp);
+                    customListener.onViewClickListener(position, temp_day);
                 }
 
             }
         });
-        viewHolder.text.setText(temp);
+        String value = "";
+        try {
+            // value = "" + availabilityMap.get(temp_day).get(0)[0];
+            //value = "" + viewHolder.dsv.AvailableSlots.get(0)[0];
+            value = "" + viewHolder.dsv.height;
+        }
+        catch (NullPointerException e)
+        {
+            value = "avail list is empty";
+        }
+        viewHolder.text.setText("" + value);
+        // Clicked delete, remove the View
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (customListener != null) {
-                    customListener.onButtonClickListener(position, temp);
+                    customListener.onButtonClickListener(position, temp_day);
                 }
 
             }
