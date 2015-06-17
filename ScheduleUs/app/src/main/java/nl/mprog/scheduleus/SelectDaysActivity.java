@@ -1,29 +1,40 @@
 package nl.mprog.scheduleus;
 
+import nl.mprog.scheduleus.dayListAdapter.customButtonListener;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import org.lucasr.twowayview.widget.TwoWayView;
+import org.lucasr.twowayview.TwoWayView;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
-public class SelectDaysActivity extends ActionBarActivity {
+public class SelectDaysActivity extends ActionBarActivity implements customButtonListener{
 
+    private TextView days_textView;
     private Button select_timeButton;
-    private GridView gridView;
     private TwoWayView twListView;
 
-    static final String[] numbers = new String[] {
-            "A", "B", "C", "D", "E",
-            "F", "G", "H", "I", "J",
-            "K", "L"};
+    private dayListAdapter dayList_adapter;
+    ArrayList<String> dayList;
+
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
+
+    private Set<String> dateSet;
+    private String eventName;
+    private String selected_day;
 
 
     @Override
@@ -31,15 +42,29 @@ public class SelectDaysActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_days);
 
+        days_textView = (TextView) findViewById(R.id.days_textView);
         select_timeButton = (Button) findViewById(R.id.select_timeButton);
-        gridView = (GridView) findViewById(R.id.gridView);
-        //twListView = (TwoWayView) findViewById(R.id.)
+        twListView = (TwoWayView) findViewById(R.id.lvItems);
         final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, numbers);
+        prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
-        gridView.setAdapter(adapter);
+        eventName = prefs.getString("event_name", null);
+        dateSet = new HashSet<>(prefs.getStringSet("event_dates", null));
+
+        dayList = new ArrayList<String>(dateSet);
+
+        dayList_adapter = new dayListAdapter(this, dayList);
+        dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
+        twListView.setAdapter(dayList_adapter);
+
+        Application global = (Application) getApplication();
+        global.setData(300);
+        boolean[] test = new boolean[2];
+        test[0] = true;
+        test[1] = true;
+        global.putAvailabilityArray("maandag",test);
 
         select_timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +73,32 @@ public class SelectDaysActivity extends ActionBarActivity {
             }
         });
     }
+
+    // Deleting a day, so adapter and preferences need an update
+    @Override
+    public void onButtonClickListener(int position, String value) {
+
+        dayList.remove(position);
+        dateSet = new HashSet(dayList);
+        editor.putStringSet("event_dates", dateSet).apply();
+        dayList_adapter = new dayListAdapter(this, dayList);
+        dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
+        twListView.setAdapter(dayList_adapter);
+
+        Toast.makeText(SelectDaysActivity.this, "Day " + value + " deleted",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    // Click on a day, go to SelectTimesActivity for this day
+    @Override
+    public void onViewClickListener(int position, String value) {
+
+        selected_day = value;
+        editor.putString("selected_day", selected_day).apply();
+        final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
+        startActivity(getSelectTimesScreen);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

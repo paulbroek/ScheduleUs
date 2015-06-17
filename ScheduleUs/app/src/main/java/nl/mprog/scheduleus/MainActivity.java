@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView outputView;
     private Button NewEventButton, MyEventsButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

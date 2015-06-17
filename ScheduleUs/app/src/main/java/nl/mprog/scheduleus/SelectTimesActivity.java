@@ -1,6 +1,7 @@
 package nl.mprog.scheduleus;
 
-import nl.mprog.scheduleus.ListAdapter.customButtonListener;
+import nl.mprog.scheduleus.timeListAdapter.customButtonListener;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,13 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,22 +36,24 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
     private DrawingView dv;
     private TextView outputView;
     private TextView availabilityView;
+    private TextView selected_dayView;
     private ListView timesListView;
-    private Button ConfirmTimeButton;
+    private Button ConfirmTimesButton;
+    private Button ShowTimesButton;
     private Button ResetButton;
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
 
     private String current_event_id;
+    private String selected_day;
     private String eventName;
 
     private Set<String> participants;
     private Set<String> dates;
     private ArrayList<String> timesList;
-    private ListAdapter adapter;
+    private timeListAdapter adapter;
 
-    // private DrawingManager mDrawingManager=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +63,20 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         dv = (DrawingView) findViewById(R.id.mondayView);
         outputView = (TextView) findViewById(R.id.outputView);
         availabilityView = (TextView) findViewById(R.id.availabilityView);
+        selected_dayView = (TextView) findViewById(R.id.selected_day_View);
         timesListView = (ListView) findViewById(R.id.listView);
-        ConfirmTimeButton = (Button) findViewById(R.id.ConfirmTimeButton);
+        ShowTimesButton = (Button) findViewById(R.id.ShowTimesButton);
+        ConfirmTimesButton = (Button) findViewById(R.id.ConfirmTimesButton);
         ResetButton = (Button) findViewById(R.id.ResetButton);
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
 
-        prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
 
+        final Application global = (Application)getApplication();
+
+
+        prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
+        selected_day = prefs.getString("selected_day",null);
+        selected_dayView.setText(selected_day);
         participants = new HashSet<>();
         participants.add("Johan");
         participants.add("Erik");
@@ -124,20 +133,15 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             }
         });
 
-        ConfirmTimeButton.setOnClickListener(new View.OnClickListener() {
+        ShowTimesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 outputView.setText("" + dv.getTimeSize());
                 timesList.clear();
-                try {
-                    String result = "";
-                    /*for (int i = 0; i < dv.getTimesList().size(); i++) {
-                        result += dv.getTimesList().get(i)[0] + " ";
-                        result += dv.getTimesList().get(i)[1] + " ";
-                    }*/
 
-                    String availability = "Available between \n";
+                // Converting DrawingView output to Strings
+                try {
                     for (int i = 0; i < dv.getTimesList().size(); i++) {
                         String time1 = "" + dv.getTimesList().get(i)[0];
                         if (time1.startsWith("9"))
@@ -147,17 +151,15 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                             time2 = "0" + time2;
                         time1 = time1.substring(0,2) + ":" + time1.substring(2,4);
                         time2 = time2.substring(0,2) + ":" + time2.substring(2,4);
-                        availability += time1 + " till " + time2 + "\n";
                         timesList.add(time1 + " till " + time2);
                     }
-                    //availabilityView.setText(availability);
 
-                    outputView.setText("" + result);
                 } catch (Exception e) {
                     outputView.setText("fail");
                 }
 
-                adapter = new ListAdapter(getApplicationContext(), timesList);
+                // Setting adapter and listView
+                adapter = new timeListAdapter(getApplicationContext(), timesList);
                 adapter.setCustomButtonListener(SelectTimesActivity.this);
                 timesListView.setAdapter(adapter);
 
@@ -170,7 +172,17 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             }
         });
 
+        ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                global.putAvailabilityArray(selected_day, dv.getAvailabilityArray());
+                outputView.setText("" + global.getAvailabilityArray("maandag")[0]);
+            }
+        });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

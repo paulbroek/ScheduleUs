@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ListAdapter extends ArrayAdapter<String> {
+public class timeListAdapter extends ArrayAdapter<String> {
     customButtonListener customListener;
 
     public interface customButtonListener {
@@ -25,7 +25,7 @@ public class ListAdapter extends ArrayAdapter<String> {
     private Context context;
     private ArrayList<String> data = new ArrayList<String>();
 
-    public ListAdapter(Context context, ArrayList<String> dataItem) {
+    public timeListAdapter(Context context, ArrayList<String> dataItem) {
         super(context, R.layout.list_times, dataItem);
         this.data = dataItem;
         this.context = context;

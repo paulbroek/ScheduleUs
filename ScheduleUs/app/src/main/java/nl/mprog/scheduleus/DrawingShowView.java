@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Paul Broek on 1-6-2015.
+ * Created by Paul Broek on 17-6-2015.
  * 10279741
  * pauliusbroek@hotmail.com
- * DrawingViews are Views where user can draw a line for user time input
+ * DrawingShowView is a showing a DrawingView, but user cannot swipe but only click it
  */
 
-public class DrawingView extends View implements View.OnClickListener{
+public class DrawingShowView extends View {
 
     public int width;
     public int height;
@@ -40,7 +40,7 @@ public class DrawingView extends View implements View.OnClickListener{
     private TextView up;
     private float pixels_per_hour;
 
-    public DrawingView(Context c) {
+    public DrawingShowView(Context c) {
         super(c);
         context=c;
 
@@ -68,7 +68,7 @@ public class DrawingView extends View implements View.OnClickListener{
 
     }
 
-    public DrawingView(Context c, AttributeSet attrs) {
+    public DrawingShowView(Context c, AttributeSet attrs) {
         super(c, attrs);
         context = c;
 
@@ -94,11 +94,9 @@ public class DrawingView extends View implements View.OnClickListener{
 
         min_clocktime = 9;
         max_clocktime = 24;
-
-
     }
 
-    public DrawingView(Context c, AttributeSet attrs, int defStyle) {
+    public DrawingShowView(Context c, AttributeSet attrs, int defStyle) {
         super(c, attrs, defStyle);
         context = c;
     }
@@ -121,6 +119,8 @@ public class DrawingView extends View implements View.OnClickListener{
         width = w;
         height = h;
 
+        mCanvas.drawRect(0,50,width,150,mPaint);
+
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
             mCanvas.drawLine(w,i*h/n_lines,w-w/4,i*h/n_lines,mLines);
@@ -128,10 +128,10 @@ public class DrawingView extends View implements View.OnClickListener{
         pixels_per_hour = (float) height / (max_clocktime-min_clocktime);
     }
 
-    @Override
+/*    @Override
     public void onClick(View view) {
         Toast.makeText(getContext(), "Werkt", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -143,60 +143,6 @@ public class DrawingView extends View implements View.OnClickListener{
 
     private float mX, mY;
     private static final float TOUCH_TOLERANCE = 0;
-
-    private void touch_start(float x, float y) {
-        mPath.reset();
-        mPath.moveTo(x, y);
-        mX = x;
-        mY = y;
-    }
-    private void touch_move(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-
-            mPaint.setStyle(Paint.Style.FILL);
-
-            mCanvas.drawRect(0,mY,width,y,mPaint);
-
-            mX = x;
-            mY = y;
-
-            circlePath.reset();
-            circlePath.addCircle(mX, mY, 30, Path.Direction.CW);
-        }
-    }
-    private void touch_up() {
-        mPath.lineTo(mX, mY);
-        circlePath.reset();
-        // commit the path to our offscreen
-        //mCanvas.drawPath(mPath,  mPaint);
-
-        // kill this so we don't double draw
-        mPath.reset();
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                touch_start(x, y);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                touch_move(x, y);
-                invalidate();
-                break;
-            case MotionEvent.ACTION_UP:
-                touch_up();
-                invalidate();
-                break;
-        }
-        return true;
-    }
 
     // Returns number of white lines in the DrawableView
     public float getWhiteLines() {
@@ -237,7 +183,7 @@ public class DrawingView extends View implements View.OnClickListener{
                     white_line = false;
             }
 
-                availArray[y] = !white_line;
+            availArray[y] = !white_line;
         }
 
         return availArray;
@@ -283,6 +229,8 @@ public class DrawingView extends View implements View.OnClickListener{
                     int end_time = end_hour * 100 + end_quarter;
 
                     AvailableSlots.add(new int[]{begin_time,end_time});
+                    //AvailableSlots.add(new int[]{i-j,i});
+
                 }
                 j = 0;
             }
