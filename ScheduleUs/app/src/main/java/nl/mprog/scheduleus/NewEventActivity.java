@@ -62,7 +62,7 @@ public class NewEventActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
 
-        textView = (TextView) findViewById(R.id.textView);
+        //textView = (TextView) findViewById(R.id.textView);
         AddDateButton = (Button) findViewById(R.id.AddDateButton);
         SelectDateButton = (Button) findViewById(R.id.SelectDateButton);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
@@ -188,7 +188,7 @@ public class NewEventActivity extends ActionBarActivity {
             public void onClick(DialogInterface dialog, int which) {
                 eventName = eventNameInput.getText().toString();
                 final Application global = (Application)getApplication();
-                global.setName(eventName);
+                global.setCurrentEventName(eventName);
 
                 Display();
                 Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
@@ -209,7 +209,7 @@ public class NewEventActivity extends ActionBarActivity {
     }
 
     public void Display() {
-        textView.setText("Please pick some dates for " + eventName);
+        //textView.setText("Please pick some dates for " + eventName);
     }
 
     @Override

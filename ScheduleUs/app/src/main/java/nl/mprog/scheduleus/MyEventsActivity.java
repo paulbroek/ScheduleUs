@@ -15,6 +15,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +37,13 @@ public class MyEventsActivity extends ActionBarActivity {
         myEvents_ListView = (ListView) findViewById(R.id.myEvents_ListView);
 
         Intent activityThatCalled = getIntent();
+        final Application global = (Application)getApplication();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
-        //query.whereEqualTo("playerName", "Joe Bob");
+        //query.whereEqualTo("name", ParseUser.getCurrentUser());
+        //query.whereContains("participants", global.getCurrentUserName());
+       // query.whereContainedIn("participants", )
+        query.whereEqualTo("participants", ParseUser.getCurrentUser().getUsername());
         //query.fromLocalDatastore();
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> eventList,
@@ -48,7 +53,7 @@ public class MyEventsActivity extends ActionBarActivity {
                     ArrayList adapterList = new ArrayList<String>();
 
                     for (int i = 0; i < eventList.size(); i++) {
-                        adapterList.add("" + eventList.get(i).getString("name"));
+                        adapterList.add("" + eventList.get(i).getString("event_name"));
                     }
 
 

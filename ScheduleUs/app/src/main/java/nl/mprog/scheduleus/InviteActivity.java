@@ -24,6 +24,7 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -127,7 +128,8 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                         .build();
                 startActivityForResult(intent, REQUEST_INVITE);*/
 
-                ParseObject Events = new ParseObject("Events");
+                ParseObject Event = new ParseObject("Events");
+
                 //json_datesArray = new JSONArray(dateList);
                 //Events.put("number_of_dates", dateList.size());
 
@@ -139,23 +141,33 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                 json_datesArray = new JSONArray(global.getDaySet());
                 json_participantsArray = new JSONArray(participantsSet);
                 json_timesObject = new JSONObject();
+
+
+                Event.put("dates", json_datesArray);
+                Event.put("initiator", ParseUser.getCurrentUser());
+                Event.put("participants", json_participantsArray);
+                Event.put("event_name", global.getCurrentEventName());
+
+                // Put al day information for current user
                 for (String day : global.getDaySet()) {
-                    try { json_timesObject.put(day, global.getAvailabilityList(day)); }
-                    catch (JSONException e) {
+                    try {
+                        JSONArray temp = new JSONArray(global.getAvailabilityList(day));
+
+                        ParseObject AvailItem = new ParseObject("AvailItems");
+
+                        AvailItem.put("User", ParseUser.getCurrentUser());
+                        AvailItem.put("parent_event", Event);
+                        AvailItem.put("Day", day);
+                        AvailItem.put("Times", temp);
+                        AvailItem.saveInBackground();
+                    } catch ( Exception e) {
                         Toast.makeText(InviteActivity.this, "json excep, " + day,
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
-                ParseObject timesObject = new ParseObject("timesObject");
-                //timesObject.put("json_timesObject", json_timesObject);
-                timesObject.put("heujj", "jahoor");
-                timesObject.saveInBackground();
-                Events.put("dates", json_datesArray);
-                Events.put("participants", json_participantsArray);
-                Events.put("name", global.getName());
 
                 //Events.pinInBackground("new event");
-                Events.saveInBackground();
+
 
             }
         });

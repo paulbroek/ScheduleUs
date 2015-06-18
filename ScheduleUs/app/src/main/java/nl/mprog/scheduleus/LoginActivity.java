@@ -28,11 +28,14 @@ public class LoginActivity extends Activity{
     private EditText usernameEditText;
     private EditText passwordEditText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
+
 
         // Set up the login form.
         usernameEditText = (EditText) findViewById(R.id.username);
@@ -98,7 +101,9 @@ public class LoginActivity extends Activity{
                     // Show the error message
                     Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    // Start an intent for the login check activity
+                    // Start an intent for the login check activity and save current user name
+                    final Application global = (Application)getApplication();
+                    global.setCurrentUserName(user.getUsername());
                     Intent intent = new Intent(LoginActivity.this, CheckLoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
