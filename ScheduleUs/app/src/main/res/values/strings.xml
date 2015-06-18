@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ScheduleUs</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_my_events">My Events</string>
@@ -33,7 +32,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="title_activity_log_in">Log In</string>
-    <string name ="welcome">ScheduleUs</string>
+    <string name ="title">ScheduleUs</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
 

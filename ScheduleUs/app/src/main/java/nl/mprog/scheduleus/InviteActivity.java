@@ -1,7 +1,11 @@
 package nl.mprog.scheduleus;
 
+import nl.mprog.scheduleus.userListAdapter.customCheckBoxListener;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,6 +15,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.appinvite.AppInviteInvitation;
@@ -21,15 +26,25 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 
-public class InviteActivity extends ActionBarActivity {
+public class InviteActivity extends Activity implements customCheckBoxListener {
     private Button inviteButton;
     private ListView userlistView;
+    private SearchView searchView;
     private userListAdapter adapter;
+    private userListAdapter adapter2;
 
     private ArrayList<String> userList;
+    private Set<String> participantsSet;
+
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+
 
     private static final int REQUEST_INVITE = 0;
 
@@ -43,8 +58,17 @@ public class InviteActivity extends ActionBarActivity {
 
         inviteButton = (Button) findViewById(R.id.inviteButton);
         userlistView = (ListView) findViewById(R.id.userlistView);
+        searchView = (SearchView) findViewById(R.id.searchView);
+
+        prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        editor = prefs.edit();
 
         userList = new ArrayList<>();
+        participantsSet = new HashSet<>();
+        participantsSet.add("test_name");
+
+
+        editor.putStringSet("participants_set",participantsSet).apply();
 
         int size = 0;
         // Get complete user list from parse
@@ -54,12 +78,14 @@ public class InviteActivity extends ActionBarActivity {
             public void done(List<ParseObject> usernames, ParseException e) {
                 if (e == null) {
                     if (usernames.size() > 0) {
-                        Toast.makeText(InviteActivity.this, "gelukt, met" + usernames.size() + usernames.get(0).getString("username"), Toast.LENGTH_LONG).show();
-                        userList.add(usernames.get(0).toString());
+                        //Toast.makeText(InviteActivity.this, "gelukt, met" + usernames.size() + usernames.get(0).getString("username"), Toast.LENGTH_LONG).show();
                         for (int i = 0; i < usernames.size(); i++) {
                             userList.add("" + usernames.get(i).getString("username"));
                         }
                         adapter = new userListAdapter(getApplicationContext(), userList);
+                        adapter.setCustomCheckBoxListener(InviteActivity.this);
+                        adapter2 = new userListAdapter(getApplicationContext(), userList);
+                        //searchView.setAdapter(adapter2); // moet met cursor
                         userlistView.setAdapter(adapter);
                     }
 
@@ -80,16 +106,19 @@ public class InviteActivity extends ActionBarActivity {
         //adapter.setCustomButtonListener(InviteActivity.this);
         //userlistView.setAdapter(adapter);
 
+        // Send all event and participant information to parse, trigger invites
         inviteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
+                /*Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
                         .setMessage(getString(R.string.invitation_message))
                         .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
                         .build();
-                startActivityForResult(intent, REQUEST_INVITE);
+                startActivityForResult(intent, REQUEST_INVITE);*/
+
+
             }
         });
     }
@@ -115,4 +144,41 @@ public class InviteActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // User selected a participant to invite, add this person to participantsSet
+    @Override
+    public void onCheckBoxListener(int position, String value, Boolean is_Checked) {
+
+        prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        editor = prefs.edit();
+        participantsSet = prefs.getStringSet("participants_set", null);
+
+        if (participantsSet != null)
+            if (is_Checked) {
+                Toast.makeText(InviteActivity.this, "checked " + value,
+                        Toast.LENGTH_SHORT).show();
+                participantsSet.add(value);
+                /*String message = "";
+                for (Object aParticipantsSet : participantsSet) message += aParticipantsSet + ", ";
+                Toast.makeText(InviteActivity.this, message,
+                        Toast.LENGTH_SHORT).show();*/
+            }
+            else {
+                Toast.makeText(InviteActivity.this, "unchecked " + value,
+                        Toast.LENGTH_SHORT).show();
+                participantsSet.remove(value);
+                /*String message = "";
+                for (Object aParticipantsSet : participantsSet) message += aParticipantsSet + ", ";
+                Toast.makeText(InviteActivity.this, message,
+                        Toast.LENGTH_SHORT).show();*/
+            }
+
+
+
+
+
+        editor.putStringSet("participants_set", participantsSet).apply();
+    }
+
+
 }
