@@ -22,10 +22,14 @@ public class Application extends android.app.Application {
     public static SharedPreferences.Editor editor;
     public static List current_dateList;
 
-    private int data=200;
+    private String name;
     private Set<String> daySet;
 
     private Map<String, ArrayList<int[]>> availabilityMap;
+
+    public void putDaySet(Set<String> s) {
+        this.daySet = s;
+    }
 
     public void putAvailabilityList(String day, ArrayList<int[]> l) {
         this.daySet.add(day);
@@ -49,12 +53,14 @@ public class Application extends android.app.Application {
         this.availabilityMap = m;
     }
 
-    public int getData(){
-        return this.data;
+    public Set<String> getDaySet() {return this.daySet;
+    }
+    public String getName(){
+        return this.name;
     }
 
-    public void setData(int i){
-        this.data = i;
+    public void setName(String i){
+        this.name = i;
     }
 
     public Application() {
@@ -67,6 +73,7 @@ public class Application extends android.app.Application {
 
         this.availabilityMap = new HashMap<String, ArrayList<int[]>>();
         this.daySet = new HashSet<String>();
+        this.name = "";
 
         // Preferences
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);

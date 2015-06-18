@@ -53,6 +53,7 @@ public class NewEventActivity extends ActionBarActivity {
     private String eventName = "";
     JSONArray dates;
 
+
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
 
@@ -113,7 +114,10 @@ public class NewEventActivity extends ActionBarActivity {
                     // Unpin all items with the "new event" label, so we are certain to have only 1
                     ParseObject.unpinAllInBackground();
 
+                    // Saves (empty) days in prefs and global
                     Set dateSet = new HashSet(dateList);
+                    final Application global = (Application)getApplication();
+                    global.putDaySet(dateSet);
                     editor.putStringSet("event_dates", dateSet).apply();
                     editor.putString("event_name",eventName).apply();
 
@@ -183,6 +187,9 @@ public class NewEventActivity extends ActionBarActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 eventName = eventNameInput.getText().toString();
+                final Application global = (Application)getApplication();
+                global.setName(eventName);
+
                 Display();
                 Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
             }

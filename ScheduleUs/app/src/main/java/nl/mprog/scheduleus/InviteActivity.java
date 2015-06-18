@@ -25,6 +25,10 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -39,8 +43,12 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
     private userListAdapter adapter;
     private userListAdapter adapter2;
 
+
     private ArrayList<String> userList;
     private Set<String> participantsSet;
+    JSONArray json_datesArray;
+    JSONObject json_timesObject;
+    JSONArray json_participantsArray;
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
@@ -60,6 +68,7 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
         userlistView = (ListView) findViewById(R.id.userlistView);
         searchView = (SearchView) findViewById(R.id.searchView);
 
+        final Application global = (Application)getApplication();
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
@@ -118,6 +127,35 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                         .build();
                 startActivityForResult(intent, REQUEST_INVITE);*/
 
+                ParseObject Events = new ParseObject("Events");
+                //json_datesArray = new JSONArray(dateList);
+                //Events.put("number_of_dates", dateList.size());
+
+                String message = "Invited: ";
+                for (Object aParticipantsSet : participantsSet) message += aParticipantsSet + ", ";
+                Toast.makeText(InviteActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
+
+                json_datesArray = new JSONArray(global.getDaySet());
+                json_participantsArray = new JSONArray(participantsSet);
+                json_timesObject = new JSONObject();
+                for (String day : global.getDaySet()) {
+                    try { json_timesObject.put(day, global.getAvailabilityList(day)); }
+                    catch (JSONException e) {
+                        Toast.makeText(InviteActivity.this, "json excep, " + day,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+                ParseObject timesObject = new ParseObject("timesObject");
+                //timesObject.put("json_timesObject", json_timesObject);
+                timesObject.put("heujj", "jahoor");
+                timesObject.saveInBackground();
+                Events.put("dates", json_datesArray);
+                Events.put("participants", json_participantsArray);
+                Events.put("name", global.getName());
+
+                //Events.pinInBackground("new event");
+                Events.saveInBackground();
 
             }
         });
