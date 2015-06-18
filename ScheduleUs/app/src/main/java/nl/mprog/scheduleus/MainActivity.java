@@ -17,6 +17,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -90,6 +91,13 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        switch (id) {
+            case R.id.log_out:
+                ParseUser.logOut();
+                startActivity(new Intent(this, CheckLoginActivity.class));
+
         }
 
         return super.onOptionsItemSelected(item);

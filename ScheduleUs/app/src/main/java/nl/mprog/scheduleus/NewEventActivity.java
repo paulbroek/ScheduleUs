@@ -56,40 +56,6 @@ public class NewEventActivity extends ActionBarActivity {
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
 
-    private void eventNameDialog() {
-        dialogBuilder = new AlertDialog.Builder(this);
-        final EditText eventNameInput = new EditText(this);
-
-        // Process
-        dialogBuilder.setTitle("Event name");
-        dialogBuilder.setMessage("Please enter an event name");
-        dialogBuilder.setView(eventNameInput);
-        dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                eventName = eventNameInput.getText().toString();
-                Display();
-                Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
-            }
-        });
-        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                eventName = "unnamed";
-                Display();
-                Toast.makeText(getApplicationContext(), "Event has not been named.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Output
-        AlertDialog dialogEventName = dialogBuilder.create();
-        dialogEventName.show();
-    }
-
-    public void Display() {
-        textView.setText("Please pick some dates for " + eventName);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -203,6 +169,40 @@ public class NewEventActivity extends ActionBarActivity {
         } catch (ParseException e) {
             return null;
         }
+    }
+
+    private void eventNameDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final EditText eventNameInput = new EditText(this);
+
+        // Process
+        dialogBuilder.setTitle("Event name");
+        dialogBuilder.setMessage("Please enter an event name");
+        dialogBuilder.setView(eventNameInput);
+        dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eventName = eventNameInput.getText().toString();
+                Display();
+                Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eventName = "unnamed";
+                Display();
+                Toast.makeText(getApplicationContext(), "Event has not been named.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Output
+        AlertDialog dialogEventName = dialogBuilder.create();
+        dialogEventName.show();
+    }
+
+    public void Display() {
+        textView.setText("Please pick some dates for " + eventName);
     }
 
     @Override

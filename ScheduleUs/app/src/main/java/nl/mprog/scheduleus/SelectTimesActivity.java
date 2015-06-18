@@ -71,9 +71,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
         final Intent getSelectDaysScreen = new Intent(this, SelectDaysActivity.class);
 
-
         final Application global = (Application)getApplication();
-
 
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         selected_day = prefs.getString("selected_day",null);
@@ -167,13 +165,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                 adapter = new timeListAdapter(getApplicationContext(), timesList);
                 adapter.setCustomButtonListener(SelectTimesActivity.this);
                 timesListView.setAdapter(adapter);
-
-                /*int test = 0;
-                for (int i = 0; i < dv.getAvailabilityArray().length; i ++)
-                    if (dv.getAvailabilityArray()[i])
-                        test ++;
-                outputView.setText("" + test);*/
-                //startActivity(getMyEventsScreen);
             }
         });
 
