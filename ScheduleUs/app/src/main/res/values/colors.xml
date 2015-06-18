@@ -5,4 +5,13 @@
     <item name="darkgreen" type="color">#4499CC00</item>
     <item name="green" type="color">#FF669900</item>
     <item name="red" type="color">#ED183B</item>
+
+    <color name="White">#fff</color>
+    <color name="Black">#000</color>
+    <color name="blue">#03a9f4</color>
+    <color name="MapsBlue">#4285f4</color>
+    <color name="washed_orange">#ffe0b2</color>
+    <color name="ColorPrimary">#ffe20f00</color>
+    <color name="ColorPrimaryDark">#fff50200</color>
+    <color name="Green">#00c853</color>
 </resources>

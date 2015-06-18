@@ -48,6 +48,7 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         select_timeButton = (Button) findViewById(R.id.select_timeButton);
         twListView = (TwoWayView) findViewById(R.id.lvItems);
         final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
+        final Intent getInviteScreen = new Intent(this, InviteActivity.class);
 
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         editor = prefs.edit();
@@ -62,28 +63,20 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
         twListView.setAdapter(dayList_adapter);
 
-        /*global.setData(300);
-        ArrayList<Boolean> test = new ArrayList<>();
-        test.add(true);
-        test.add(true);
-        global.putAvailabilityList("maandag", test);*/
-
-        String message = "" + global.getAvailabilityMap().containsKey("17-05-2015");
-        Toast.makeText(SelectDaysActivity.this, message,
-                Toast.LENGTH_SHORT).show();
 
         select_timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(getSelectTimesScreen);
+                startActivity(getInviteScreen);
             }
         });
     }
 
-    // Deleting a day, so adapter and preferences need an update
+    // Deleting a day, so adapter, global and preferences need an update
     @Override
     public void onButtonClickListener(int position, String value) {
 
+        global.removeDay(dayList.get(position));
         dayList.remove(position);
         dateSet = new HashSet(dayList);
         editor.putStringSet("event_dates", dateSet).apply();

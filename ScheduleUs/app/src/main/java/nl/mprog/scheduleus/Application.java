@@ -32,6 +32,11 @@ public class Application extends android.app.Application {
         this.availabilityMap.put(day, l);
     }
 
+    public void removeDay(String day) {
+        this.daySet.remove(day);
+        this.availabilityMap.remove(day);
+    }
+
     public ArrayList<int[]> getAvailabilityList(String day) {
         return availabilityMap.get(day);
     }

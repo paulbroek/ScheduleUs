@@ -80,7 +80,7 @@ public class dayListAdapter extends ArrayAdapter<String> {
         {
             value = "avail list is empty";
         }
-        viewHolder.text.setText("" + value);
+        viewHolder.text.setText(temp_day);
         // Clicked delete, remove the View
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
 
