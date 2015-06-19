@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class MyEventsActivity extends ActionBarActivity {
@@ -27,6 +31,9 @@ public class MyEventsActivity extends ActionBarActivity {
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
+
+    ArrayList eventNameList;
+    ArrayList EventsIdList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +47,6 @@ public class MyEventsActivity extends ActionBarActivity {
         final Application global = (Application)getApplication();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
-        //query.whereEqualTo("name", ParseUser.getCurrentUser());
-        //query.whereContains("participants", global.getCurrentUserName());
-       // query.whereContainedIn("participants", )
         query.whereEqualTo("participants", ParseUser.getCurrentUser().getUsername());
         //query.fromLocalDatastore();
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -50,19 +54,37 @@ public class MyEventsActivity extends ActionBarActivity {
                              ParseException e) {
                 if (e == null) {
                     myEventsView.setText("" + eventList.get(0).getObjectId());
-                    ArrayList adapterList = new ArrayList<String>();
+                    eventNameList = new ArrayList<String>();
+                    EventsIdList = new ArrayList<>();
 
                     for (int i = 0; i < eventList.size(); i++) {
-                        adapterList.add("" + eventList.get(i).getString("event_name"));
+                        eventNameList.add("" + eventList.get(i).getString("event_name"));
+                        EventsIdList.add(eventList.get(i).getObjectId());
                     }
 
+                    global.setMyEventsMap(EventsIdList,eventNameList);
 
-                    ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, adapterList);
+                    ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, eventNameList);
                     myEvents_ListView.setAdapter(adapter_events);
                     Log.d("score", "Retrieved " + eventList.size());
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
                 }
+            }
+        });
+
+        // Go to SelectDaysActivity to see shared selected days
+        myEvents_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // Hier of pas in SelectDays ophalen van dagenlijst?
+                //editor.putStringSet("shared_event_dates", ).apply();
+
+                Intent getSelectDaysScreen = new Intent(getApplicationContext(), SelectDaysActivity.class);
+
+                getSelectDaysScreen.putExtra("calling_event_id", EventsIdList.get(position).toString());
+                startActivity(getSelectDaysScreen);
             }
         });
     }

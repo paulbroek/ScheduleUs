@@ -13,18 +13,24 @@
         android:id="@+id/outputView" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="New event"
         android:id="@+id/NewEventButton"
+        android:background="@color/blue"
+        android:textSize="30sp"
+
         android:layout_below="@+id/MyEventsButton"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="My events"
         android:id="@+id/MyEventsButton"
+        android:textSize="30sp"
+        android:background="@color/blue"
+        android:layout_marginBottom="30dp"
         android:layout_below="@+id/outputView"
         android:layout_alignLeft="@+id/NewEventButton"
         android:layout_alignStart="@+id/NewEventButton" />

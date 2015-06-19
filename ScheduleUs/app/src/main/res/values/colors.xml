@@ -9,9 +9,9 @@
     <color name="White">#fff</color>
     <color name="Black">#000</color>
     <color name="blue">#03a9f4</color>
-    <color name="MapsBlue">#4285f4</color>
+    <color name="MapsBlue">#fff4a100</color>
     <color name="washed_orange">#ffe0b2</color>
-    <color name="ColorPrimary">#ffe20f00</color>
-    <color name="ColorPrimaryDark">#fff50200</color>
-    <color name="Green">#00c853</color>
+    <color name="ColorPrimary">#ff00c4e2</color>
+    <color name="ColorPrimaryDark">#ff004cf5</color>
+    <color name="Green">#ff0600c8</color>
 </resources>

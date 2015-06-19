@@ -11,7 +11,7 @@
     <string name="invitation_title">Use ScheduleUs!</string>
     <string name="invitation_message">Use ScheduleUs!</string>
     <string name="invitation_deep_link">Please enter LINK</string>
-    <string name="title_activity_check_log_in">scheduleusssssss</string>
+    <string name="title_activity_check_log_in">ScheduleUs</string>
     <string name="title_activity_user_start">UserStartActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_login">Log in</string>

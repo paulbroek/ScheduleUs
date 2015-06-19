@@ -4,35 +4,27 @@ import nl.mprog.scheduleus.userListAdapter.customCheckBoxListener;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +32,7 @@ import java.util.Set;
 public class InviteActivity extends Activity implements customCheckBoxListener {
     private Button inviteButton;
     private ListView userlistView;
-    private SearchView searchView;
+    //private SearchView searchView;
     private userListAdapter adapter;
     private userListAdapter adapter2;
 
@@ -67,7 +59,7 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
 
         inviteButton = (Button) findViewById(R.id.inviteButton);
         userlistView = (ListView) findViewById(R.id.userlistView);
-        searchView = (SearchView) findViewById(R.id.searchView);
+        //searchView = (SearchView) findViewById(R.id.searchView);
 
         final Application global = (Application)getApplication();
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
@@ -138,7 +130,7 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                 Toast.makeText(InviteActivity.this, message,
                         Toast.LENGTH_SHORT).show();
 
-                json_datesArray = new JSONArray(global.getDaySet());
+                json_datesArray = new JSONArray(global.getPersonalDaySet());
                 json_participantsArray = new JSONArray(participantsSet);
                 json_timesObject = new JSONObject();
 
@@ -149,9 +141,9 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                 Event.put("event_name", global.getCurrentEventName());
 
                 // Put al day information for current user
-                for (String day : global.getDaySet()) {
+                for (String day : global.getPersonalDaySet()) {
                     try {
-                        JSONArray temp = new JSONArray(global.getAvailabilityList(day));
+                        JSONArray temp = new JSONArray(global.getPersonalAvailabilityList(day));
 
                         ParseObject AvailItem = new ParseObject("AvailItems");
 

@@ -18,16 +18,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.AlertDialog;
 
-import com.parse.DeleteCallback;
-import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
@@ -117,7 +111,7 @@ public class NewEventActivity extends ActionBarActivity {
                     // Saves (empty) days in prefs and global
                     Set dateSet = new HashSet(dateList);
                     final Application global = (Application)getApplication();
-                    global.putDaySet(dateSet);
+                    global.putPersonalDaySet(dateSet);
                     editor.putStringSet("event_dates", dateSet).apply();
                     editor.putString("event_name",eventName).apply();
 

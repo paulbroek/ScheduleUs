@@ -21,7 +21,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -173,7 +172,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             public void onClick(View v) {
 
                 // Update Availability Map and go to SelectDaysActivity
-                global.putAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
+                global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
                 startActivity(getSelectDaysScreen);
             }
         });

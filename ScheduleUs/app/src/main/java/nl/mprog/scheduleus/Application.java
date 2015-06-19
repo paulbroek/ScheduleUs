@@ -24,37 +24,71 @@ public class Application extends android.app.Application {
 
     private String current_user_name;
     private String current_event_name;
-    private Set<String> daySet;
+    private Set<String> personal_daySet;
+    private Set<String> shared_daySet;
 
-    private Map<String, ArrayList<int[]>> availabilityMap;
+    private Map<String, ArrayList<int[]>> personal_availabilityMap;
+    private Map<String, ArrayList<int[]>> shared_availabilityMap;
+    private Map<String, String> myEventsMap;
 
-    public void putDaySet(Set<String> s) {
-        this.daySet = s;
+    public void putPersonalDaySet(Set<String> s) {
+        this.personal_daySet = s;
     }
 
-    public void putAvailabilityList(String day, ArrayList<int[]> l) {
-        this.daySet.add(day);
-        this.availabilityMap.put(day, l);
+    public void putSharedDaySet(Set<String> s) {
+        this.shared_daySet = s;
     }
 
+    public void putPersonalAvailabilityList(String day, ArrayList<int[]> l) {
+        this.personal_daySet.add(day);
+        this.personal_availabilityMap.put(day, l);
+    }
+
+    public ArrayList<int[]> getPersonalAvailabilityList(String day) {
+        return personal_availabilityMap.get(day);
+    }
+
+    public void putSharedAvailabilityList(String day, ArrayList<int[]> l) {
+        //this.personal_daySet.add(day);
+        this.shared_availabilityMap.put(day, l);
+    }
+
+    public ArrayList<int[]> getSharedAvailabilityList(String day) {
+        return shared_availabilityMap.get(day);
+    }
     public void removeDay(String day) {
-        this.daySet.remove(day);
-        this.availabilityMap.remove(day);
+        this.personal_daySet.remove(day);
+        this.personal_availabilityMap.remove(day);
     }
 
-    public ArrayList<int[]> getAvailabilityList(String day) {
-        return availabilityMap.get(day);
+    public Map<String, ArrayList<int[]>> getPersonalAvailabilityMap() {
+        return this.personal_availabilityMap;
     }
 
-    public Map<String, ArrayList<int[]>> getAvailabilityMap() {
-        return this.availabilityMap;
+    public void setPersonalAvailabilityMap(Map<String, ArrayList<int[]>> m) {
+        this.personal_availabilityMap = m;
     }
 
-    public void setAvailabilityMap(Map<String, ArrayList<int[]>> m) {
-        this.availabilityMap = m;
+    public Map<String, ArrayList<int[]>> getSharedAvailabilityMap() {
+        return this.personal_availabilityMap;
     }
 
-    public Set<String> getDaySet() {return this.daySet;
+    public void setSharedAvailabilityMap(Map<String, ArrayList<int[]>> m) {
+        this.personal_availabilityMap = m;
+    }
+
+    public Map<String, String> getMyEventsMap() { return this.myEventsMap; }
+
+    public void setMyEventsMap(ArrayList<String> k, ArrayList<String> v) {
+        for (int i = 0; i < k.size(); i++) {
+            this.myEventsMap.put(k.get(i),v.get(i));
+        }
+    }
+
+    public Set<String> getPersonalDaySet() {return this.personal_daySet;
+    }
+
+    public Set<String> getSharedDaySet() {return this.shared_daySet;
     }
     public String getCurrentEventName(){
         return this.current_event_name;
@@ -80,8 +114,11 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-        this.availabilityMap = new HashMap<String, ArrayList<int[]>>();
-        this.daySet = new HashSet<String>();
+        this.personal_availabilityMap = new HashMap<String, ArrayList<int[]>>();
+        this.shared_availabilityMap = new HashMap<String, ArrayList<int[]>>();
+        this.myEventsMap = new HashMap<>();
+        this.personal_daySet = new HashSet<String>();
+        this.shared_daySet = new HashSet<String>();
         this.current_event_name = "";
 
         // Preferences
