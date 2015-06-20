@@ -34,6 +34,7 @@ public class MyEventsActivity extends ActionBarActivity {
 
     ArrayList eventNameList;
     ArrayList EventsIdList;
+    ArrayList EventsPointerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

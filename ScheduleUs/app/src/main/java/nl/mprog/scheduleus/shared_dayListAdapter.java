@@ -47,8 +47,8 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
                     .findViewById(R.id.child_DrawingShowView);
             viewHolder.text = (TextView) convertView
                     .findViewById(R.id.child_dayTextView);
-            /*viewHolder.delete_button = (Button) convertView
-                    .findViewById(R.id.child_delete_day_button);*/
+            viewHolder.delete_button = (Button) convertView
+                    .findViewById(R.id.child_delete_day_button);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -81,6 +81,9 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
             value = "avail list is empty";
         }
         viewHolder.text.setText(temp_day);
+
+        // Only show delete button when you're the initiator
+        viewHolder.delete_button.setVisibility(View.INVISIBLE);
         /*// Clicked delete, remove the View
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
 
@@ -99,6 +102,6 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
     public class ViewHolder {
         DrawingShowView dsv;
         TextView text;
-        //Button delete_button;
+        Button delete_button;
     }
 }  

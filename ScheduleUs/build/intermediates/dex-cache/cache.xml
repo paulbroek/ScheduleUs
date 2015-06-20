@@ -2,53 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-66d04ad97f3ca4c2417f68063aeba261b022c357.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-22dfb74f005b2feff55c7684e88dde5e47c1f8f3.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-1f2dd40e4575b23066bf93c1fdf4eccfa3841e54.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-c1af6fcddf04db81ca9aa849c88712cd34cbc54b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-bc6c279435bf0b4aa0e7d391bd72ae8da22ba88b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-01ceddb83b949b45db93a2e397b066775e1d94c4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-5fbbbb4e52d095edf8f6efb05bb43f43e7f73b3e.jar" />
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-759a37023ba0de5d26b0f455faf7242fc3670750.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.5.0\jars\classes.jar"
@@ -58,18 +16,11 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-2e260b61f1d5cb341fc264ca928ae3d4e4dc40c0.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-75f22addfd0f02ab8d4b590cebf3bb7f481b859a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-086c57bb9e8979d86ce3bdb77f81f48a01a74268.jar" />
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-936c5bf977260abaabb344d09e81f3a35b5ab685.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.5.0\jars\classes.jar"
@@ -79,6 +30,55 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-fa334214eed19cf304033f63567a1bff47068a6b.jar" />
     </item>
     <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-1f2dd40e4575b23066bf93c1fdf4eccfa3841e54.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-086c57bb9e8979d86ce3bdb77f81f48a01a74268.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-0e9db88f5a9a09ff8db808a3f6ddd87ae4ca5ee1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-22dfb74f005b2feff55c7684e88dde5e47c1f8f3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-13a2969291eaf335d6be6ba6f2a0e4664bf13eaa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-bc6c279435bf0b4aa0e7d391bd72ae8da22ba88b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\18.0\cce0823396aa693798f8882e64213b1772032b09\guava-18.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\guava-18.0-f4426071c4902fe1c34beaae744f5b9bd92f8ed2.jar" />
+    </item>
+    <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -86,18 +86,11 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-7d0a81c4a41fbf710c4888feba62d0362475268c.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
+        jar="C:\Users\Paul\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-02d8403c497481c4a112c8dea2e845a49dcebe95.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\gson-2.3-9a84b3fdb364096ba7443fe941b7f4056c399d8a.jar" />
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-6e27afe726b27146f191f1a2ff6a7b9437cbbd21.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.5.0\jars\classes.jar"
@@ -107,18 +100,11 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-c02b98756d85e0be44cab61b4470113c2946e8d3.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-6bcda84563efe8463933d78be3e52fde0874bff6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\ParseFacebookUtilsV4-1.9.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="bab281cc21f6a68152e11ab53b053790ccfd6764">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\ParseFacebookUtilsV4-1.9.2-2f5f26d90b9972c48c2a886e6d8feef612d3210d.jar" />
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-01ceddb83b949b45db93a2e397b066775e1d94c4.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\7.5.0\jars\classes.jar"
@@ -128,11 +114,18 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-9c571136058f89bd45835c6cd7d58e0d84140193.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-13e4cfc9151e9ef87c185c0787d8f324821acb75.jar" />
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-66d04ad97f3ca4c2417f68063aeba261b022c357.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-6bcda84563efe8463933d78be3e52fde0874bff6.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\ParseCrashReporting-1.9.2.jar"
@@ -149,13 +142,6 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-34ef7c51b92eb19239bb68fd2dfa26850c215a9d.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-bb6f110099f846511022c2f1c4ce693f4d16fe99.jar" />
-    </item>
-    <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\bolts-android-1.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -163,18 +149,11 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-ed4f3fa69a79fe37a7b2afadb1890d6377515883.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-aca19c02f8d00dfd8237c3f32346a55a33d73bfe.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-0e9db88f5a9a09ff8db808a3f6ddd87ae4ca5ee1.jar" />
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-13e4cfc9151e9ef87c185c0787d8f324821acb75.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\Parse-1.9.2.jar"
@@ -184,25 +163,11 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\Parse-1.9.2-0cec3c3ecbf134c6ef0d95fa0c80d791db5d7384.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.0.0\jars\libs\internal_impl-22.0.0.jar"
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.5.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-759a37023ba0de5d26b0f455faf7242fc3670750.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-936c5bf977260abaabb344d09e81f3a35b5ab685.jar" />
-    </item>
-    <item
-        jar="C:\Users\Paul\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-6e27afe726b27146f191f1a2ff6a7b9437cbbd21.jar" />
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-02d8403c497481c4a112c8dea2e845a49dcebe95.jar" />
     </item>
     <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.5.0\jars\classes.jar"
@@ -212,18 +177,60 @@
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-a842b916bbef8d8566f07bc0cb410b7e2ad67c44.jar" />
     </item>
     <item
-        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.5.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-13a2969291eaf335d6be6ba6f2a0e4664bf13eaa.jar" />
-    </item>
-    <item
         jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\org.lucasr.twowayview\twowayview\0.1.4\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="1a2a997b75e4c94dac7051557be6b95a06566291">
         <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-45b8c6097f767a3fb18b2dcfd2425d47265c6a35.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-c1af6fcddf04db81ca9aa849c88712cd34cbc54b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\libs\ParseFacebookUtilsV4-1.9.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="bab281cc21f6a68152e11ab53b053790ccfd6764">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\ParseFacebookUtilsV4-1.9.2-2f5f26d90b9972c48c2a886e6d8feef612d3210d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-aca19c02f8d00dfd8237c3f32346a55a33d73bfe.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\gson-2.3-9a84b3fdb364096ba7443fe941b7f4056c399d8a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-5fbbbb4e52d095edf8f6efb05bb43f43e7f73b3e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-75f22addfd0f02ab8d4b590cebf3bb7f481b859a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="C:\Users\Paul\AndroidStudioProjects\ScheduleUs\ScheduleUs\app\build\intermediates\pre-dexed\debug\classes-bb6f110099f846511022c2f1c4ce693f4d16fe99.jar" />
     </item>
 
 </items>

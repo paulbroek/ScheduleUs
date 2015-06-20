@@ -70,11 +70,11 @@ public class Application extends android.app.Application {
     }
 
     public Map<String, ArrayList<int[]>> getSharedAvailabilityMap() {
-        return this.personal_availabilityMap;
+        return this.shared_availabilityMap;
     }
 
     public void setSharedAvailabilityMap(Map<String, ArrayList<int[]>> m) {
-        this.personal_availabilityMap = m;
+        this.shared_availabilityMap = m;
     }
 
     public Map<String, String> getMyEventsMap() { return this.myEventsMap; }

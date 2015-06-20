@@ -132,6 +132,7 @@
     <orderEntry type="library" exported="" name="1_bolts-android-1.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-appinvite-7.5.0" level="project" />
     <orderEntry type="library" exported="" name="ParseFacebookUtilsV4-1.9.2" level="project" />
+    <orderEntry type="library" exported="" name="guava-18.0" level="project" />
     <orderEntry type="library" exported="" name="ParseCrashReporting-1.9.2" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
