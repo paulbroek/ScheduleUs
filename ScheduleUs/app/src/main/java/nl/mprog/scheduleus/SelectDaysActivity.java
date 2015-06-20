@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -23,6 +26,7 @@ import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.lucasr.twowayview.TwoWayView;
 
 import java.util.ArrayList;
@@ -84,7 +88,7 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
             dateSet = new HashSet<String>();
             dayList = new ArrayList<String>();
 
-            // Get shared event data from Parse
+            // Get shared event dates from Parse
             ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
             query.whereEqualTo("objectId", calling_event_id);
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -116,38 +120,52 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
                 }
             });
 
+            /*while ( dateSet != null) {
+                try {
+                    wait(200);
+                }
+                catch (InterruptedException E){
+                    Toast.makeText(SelectDaysActivity.this, "" + E.toString(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }*/
+
+
+            final String day = "20-05-2015";
             // Now we can get all time slots for days in daySet
-            /*ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("AvailItems");
+            ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("SharedTimes");
             query_timeslots.whereEqualTo("parent_event", calling_event_id);
+            // TIJDELIJK WORDT ALLEEN DE EERSTE DAG GEPAKT, DIT MOET FOR LOOP WORDEN
+            query_timeslots.whereEqualTo("Day", day);
             //query.fromLocalDatastore();
             query_timeslots.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> eventList,
+                public void done(List<ParseObject> timesList,
                                  ParseException e) {
                     if (e == null) {
                         //myEventsView.setText("" + eventList.get(0).getObjectId());
+                        JSONArray jsonArrayTimes = timesList.get(0).getJSONArray("Times");
+                        ArrayList<int[]> tList = new ArrayList<int[]>();
+                        if (jsonArrayTimes != null) {
+                            try {
+                                JsonParser jsonParser = new JsonParser();
+                                JsonArray jsonArray = (JsonArray) jsonParser.parse(jsonArrayTimes.toString());
+                                Gson googleJson = new Gson();
 
-                        JSONArray jsonArrayDates = eventList.get(0).getJSONArray("dates");
-                        if (jsonArrayDates != null)
-                            for (int i = 0; i < jsonArrayDates.length(); i++) {
-                                try {
-                                    dayList.add(jsonArrayDates.get(i).toString());
-                                } catch (JSONException E) {
-                                    Toast.makeText(SelectDaysActivity.this, "" + E.toString(),
-                                            Toast.LENGTH_SHORT).show();
-                                }
-
+                                tList = googleJson.fromJson(jsonArray, ArrayList.class);
+                            } catch (Exception E) {
+                                Toast.makeText(SelectDaysActivity.this, "" + E.toString(),
+                                        Toast.LENGTH_SHORT).show();
                             }
-                        //dayList = new ArrayList<String>(eventList.get(0).getJSONArray("dates"));
 
-                        dateSet = new HashSet<String>(dayList);
-                        global.putSharedDaySet(dateSet);
+                        }
+                        global.putSharedAvailabilityList(day, tList);
 
-                        Log.d("score", "Retrieved " + eventList.size());
+                        Log.d("score", "Retrieved " + timesList.size());
                     } else {
                         Log.d("score", "Error: " + e.getMessage());
                     }
                 }
-            });*/
+            });
 
             //dayList = new ArrayList<String>(dateSet);
 
@@ -275,5 +293,26 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class Data {
+        private String title;
+        private Long id;
+        private Boolean children;
+        private List<Data> groups;
+
+        public String getTitle() { return title; }
+        public Long getId() { return id; }
+        public Boolean getChildren() { return children; }
+        public List<Data> getGroups() { return groups; }
+
+        public void setTitle(String title) { this.title = title; }
+        public void setId(Long id) { this.id = id; }
+        public void setChildren(Boolean children) { this.children = children; }
+        public void setGroups(List<Data> groups) { this.groups = groups; }
+
+        public String toString() {
+            return String.format("title:%s,id:%d,children:%s,groups:%s", title, id, children, groups);
+        }
     }
 }
