@@ -27,7 +27,10 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.google.android.gms:play-services:7.5.+'
+    compile 'com.google.guava:guava-jdk5:17.0'
+    //compile 'com.google.android.gms:play-services:7.5.+'
+    /*compile(group: 'com.google.api-client', name: 'google-api-client', version: '1.19.0') {
+        exclude(group: 'com.google.guava', module: 'guava-jdk5')*/
     compile 'com.google.code.gson:gson:2.3'
 }
 
@@ -51,6 +54,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.+'
 }
 
-dependencies {
-    compile group: 'com.google.guava', name: 'guava', version: '18.0'
-}
+
+/*dependencies {
+    //compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    //compile 'com.google.guava:guava:16.0.1'
+    //compile files('libs/guava-18.0.jar')
+}*/

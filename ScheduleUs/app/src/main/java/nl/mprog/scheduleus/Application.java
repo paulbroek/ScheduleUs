@@ -49,7 +49,7 @@ public class Application extends android.app.Application {
     }
 
     public void putSharedAvailabilityList(String day, ArrayList<int[]> l) {
-        //this.personal_daySet.add(day);
+        this.shared_daySet.add(day);
         this.shared_availabilityMap.put(day, l);
     }
 
@@ -75,6 +75,11 @@ public class Application extends android.app.Application {
 
     public void setSharedAvailabilityMap(Map<String, ArrayList<int[]>> m) {
         this.shared_availabilityMap = m;
+    }
+
+    public void clearSharedAvailabilityMap() {
+        this.shared_availabilityMap.clear();
+        this.shared_daySet.clear();
     }
 
     public Map<String, String> getMyEventsMap() { return this.myEventsMap; }

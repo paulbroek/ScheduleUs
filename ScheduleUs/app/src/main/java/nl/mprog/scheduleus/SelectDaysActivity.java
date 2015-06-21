@@ -69,6 +69,7 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         twListView = (TwoWayView) findViewById(R.id.lvItems);
 
         global = (Application) getApplication();
+        global.clearSharedAvailabilityMap();
 
 
         final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
@@ -88,110 +89,67 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
             days_textView.setText("These are the selected days for event " + calling_event_name);
 
-            //dateSet = new HashSet<>(prefs.getStringSet("shared_event_dates", null));
             dateSet = new HashSet<String>();
             dayList = new ArrayList<String>();
 
             // Get shared event dates from Parse
-            ArrayList<ParseObject> event_list = new ArrayList<>();
             ParseQuery<ParseObject> query_eventdates = ParseQuery.getQuery("Events");
             query_eventdates.whereEqualTo("objectId", calling_event_id);
 
-            query_eventdates.getFirstInBackground(new GetCallback<ParseObject>() {
-                public void done(ParseObject eventObject,
+            // Now we can get all time slots for days in daySet
+            ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("SharedTimes");
+
+            query_timeslots.whereMatchesKeyInQuery("parent_event", "objectId", query_eventdates);
+            query_timeslots.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> timesObjectList,
                                  ParseException e) {
                     if (e == null) {
+                        for (int obj_n = 0; obj_n < timesObjectList.size(); obj_n++) {
 
-                        JSONArray jsonArrayDates = eventObject.getJSONArray("dates");
-                        ParseObject test = eventObject;
-                        //event_list.add(test);
-                        if (jsonArrayDates != null)
-                            for (int i = 0; i < jsonArrayDates.length(); i++) {
+                            String day = timesObjectList.get(obj_n).getString("Day");
+                            JSONArray jsonArrayTimes = timesObjectList.get(obj_n).getJSONArray("Times");
+                            ArrayList<int[]> timesList = new ArrayList<int[]>();
+
+                            if (jsonArrayTimes != null) {
                                 try {
-                                    dayList.add(jsonArrayDates.get(i).toString());
 
-                                } catch (JSONException E) {
+                                    Toast.makeText(SelectDaysActivity.this, jsonArrayTimes.toString(),
+                                            Toast.LENGTH_LONG).show();
+
+
+                                    JsonParser jsonParser = new JsonParser();
+                                    JsonArray jsonArray = (JsonArray) jsonParser.parse(jsonArrayTimes.toString());
+                                    Gson googleJson = new Gson();
+
+                                    //tList = googleJson.fromJson(jsonArray, ArrayList.class);
+                                    final ArrayList<ArrayList> doubleList = googleJson.fromJson(jsonArray, ArrayList.class);
+                                    Double test = (Double) doubleList.get(0).get(0);
+                                    for (int i = 0; i < doubleList.size(); i++) {
+                                        ArrayList<Double> dList = doubleList.get(i);
+                                        ArrayList intList = new ArrayList();
+                                        for (int j = 0; j < dList.size(); j++) {
+                                            intList.add(dList.get(j).intValue());
+                                        }
+                                        int[] intArray = Ints.toArray(intList);
+                                        //int[] intArray = {9,0,10,0};
+                                        timesList.add(intArray);
+                                    }
+
+                                } catch (Exception E) {
                                     Toast.makeText(SelectDaysActivity.this, "" + E.toString(),
                                             Toast.LENGTH_SHORT).show();
                                 }
 
                             }
-                        //dayList = new ArrayList<String>(eventList.get(0).getJSONArray("dates"));
 
-                        dateSet = new HashSet<String>(dayList);
-                        global.putSharedDaySet(dateSet);
-                        //event = eventList.get(0);
-
-                        Log.d("event", "Retrieved");
-                    } else {
-                        Log.d("event", "Eventlist error: " + e.getMessage());
-                    }
-                }
-            });
-
-            /*while ( dateSet != null) {
-                try {
-                    wait(200);
-                }
-                catch (InterruptedException E){
-                    Toast.makeText(SelectDaysActivity.this, "" + E.toString(),
-                            Toast.LENGTH_SHORT).show();
-                }
-            }*/
-
-
-            final String day = "20-05-2015";
-            // Now we can get all time slots for days in daySet
-            ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("SharedTimes");
-            Toast.makeText(SelectDaysActivity.this, "" + event_list.size(),
-                    Toast.LENGTH_SHORT).show();
-            if (event_list.size() > 0)
-                query_timeslots.whereEqualTo("parent_event", event_list.get(0));
-            //query_timeslots.whereEqualTo("Initiator", ParseUser.getCurrentUser());
-
-            // TIJDELIJK WORDT ALLEEN DE EERSTE DAG GEPAKT, DIT MOET FOR LOOP WORDEN
-            query_timeslots.whereEqualTo("Day", day);
-            query_timeslots.whereMatchesKeyInQuery("parent_event","objectId",query_eventdates);
-            query_timeslots.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> timesObjectList,
-                                 ParseException e) {
-                    if (e == null) {
-                        JSONArray jsonArrayTimes = timesObjectList.get(0).getJSONArray("Times");
-                        ArrayList<int[]> tList = new ArrayList<int[]>();
-
-                        if (jsonArrayTimes != null) {
-                            try {
-
-                                Toast.makeText(SelectDaysActivity.this, jsonArrayTimes.toString(),
-                                        Toast.LENGTH_LONG).show();
-
-
-                                JsonParser jsonParser = new JsonParser();
-                                JsonArray jsonArray = (JsonArray) jsonParser.parse(jsonArrayTimes.toString());
-                                Gson googleJson = new Gson();
-
-                                //tList = googleJson.fromJson(jsonArray, ArrayList.class);
-                                final ArrayList<ArrayList> doubleList = googleJson.fromJson(jsonArray, ArrayList.class);
-                                Double test = (Double) doubleList.get(0).get(0);
-                                for (int i = 0; i < doubleList.size(); i++) {
-                                    ArrayList <Double> dList = doubleList.get(i);
-                                    ArrayList intList = new ArrayList();
-                                    for (int j = 0; j < dList.size(); j++) {
-                                        intList.add(dList.get(j).intValue());
-                                    }
-                                    int[] intArray = Ints.toArray(intList);
-                                    tList.add(intArray);
-                                }
-
-                                Toast.makeText(SelectDaysActivity.this, tList.get(2)[2] + "",
-                                        Toast.LENGTH_LONG).show();
-                            } catch (Exception E) {
-                                Toast.makeText(SelectDaysActivity.this, "" + E.toString(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-
+                            // For this day we can put the list of SharedTimes
+                            global.putSharedAvailabilityList(day, timesList);
                         }
-                        global.putSharedAvailabilityList("201-05-2015", tList);
+                        dayList = new ArrayList<>(global.getSharedDaySet());
+                        Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
+                                Toast.LENGTH_SHORT).show();
+                        shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getSharedAvailabilityMap());
+                        twListView.setAdapter(shared_dayListAdapter);
 
                         Log.d("times", "Retrieved times: " + timesObjectList.size());
                     } else {
@@ -201,25 +159,23 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
                 }
             });
 
-
             int[] slot1 = {9,0,10,0};
             int[] slot2 = {12,15,15,30};
             ArrayList<int[]> test_list = new ArrayList<>();
             test_list.add(slot1);
             test_list.add(slot2);
-            global.putSharedAvailabilityList("hoi", test_list);
-            dayList = new ArrayList<String>(dateSet);
-            dayList.add("hoi");
-            //dayList.add("20-05-2015");
-
-            shared_dayListAdapter = new shared_dayListAdapter(this, dayList, global.getSharedAvailabilityMap());
-            twListView.setAdapter(shared_dayListAdapter);
-
+            //global.putSharedAvailabilityList("hoi", test_list);
 
             select_timeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(getMyEventsScreen);
+                    //dayList.clear();
+                    dayList = new ArrayList<String>(global.getSharedDaySet());
+                    Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
+                            Toast.LENGTH_SHORT).show();
+                    shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getSharedAvailabilityMap());
+                    twListView.setAdapter(shared_dayListAdapter);
+                    //startActivity(getMyEventsScreen);
                 }
             });
 
