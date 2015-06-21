@@ -89,10 +89,10 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
             days_textView.setText("These are the selected days for event " + calling_event_name);
 
-            dateSet = new HashSet<String>();
-            dayList = new ArrayList<String>();
+            //dateSet = new HashSet<String>();
+            //dayList = new ArrayList<String>();
 
-            // Get shared event dates from Parse
+            /*// Get shared event dates from Parse
             ParseQuery<ParseObject> query_eventdates = ParseQuery.getQuery("Events");
             query_eventdates.whereEqualTo("objectId", calling_event_id);
 
@@ -142,11 +142,12 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
                             }
 
+                            //dayList.add("day");
                             // For this day we can put the list of SharedTimes
                             global.putSharedAvailabilityList(day, timesList);
                         }
                         dayList = new ArrayList<>(global.getSharedDaySet());
-                        Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
+                        Toast.makeText(SelectDaysActivity.this, "" + dayList.toString(),
                                 Toast.LENGTH_SHORT).show();
                         shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getSharedAvailabilityMap());
                         twListView.setAdapter(shared_dayListAdapter);
@@ -157,7 +158,13 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
                     }
                 }
-            });
+            });*/
+
+            dayList = new ArrayList<String>(global.getSharedDaySet());
+            Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
+                    Toast.LENGTH_SHORT).show();
+            shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getSharedAvailabilityMap());
+            twListView.setAdapter(shared_dayListAdapter);
 
             int[] slot1 = {9,0,10,0};
             int[] slot2 = {12,15,15,30};
