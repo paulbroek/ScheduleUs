@@ -106,7 +106,8 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             }
         });
 
-        dates = new HashSet<>(prefs.getStringSet("dates", null));
+        //dates = new HashSet<>(prefs.getStringSet("dates", null));
+        dates = new HashSet<>(global.getPersonalDaySet());
         timesList = new ArrayList<>();
         eventName = prefs.getString("eventName", null);
 
@@ -170,6 +171,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 // Update Availability Map and go to SelectDaysActivity
                 global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));

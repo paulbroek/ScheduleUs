@@ -14,14 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class dayListAdapter extends ArrayAdapter<String> {
-    customButtonListener customListener;
+    ButtonListener customListener;
 
-    public interface customButtonListener {
-        public void onButtonClickListener(int position, String value);
-        public void onViewClickListener(int position, String value);
-    }
-
-    public void setCustomButtonListener(customButtonListener listener) {
+    public void setCustomButtonListener(ButtonListener listener) {
         this.customListener = listener;
     }
 
@@ -94,6 +89,10 @@ public class dayListAdapter extends ArrayAdapter<String> {
         });
 
         return convertView;
+    }
+
+    public class DeleteDay {
+
     }
 
     public class ViewHolder {

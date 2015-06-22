@@ -30,7 +30,9 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MyEventsActivity extends ActionBarActivity {
 
@@ -117,11 +119,14 @@ public class MyEventsActivity extends ActionBarActivity {
         dialog.setMessage(getString(R.string.progress_eventdata));
         dialog.show();
 
+        // Clear the current map
+        global.clearSharedAvailabilityMap();
+
         // Get shared event dates from Parse
         ParseQuery<ParseObject> query_eventdates = ParseQuery.getQuery("Events");
         query_eventdates.whereEqualTo("objectId", id);
 
-        // Now we can get all time slots for days that match the previous query and event id
+        // Now we can get all time slots for days that match the previous query and selected event id
         ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("SharedTimes");
         query_timeslots.whereMatchesKeyInQuery("parent_event", "objectId", query_eventdates);
 
@@ -129,24 +134,24 @@ public class MyEventsActivity extends ActionBarActivity {
             public void done(List<ParseObject> timesObjectList,
                              ParseException e) {
                 if (e == null) {
+                    ArrayList<String> dayList = new ArrayList<String>();
                     for (int obj_n = 0; obj_n < timesObjectList.size(); obj_n++) {
 
-                        String day = timesObjectList.get(obj_n).getString("Day");
+                        final String day = timesObjectList.get(obj_n).getString("Day");
                         JSONArray jsonArrayTimes = timesObjectList.get(obj_n).getJSONArray("Times");
                         ArrayList<int[]> timesList = new ArrayList<int[]>();
 
                         if (jsonArrayTimes != null) {
                             try {
 
-                                Toast.makeText(MyEventsActivity.this, jsonArrayTimes.toString(),
-                                        Toast.LENGTH_LONG).show();
+                                /*Toast.makeText(MyEventsActivity.this, jsonArrayTimes.toString(),
+                                        Toast.LENGTH_LONG).show();*/
 
                                 JsonParser jsonParser = new JsonParser();
                                 JsonArray jsonArray = (JsonArray) jsonParser.parse(jsonArrayTimes.toString());
                                 Gson googleJson = new Gson();
 
                                 final ArrayList<ArrayList> doubleList = googleJson.fromJson(jsonArray, ArrayList.class);
-                                Double test = (Double) doubleList.get(0).get(0);
                                 for (int i = 0; i < doubleList.size(); i++) {
                                     ArrayList<Double> dList = doubleList.get(i);
                                     ArrayList intList = new ArrayList();
@@ -166,11 +171,16 @@ public class MyEventsActivity extends ActionBarActivity {
 
                         // For this day we can put the list of SharedTimes
                         global.putSharedAvailabilityList(day, timesList);
+                        //dayList.add(day);
+                        /*Toast.makeText(MyEventsActivity.this, "" + day,
+                                Toast.LENGTH_SHORT).show();*/
                     }
 
                     // All data retrieved, close dialog, write log and go to SelectDays
                     dialog.dismiss();
                     Log.d("times", "Retrieved times: " + timesObjectList.size());
+                    //Set sharedDaySet = new HashSet(dayList);
+                    //global.putSharedDaySet(sharedDaySet);
                     startActivity(getSelectDaysScreen);
 
 

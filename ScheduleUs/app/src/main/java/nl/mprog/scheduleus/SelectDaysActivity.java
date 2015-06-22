@@ -1,6 +1,6 @@
 package nl.mprog.scheduleus;
 
-import nl.mprog.scheduleus.dayListAdapter.customButtonListener;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,7 +39,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SelectDaysActivity extends ActionBarActivity implements customButtonListener{
+public class SelectDaysActivity extends ActionBarActivity {
 
     private TextView days_textView;
     private Button select_timeButton;
@@ -58,6 +58,35 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
     Application global;
 
+    class CustomListener implements ButtonListener {
+
+        // Deleting a day, so adapter, global and preferences need an update
+        @Override
+        public void onButtonClickListener(int position, String value) {
+
+            global.removeDay(dayList.get(position));
+            dayList.remove(position);
+            dateSet = new HashSet(dayList);
+            editor.putStringSet("event_dates", dateSet).apply();
+            dayListAdapter.
+            dayList_adapter = new dayListAdapter(SelectDaysActivity.this, dayList, global.getPersonalAvailabilityMap());
+            dayList_adapter.setCustomButtonListener(new CustomListener());
+            twListView.setAdapter(dayList_adapter);
+
+            Toast.makeText(SelectDaysActivity.this, "Day " + value + " deleted",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        // Clicked a day, go to SelectTimesActivity for this day
+        @Override
+        public void onViewClickListener(int position, String value) {
+
+            selected_day = value;
+            editor.putString("selected_day", selected_day).apply();
+            final Intent getSelectTimesScreen = new Intent(SelectDaysActivity.this, SelectTimesActivity.class);
+            startActivity(getSelectTimesScreen);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +98,6 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         twListView = (TwoWayView) findViewById(R.id.lvItems);
 
         global = (Application) getApplication();
-        global.clearSharedAvailabilityMap();
-
 
         final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
         final Intent getInviteScreen = new Intent(this, InviteActivity.class);
@@ -79,7 +106,7 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
-        if  (getIntent().hasExtra("calling_event_id")) {
+        if (getIntent().hasExtra("calling_event_id")) {
             // Intent from MyEventsActivity, a user wants to view the shared selected days
 
             final String calling_event_id = getIntent().getStringExtra("calling_event_id");
@@ -164,10 +191,14 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
             Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
                     Toast.LENGTH_SHORT).show();
             shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getSharedAvailabilityMap());
+
+            shared_dayListAdapter.setCustomButtonListener(new CustomListener());
             twListView.setAdapter(shared_dayListAdapter);
 
-            int[] slot1 = {9,0,10,0};
-            int[] slot2 = {12,15,15,30};
+            Toast.makeText(SelectDaysActivity.this, global.getSharedDaySet().toString(),
+                    Toast.LENGTH_LONG).show();
+            int[] slot1 = {9, 0, 10, 0};
+            int[] slot2 = {12, 15, 15, 30};
             ArrayList<int[]> test_list = new ArrayList<>();
             test_list.add(slot1);
             test_list.add(slot2);
@@ -197,7 +228,7 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
 
 
             dayList_adapter = new dayListAdapter(this, dayList, global.getPersonalAvailabilityMap());
-            dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
+            dayList_adapter.setCustomButtonListener(new CustomListener());
             twListView.setAdapter(dayList_adapter);
 
 
@@ -210,16 +241,6 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         }
 
 
-
-
-    }
-
-    int[] toIntArray(List<Double> list)  {
-        int[] ret = new int[list.size()];
-        int i = 0;
-        for (Double d : list)
-            ret[i++] = d.intValue();
-        return ret;
     }
 
     // Gives shared available times, taken from personal user times
@@ -238,49 +259,19 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
                 Boolean time_is_in_his_list = false;
 
                 for (int y = 0; y < L.get(person).size(); y++) {
-                    if (L.get(person).get(y)[0] >= hour & L.get(person).get(y)[3] <= hour+1)
+                    if (L.get(person).get(y)[0] >= hour & L.get(person).get(y)[3] <= hour + 1)
                         time_is_in_his_list = true;
                 }
                 if (!time_is_in_his_list)
                     time_is_in_all_lists = false;
-
             }
 
-            int[] temp = {hour,0,hour+1,0};
+            int[] temp = {hour, 0, hour + 1, 0};
             if (time_is_in_all_lists)
                 result.add(temp);
-
-
         }
-
         return result;
     }
-    // Deleting a day, so adapter, global and preferences need an update
-    @Override
-    public void onButtonClickListener(int position, String value) {
-
-        global.removeDay(dayList.get(position));
-        dayList.remove(position);
-        dateSet = new HashSet(dayList);
-        editor.putStringSet("event_dates", dateSet).apply();
-        dayList_adapter = new dayListAdapter(this, dayList, global.getPersonalAvailabilityMap());
-        dayList_adapter.setCustomButtonListener(SelectDaysActivity.this);
-        twListView.setAdapter(dayList_adapter);
-
-        Toast.makeText(SelectDaysActivity.this, "Day " + value + " deleted",
-                Toast.LENGTH_SHORT).show();
-    }
-
-    // Clicked a day, go to SelectTimesActivity for this day
-    @Override
-    public void onViewClickListener(int position, String value) {
-
-        selected_day = value;
-        editor.putString("selected_day", selected_day).apply();
-        final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
-        startActivity(getSelectTimesScreen);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -309,24 +300,4 @@ public class SelectDaysActivity extends ActionBarActivity implements customButto
         return super.onOptionsItemSelected(item);
     }
 
-    class Data {
-        private String title;
-        private Long id;
-        private Boolean children;
-        private List<Data> groups;
-
-        public String getTitle() { return title; }
-        public Long getId() { return id; }
-        public Boolean getChildren() { return children; }
-        public List<Data> getGroups() { return groups; }
-
-        public void setTitle(String title) { this.title = title; }
-        public void setId(Long id) { this.id = id; }
-        public void setChildren(Boolean children) { this.children = children; }
-        public void setGroups(List<Data> groups) { this.groups = groups; }
-
-        public String toString() {
-            return String.format("title:%s,id:%d,children:%s,groups:%s", title, id, children, groups);
-        }
-    }
 }
