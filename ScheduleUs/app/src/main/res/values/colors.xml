@@ -4,6 +4,7 @@
     <item name="grey" type="color">#555555</item>
     <item name="darkgreen" type="color">#4499CC00</item>
     <item name="green" type="color">#FF669900</item>
+    <item name="lightgreen" type="color">#7900ff00</item>
     <item name="red" type="color">#ED183B</item>
 
     <color name="White">#fff</color>

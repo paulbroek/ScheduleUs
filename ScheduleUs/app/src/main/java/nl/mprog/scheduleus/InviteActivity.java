@@ -4,6 +4,7 @@ import nl.mprog.scheduleus.userListAdapter.customCheckBoxListener;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -67,7 +68,6 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
 
         userList = new ArrayList<>();
         participantsSet = new HashSet<>();
-        participantsSet.add("test_name");
 
 
         editor.putStringSet("participants_set",participantsSet).apply();
@@ -158,7 +158,10 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                     SharedTime.put("Day", day);
                     SharedTime.put("Times", temp);
                     AvailItem.saveInBackground();
+
                     //SharedTime.saveInBackground();
+
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                 } catch ( Exception e) {
                     Toast.makeText(InviteActivity.this, "json excep, " + day,

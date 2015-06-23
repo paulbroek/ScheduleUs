@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,20 @@ public class Application extends android.app.Application {
     private Map<String, ArrayList<int[]>> shared_availabilityMap;
     private Map<String, String> myEventsMap;
 
+    private Map<String,String> SharedTimesIdMap;
+
+    public void addSharedTimesId(String day, String id) {
+        this.SharedTimesIdMap.put(day, id);
+    }
+
+    public String getSharedTimesId(String day) {
+        return this.SharedTimesIdMap.get(day);
+    }
+
+    public void clearSharedTimesIdMap() {
+        this.SharedTimesIdMap.clear();
+    }
+
     public void putPersonalDaySet(Set<String> s) {
         this.personal_daySet = s;
     }
@@ -46,6 +61,10 @@ public class Application extends android.app.Application {
 
     public ArrayList<int[]> getPersonalAvailabilityList(String day) {
         return personal_availabilityMap.get(day);
+    }
+
+    public void clearPersonalAvailabilityMap() {
+        this.personal_availabilityMap.clear();
     }
 
     public void putSharedAvailabilityList(String day, ArrayList<int[]> l) {
@@ -122,6 +141,7 @@ public class Application extends android.app.Application {
         this.personal_availabilityMap = new HashMap<String, ArrayList<int[]>>();
         this.shared_availabilityMap = new HashMap<String, ArrayList<int[]>>();
         this.myEventsMap = new HashMap<>();
+        this.SharedTimesIdMap = new HashMap<>();
         this.personal_daySet = new HashSet<String>();
         this.shared_daySet = new HashSet<String>();
         this.current_event_name = "";

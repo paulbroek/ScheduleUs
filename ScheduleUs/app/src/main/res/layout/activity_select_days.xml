@@ -36,7 +36,6 @@
         android:text="OK"
         android:id="@+id/select_timeButton"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/days_textView"
-        android:layout_toEndOf="@+id/days_textView" />
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

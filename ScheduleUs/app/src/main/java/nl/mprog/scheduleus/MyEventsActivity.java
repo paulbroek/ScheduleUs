@@ -1,6 +1,7 @@
 package nl.mprog.scheduleus;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
@@ -20,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -32,6 +34,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class MyEventsActivity extends ActionBarActivity {
@@ -60,6 +63,8 @@ public class MyEventsActivity extends ActionBarActivity {
         myEvents_ListView = (ListView) findViewById(R.id.myEvents_ListView);
         dialog = new ProgressDialog(MyEventsActivity.this);
 
+        prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
+        editor = prefs.edit();
         Intent activityThatCalled = getIntent();
         getSelectDaysScreen = new Intent(getApplicationContext(), SelectDaysActivity.class);
         global = (Application)getApplication();
@@ -102,8 +107,10 @@ public class MyEventsActivity extends ActionBarActivity {
                 // Hier of pas in SelectDays ophalen van dagenlijst?
                 //editor.putStringSet("shared_event_dates", ).apply();
                 // Set up a progress dialog
-                getSelectDaysScreen.putExtra("calling_event_id", EventsIdList.get(position).toString());
-                getEventData(EventsIdList.get(position).toString());
+                String event_id = EventsIdList.get(position).toString();
+                editor.putString("event_id", event_id).apply();
+                getSelectDaysScreen.putExtra("calling_event_id", event_id);
+                getEventData(event_id);
 
 
 
@@ -122,22 +129,36 @@ public class MyEventsActivity extends ActionBarActivity {
         // Clear the current map
         global.clearSharedAvailabilityMap();
 
-        // Get shared event dates from Parse
-        ParseQuery<ParseObject> query_eventdates = ParseQuery.getQuery("Events");
-        query_eventdates.whereEqualTo("objectId", id);
-
+        // Get the event with id from Parse
+        final ParseObject CurrentEvent = new ParseObject("Events");
+        ParseQuery<ParseObject> query_event = ParseQuery.getQuery("Events");
+        query_event.whereEqualTo("objectId", id);
+        /*query_event.getFirstInBackground(new GetCallback<ParseObject>() {
+            public void done(ParseObject object, ParseException e) {
+                if (object == null) {
+                    Log.d("event", "query_event failed");
+                } else {
+                    Log.d("event", "Retrieved event");
+                    CurrentEvent = object;
+                }
+            }
+        });
+*/
         // Now we can get all time slots for days that match the previous query and selected event id
         ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("SharedTimes");
-        query_timeslots.whereMatchesKeyInQuery("parent_event", "objectId", query_eventdates);
+        query_timeslots.whereMatchesKeyInQuery("parent_event", "objectId", query_event);
 
         query_timeslots.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> timesObjectList,
                              ParseException e) {
                 if (e == null) {
                     ArrayList<String> dayList = new ArrayList<String>();
+                    global.clearSharedTimesIdMap();
                     for (int obj_n = 0; obj_n < timesObjectList.size(); obj_n++) {
 
                         final String day = timesObjectList.get(obj_n).getString("Day");
+                        global.addSharedTimesId(day, timesObjectList.get(obj_n).getObjectId());
+
                         JSONArray jsonArrayTimes = timesObjectList.get(obj_n).getJSONArray("Times");
                         ArrayList<int[]> timesList = new ArrayList<int[]>();
 
@@ -178,6 +199,8 @@ public class MyEventsActivity extends ActionBarActivity {
 
                     // All data retrieved, close dialog, write log and go to SelectDays
                     dialog.dismiss();
+                    // Clear the current personal map
+                    global.clearPersonalAvailabilityMap();
                     Log.d("times", "Retrieved times: " + timesObjectList.size());
                     //Set sharedDaySet = new HashSet(dayList);
                     //global.putSharedDaySet(sharedDaySet);

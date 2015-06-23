@@ -73,7 +73,8 @@ public class DrawingShowView extends View {
         mPaintPersonal = new Paint();
         mPaintPersonal.setAntiAlias(true);
         mPaintPersonal.setDither(true);
-        mPaintPersonal.setColor(Color.BLACK);
+        //Color lightGreen = new Color(255,102,153);
+        mPaintPersonal.setColor(getResources().getColor(R.color.lightgreen));
         mPaintPersonal.setStyle(Paint.Style.FILL);
 
         mLines = new Paint();

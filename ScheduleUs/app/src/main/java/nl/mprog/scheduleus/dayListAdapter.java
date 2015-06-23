@@ -52,7 +52,7 @@ public class dayListAdapter extends ArrayAdapter<String> {
         ArrayList<int[]> temp_availList = availabilityMap.get(temp_day);
 
 
-        viewHolder.dsv.setAvailabilityList(temp_availList);
+        viewHolder.dsv.setPersonalAvailabilityList(temp_availList);
 
         // Clicked on a day, go to SelectTimes
         viewHolder.dsv.setOnClickListener(new OnClickListener() {

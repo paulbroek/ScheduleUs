@@ -1,6 +1,7 @@
 package nl.mprog.scheduleus;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import org.json.JSONArray;
 import org.lucasr.twowayview.TwoWayView;
 
 import java.util.ArrayList;
@@ -37,6 +44,7 @@ public class SelectDaysActivity extends ActionBarActivity {
     private String eventName;
     private String selected_day;
 
+    ProgressDialog dialog;
     Application global;
 
     class PersonalCustomListener implements ButtonListener {
@@ -106,6 +114,7 @@ public class SelectDaysActivity extends ActionBarActivity {
         select_timeButton = (Button) findViewById(R.id.select_timeButton);
         twListView = (TwoWayView) findViewById(R.id.lvItems);
 
+        dialog = new ProgressDialog(SelectDaysActivity.this);
         global = (Application) getApplication();
 
         final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
@@ -123,7 +132,8 @@ public class SelectDaysActivity extends ActionBarActivity {
             Toast.makeText(SelectDaysActivity.this, "Came from MyEvents, extra: " + calling_event_name + " " + calling_event_id,
                     Toast.LENGTH_SHORT).show();
 
-            days_textView.setText("These are the selected days for event " + calling_event_name);
+
+            days_textView.setText("These are the selected days for event " + calling_event_name + ". The green blocks show when other participants of this event are available. Please click on one of them to enter your availability data.");
 
             dayList = new ArrayList<String>(global.getSharedDaySet());
             Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
@@ -141,17 +151,42 @@ public class SelectDaysActivity extends ActionBarActivity {
             test_list.add(slot1);
             test_list.add(slot2);
             //global.putSharedAvailabilityList("hoi", test_list);
+            select_timeButton.setText("Merge data with cloud");
 
             select_timeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //dayList.clear();
-                    dayList = new ArrayList<String>(global.getSharedDaySet());
-                    Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
-                            Toast.LENGTH_SHORT).show();
-                    shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getPersonalAvailabilityMap(),global.getSharedAvailabilityMap());
-                    twListView.setAdapter(shared_dayListAdapter);
-                    //startActivity(getMyEventsScreen);
+
+                    // Show dialog while merging data with database
+                    dialog.setMessage(getString(R.string.progress_eventdata));
+                    dialog.show();
+
+                    // Put al day information for current user
+                    for (String day : global.getPersonalDaySet()) {
+                        try {
+                            JSONArray temp = new JSONArray(global.getPersonalAvailabilityList(day));
+
+                            ParseObject AvailItem = new ParseObject("AvailItems");
+                            //ParseObject SharedTime = new ParseObject("SharedTimes");
+
+
+                            AvailItem.put("User", ParseUser.getCurrentUser());
+                            AvailItem.put("parent_event", ParseObject.createWithoutData("Events", calling_event_id));
+                            AvailItem.put("Day", day);
+                            AvailItem.put("Times", temp);
+                            AvailItem.put("SharedTime", ParseObject.createWithoutData("SharedTimes",global.getSharedTimesId(day)));
+
+                            AvailItem.saveInBackground();
+
+
+                            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                        } catch ( Exception e) {
+                            Toast.makeText(SelectDaysActivity.this, "json excep, " + day,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    dialog.dismiss();
                 }
             });
 
@@ -162,6 +197,9 @@ public class SelectDaysActivity extends ActionBarActivity {
             eventName = prefs.getString("event_name", null);
             dateSet = new HashSet<>(prefs.getStringSet("event_dates", null));
 
+            // Make sure event_id is null
+            editor.putString("event_id", null).apply();
+            select_timeButton.setText("Select participants");
             dayList = new ArrayList<String>(dateSet);
 
 

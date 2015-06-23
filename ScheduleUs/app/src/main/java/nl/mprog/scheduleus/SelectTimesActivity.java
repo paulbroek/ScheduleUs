@@ -75,62 +75,49 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         selected_day = prefs.getString("selected_day",null);
         selected_dayView.setText(selected_day);
-        participants = new HashSet<>();
-        participants.add("Johan");
-        participants.add("Erik");
-        // Get user data from parse.com
-        //ParseObject Users = new ParseObject("Users");
-        //Users.put("Username", "piet");
-        //Events.put("participants", participants);
+        //participants = new HashSet<>();
 
-        current_event_id = prefs.getString("current_event_id", null);
-        if (current_event_id == null)
-            Toast.makeText(getApplicationContext(), "No current event was found", Toast.LENGTH_LONG).show();
+        // We either come from a participants or an initiators perspective
+        current_event_id = prefs.getString("event_id", null);
+        // Participant perspective
+        if (current_event_id != null) {
+            // Participant wants to enter his times
+            Toast.makeText(getApplicationContext(), "Building on existing event", Toast.LENGTH_LONG).show();
 
-        ParseQuery<ParseObject> query_event = ParseQuery.getQuery("Events");
-        query_event.fromPin("new event");
-        query_event.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> eventList, ParseException e) {
-                if (e == null) {
-                    String text = "" + eventList.size();
-                    for (ParseObject elem : eventList) {
-                        text += elem.getString("name");
-                        if (eventList.size() == 1)
-                            text += "";
-                    }
-                    //outputView.setText(text);
+            ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                } else {
-                    outputView.setText("niet gelukt1");
+
+                    // Update Availability Map, merge with database and go to SelectDaysActivity
+                    global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
+                    getSelectDaysScreen.putExtra("calling_event_id", current_event_id);
+                    startActivity(getSelectDaysScreen);
                 }
-            }
-        });
+            });
+        }
+        // Initiator perspective
+        else {
+            ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    // Update Availability Map and go to SelectDaysActivity
+                    global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
+                    startActivity(getSelectDaysScreen);
+                }
+            });
+        }
 
         //dates = new HashSet<>(prefs.getStringSet("dates", null));
         dates = new HashSet<>(global.getPersonalDaySet());
         timesList = new ArrayList<>();
         eventName = prefs.getString("eventName", null);
 
-       /* ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
-        query2.whereEqualTo("Username", "piet");
-        query2.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    outputView.setText("gelukt2");
-                } else {
-                    outputView.setText("niet gelukt2");
-                }
-            }
-        });*/
-
         ResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                dv.reDraw();
-
-            }
-        });
+            public void onClick(View v) {dv.reDraw();}});
 
         ShowTimesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,16 +155,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             }
         });
 
-        ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                // Update Availability Map and go to SelectDaysActivity
-                global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
-                startActivity(getSelectDaysScreen);
-            }
-        });
 
     }
 
