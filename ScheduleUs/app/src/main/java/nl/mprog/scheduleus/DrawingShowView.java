@@ -36,12 +36,14 @@ public class DrawingShowView extends View {
     private Paint circlePaint;
     private Path circlePath;
     private Paint mPaint;
+    private Paint mPaintPersonal;
     private Paint mLines;
     private TextView up;
     public float pixels_per_hour;
     private boolean[] availArray;
     private ArrayList<Boolean> availList;
-    List <int[]> AvailableSlots;
+    List <int[]> SharedAvailableSlots;
+    List <int[]> PersonalAvailableSlots;
 
     public DrawingShowView(Context c) {
         super(c);
@@ -67,6 +69,12 @@ public class DrawingShowView extends View {
         mPaint.setDither(true);
         mPaint.setColor(Color.GREEN);
         mPaint.setStyle(Paint.Style.FILL);
+
+        mPaintPersonal = new Paint();
+        mPaintPersonal.setAntiAlias(true);
+        mPaintPersonal.setDither(true);
+        mPaintPersonal.setColor(Color.BLACK);
+        mPaintPersonal.setStyle(Paint.Style.FILL);
 
         mLines = new Paint();
         mLines.setColor(Color.BLACK);
@@ -110,18 +118,41 @@ public class DrawingShowView extends View {
                 if (availList.get(i))
                     mCanvas.drawLine(width,i,0,i,mPaint);*/
 
-        if (AvailableSlots != null)
-            for (int i = 0; i < AvailableSlots.size(); i++) {
+        // First draw personal slots
+        if (PersonalAvailableSlots != null)
+            for (int i = 0; i < PersonalAvailableSlots.size(); i++) {
 
                 /*for (int p = 0; p < 50*i; p++) {
                     mCanvas.drawLine(width,p,0,p,mPaint);
                 }*/
 
 
-                int beginhours = AvailableSlots.get(i)[0];
-                int beginquarters = AvailableSlots.get(i)[1];
-                int endhours = AvailableSlots.get(i)[2];
-                int endquarters = AvailableSlots.get(i)[3];
+                int beginhours = PersonalAvailableSlots.get(i)[0];
+                int beginquarters = PersonalAvailableSlots.get(i)[1];
+                int endhours = PersonalAvailableSlots.get(i)[2];
+                int endquarters = PersonalAvailableSlots.get(i)[3];
+                double n_hours = endhours + endquarters/60.0 - beginhours - beginquarters/60.0;
+
+                double begin = (beginhours + beginquarters / 60.0 - min_clocktime)*pixels_per_hour;
+                double n_pixels = n_hours*pixels_per_hour;
+                for (int j = 0; j < (int) n_pixels; j++)
+                    mCanvas.drawLine(width,(int)begin+j,0,(int)begin+j,mPaintPersonal);
+
+                }
+
+        // Now draw shared slots (partly over personal slots)
+        if (SharedAvailableSlots != null)
+            for (int i = 0; i < SharedAvailableSlots.size(); i++) {
+
+                /*for (int p = 0; p < 50*i; p++) {
+                    mCanvas.drawLine(width,p,0,p,mPaint);
+                }*/
+
+
+                int beginhours = SharedAvailableSlots.get(i)[0];
+                int beginquarters = SharedAvailableSlots.get(i)[1];
+                int endhours = SharedAvailableSlots.get(i)[2];
+                int endquarters = SharedAvailableSlots.get(i)[3];
                 double n_hours = endhours + endquarters/60.0 - beginhours - beginquarters/60.0;
 
                 double begin = (beginhours + beginquarters / 60.0 - min_clocktime)*pixels_per_hour;
@@ -129,7 +160,7 @@ public class DrawingShowView extends View {
                 for (int j = 0; j < (int) n_pixels; j++)
                     mCanvas.drawLine(width,(int)begin+j,0,(int)begin+j,mPaint);
 
-                }
+            }
 
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
@@ -200,8 +231,11 @@ public class DrawingShowView extends View {
         return availArray;
     }
 
-    public void setAvailabilityList(ArrayList<int[]> l) {
-        this.AvailableSlots = l;
+    public void setSharedAvailabilityList(ArrayList<int[]> l) {
+        this.SharedAvailableSlots = l;
+    }
+    public void setPersonalAvailabilityList(ArrayList<int[]> l) {
+        this.PersonalAvailableSlots = l;
     }
 
     private static final int TIME_TOLERANCE = 5;
@@ -211,7 +245,7 @@ public class DrawingShowView extends View {
     public List<int[]> getAvailabilityList() {
         boolean[] availArray = getAvailabilityArray();
 
-        AvailableSlots = new ArrayList<int[]>();
+        SharedAvailableSlots = new ArrayList<int[]>();
 
         // Search for blocks of available time
         int j = 0;
@@ -243,14 +277,14 @@ public class DrawingShowView extends View {
                     int begin_time = begin_hour * 100 + begin_quarter;
                     int end_time = end_hour * 100 + end_quarter;
 
-                    AvailableSlots.add(new int[]{begin_hour,begin_quarter,end_hour,end_quarter});
+                    SharedAvailableSlots.add(new int[]{begin_hour,begin_quarter,end_hour,end_quarter});
 
                 }
                 j = 0;
             }
         }
 
-        return AvailableSlots;
+        return SharedAvailableSlots;
     }
 
     public float getTimeSize() {

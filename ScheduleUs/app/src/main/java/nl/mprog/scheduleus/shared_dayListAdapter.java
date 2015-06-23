@@ -24,11 +24,13 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
     private Context context;
     private ArrayList<String> data = new ArrayList<String>();
     private Map<String, ArrayList<int[]>> shared_availabilityMap = new HashMap<String, ArrayList<int[]>>();
+    private Map<String, ArrayList<int[]>> personal_availabilityMap = new HashMap<String, ArrayList<int[]>>();
 
-    public shared_dayListAdapter(Context context, ArrayList<String> dataItem, Map<String,ArrayList<int[]>> map) {
+    public shared_dayListAdapter(Context context, ArrayList<String> dataItem, Map<String,ArrayList<int[]>> PersonalMap, Map<String,ArrayList<int[]>> SharedMap) {
         super(context, R.layout.list_times, dataItem);
         this.data = dataItem;
-        this.shared_availabilityMap = map;
+        this.personal_availabilityMap = PersonalMap;
+        this.shared_availabilityMap = SharedMap;
         this.context = context;
     }
 
@@ -52,9 +54,9 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
         final String temp_day = getItem(position);
         /*Toast.makeText(getContext(), "" + temp_day,
                 Toast.LENGTH_SHORT).show();*/
-        ArrayList<int[]> temp_availList = shared_availabilityMap.get(temp_day);
 
-        viewHolder.dsv.setAvailabilityList(temp_availList);
+        viewHolder.dsv.setSharedAvailabilityList(shared_availabilityMap.get(temp_day));
+        viewHolder.dsv.setPersonalAvailabilityList(personal_availabilityMap.get(temp_day));
 
         // Clicked on a day, go to SelectTimes
         viewHolder.dsv.setOnClickListener(new OnClickListener() {
