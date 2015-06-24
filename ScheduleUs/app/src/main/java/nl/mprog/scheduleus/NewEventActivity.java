@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 
@@ -220,9 +221,14 @@ public class NewEventActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.main:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.log_out:
+                ParseUser.logOut();
+                startActivity(new Intent(this, CheckLoginActivity.class));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

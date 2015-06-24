@@ -65,6 +65,7 @@ public class Application extends android.app.Application {
 
     public void clearPersonalAvailabilityMap() {
         this.personal_availabilityMap.clear();
+        this.personal_daySet.clear();
     }
 
     public void putSharedAvailabilityList(String day, ArrayList<int[]> l) {

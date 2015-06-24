@@ -19,6 +19,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -174,9 +175,14 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.main:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.log_out:
+                ParseUser.logOut();
+                startActivity(new Intent(this, CheckLoginActivity.class));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

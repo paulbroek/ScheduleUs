@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,12 +48,6 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
-
-    private static final int REQUEST_INVITE = 0;
-
-    // Local Broadcast receiver for receiving invites
-    private BroadcastReceiver mDeepLinkReceiver = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +55,6 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
 
         inviteButton = (Button) findViewById(R.id.inviteButton);
         userlistView = (ListView) findViewById(R.id.userlistView);
-        //searchView = (SearchView) findViewById(R.id.searchView);
 
         final Application global = (Application)getApplication();
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
@@ -69,107 +63,79 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
         userList = new ArrayList<>();
         participantsSet = new HashSet<>();
 
-
         editor.putStringSet("participants_set",participantsSet).apply();
 
-        int size = 0;
         // Get complete user list from parse
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        //query.whereEqualTo("username", "jo");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> usernames, ParseException e) {
                 if (e == null) {
                     if (usernames.size() > 0) {
-                        //Toast.makeText(InviteActivity.this, "gelukt, met" + usernames.size() + usernames.get(0).getString("username"), Toast.LENGTH_LONG).show();
                         for (int i = 0; i < usernames.size(); i++) {
                             userList.add("" + usernames.get(i).getString("username"));
                         }
                         adapter = new userListAdapter(getApplicationContext(), userList);
                         adapter.setCustomCheckBoxListener(InviteActivity.this);
                         adapter2 = new userListAdapter(getApplicationContext(), userList);
-                        //searchView.setAdapter(adapter2); // moet met cursor
                         userlistView.setAdapter(adapter);
                     }
 
-
-                    Toast.makeText(InviteActivity.this, "gelukt", Toast.LENGTH_LONG).show();
-                    //Log.d("score", "Retrieved " + scoreList.size() + " scores");
-                } else {
-                    Toast.makeText(InviteActivity.this, "niet gelukt", Toast.LENGTH_LONG).show();
-                    //Log.d("score", "Error: " + e.getMessage());
-                }
+                    Log.d("user", "Retrieved " + usernames.size());
+                } else
+                    Log.d("user", "Error: " + e.getMessage());
             }
         });
-
-        if  (userList.size() > 0)
-            Toast.makeText(InviteActivity.this, "" + size + userList.get(0), Toast.LENGTH_LONG).show();
-        // Setting adapter and listView
-        //adapter = new userListAdapter(getApplicationContext(), userList);
-        //adapter.setCustomButtonListener(InviteActivity.this);
-        //userlistView.setAdapter(adapter);
 
         // Send all event and participant information to parse, trigger invites
         inviteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-            /*Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
-                    .setMessage(getString(R.string.invitation_message))
-                    .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
-                    .build();
-            startActivityForResult(intent, REQUEST_INVITE);*/
+                ParseObject Event = new ParseObject("Events");
 
-            ParseObject Event = new ParseObject("Events");
+                // Tell user who have been invited
+                String message = "Invited: ";
+                for (Object participant : participantsSet) message += participant + ", ";
+                Toast.makeText(InviteActivity.this, message, Toast.LENGTH_SHORT).show();
 
-            //json_datesArray = new JSONArray(dateList);
-            //Events.put("number_of_dates", dateList.size());
+                // Convert global data to json format
+                json_datesArray = new JSONArray(global.getPersonalDaySet());
+                json_participantsArray = new JSONArray(participantsSet);
+                json_timesObject = new JSONObject();
 
-            String message = "Invited: ";
-            for (Object aParticipantsSet : participantsSet) message += aParticipantsSet + ", ";
-            Toast.makeText(InviteActivity.this, message,
-                    Toast.LENGTH_SHORT).show();
+                // Save our new event
+                Event.put("dates", json_datesArray);
+                Event.put("initiator", ParseUser.getCurrentUser());
+                Event.put("participants", json_participantsArray);
+                Event.put("event_name", global.getCurrentEventName());
 
-            json_datesArray = new JSONArray(global.getPersonalDaySet());
-            json_participantsArray = new JSONArray(participantsSet);
-            json_timesObject = new JSONObject();
+                // Put al availability information for initiator (= current user)
+                for (String day : global.getPersonalDaySet()) {
+                    try {
+                        JSONArray temp = new JSONArray(global.getPersonalAvailabilityList(day));
 
+                        ParseObject AvailItem = new ParseObject("AvailItems");
+                        ParseObject SharedTime = new ParseObject("SharedTimes");
 
-            Event.put("dates", json_datesArray);
-            Event.put("initiator", ParseUser.getCurrentUser());
-            Event.put("participants", json_participantsArray);
-            Event.put("event_name", global.getCurrentEventName());
+                        AvailItem.put("User", ParseUser.getCurrentUser());
+                        AvailItem.put("parent_event", Event);
+                        AvailItem.put("Day", day);
+                        AvailItem.put("Times", temp);
+                        AvailItem.put("SharedTime", SharedTime);
 
-            // Put al day information for current user
-            for (String day : global.getPersonalDaySet()) {
-                try {
-                    JSONArray temp = new JSONArray(global.getPersonalAvailabilityList(day));
+                        // SharedTime will contain the overlap between user' availability, at start this is just the initiators data
+                        SharedTime.put("Initiator", ParseUser.getCurrentUser());
+                        SharedTime.put("parent_event", Event);
+                        SharedTime.put("Day", day);
+                        SharedTime.put("Times", temp);
+                        AvailItem.saveInBackground();
 
-                    ParseObject AvailItem = new ParseObject("AvailItems");
-                    ParseObject SharedTime = new ParseObject("SharedTimes");
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-                    AvailItem.put("User", ParseUser.getCurrentUser());
-                    AvailItem.put("parent_event", Event);
-                    AvailItem.put("Day", day);
-                    AvailItem.put("Times", temp);
-                    AvailItem.put("SharedTime", SharedTime);
-                    // SharedTime will contain the overlap of a Day of an Event, at start this is just the initiators data
-                    SharedTime.put("Initiator", ParseUser.getCurrentUser());
-                    SharedTime.put("parent_event", Event);
-                    SharedTime.put("Day", day);
-                    SharedTime.put("Times", temp);
-                    AvailItem.saveInBackground();
-
-                    //SharedTime.saveInBackground();
-
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-                } catch ( Exception e) {
-                    Toast.makeText(InviteActivity.this, "json excep, " + day,
-                            Toast.LENGTH_SHORT).show();
+                    } catch ( Exception e) {
+                        Log.d("json excep", day);
+                    }
                 }
-            }
-
-
             }
         });
     }
@@ -188,9 +154,14 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.main:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.log_out:
+                ParseUser.logOut();
+                startActivity(new Intent(this, CheckLoginActivity.class));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -209,28 +180,15 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                 Toast.makeText(InviteActivity.this, "checked " + value,
                         Toast.LENGTH_SHORT).show();
                 participantsSet.add(value);
-                /*String message = "";
-                for (Object aParticipantsSet : participantsSet) message += aParticipantsSet + ", ";
-                Toast.makeText(InviteActivity.this, message,
-                        Toast.LENGTH_SHORT).show();*/
             }
             else {
                 Toast.makeText(InviteActivity.this, "unchecked " + value,
                         Toast.LENGTH_SHORT).show();
                 participantsSet.remove(value);
-                /*String message = "";
-                for (Object aParticipantsSet : participantsSet) message += aParticipantsSet + ", ";
-                Toast.makeText(InviteActivity.this, message,
-                        Toast.LENGTH_SHORT).show();*/
             }
-
-
-
 
         // The initiator is also a participant, add him as well.
         participantsSet.add(ParseUser.getCurrentUser().getUsername());
         editor.putStringSet("participants_set", participantsSet).apply();
     }
-
-
 }

@@ -18,6 +18,8 @@
 
     <string name= "progress_eventdata">Retrieving event data</string>
 
+    <string name = "main"> Main</string>
+
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
