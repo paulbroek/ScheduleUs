@@ -23,11 +23,9 @@ public class timeListAdapter extends ArrayAdapter<String> {
     }
 
     private Context context;
-    private ArrayList<String> data = new ArrayList<String>();
 
     public timeListAdapter(Context context, ArrayList<String> dataItem) {
         super(context, R.layout.list_times, dataItem);
-        this.data = dataItem;
         this.context = context;
     }
 
@@ -45,9 +43,10 @@ public class timeListAdapter extends ArrayAdapter<String> {
             viewHolder.edit_button = (Button) convertView
                     .findViewById(R.id.child_editButton);
             convertView.setTag(viewHolder);
-        } else {
+        } else
             viewHolder = (ViewHolder) convertView.getTag();
-        }
+
+
         final String temp = getItem(position);
         viewHolder.text.setText(temp);
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
@@ -60,14 +59,13 @@ public class timeListAdapter extends ArrayAdapter<String> {
 
             }
         });
+
         viewHolder.edit_button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (customListener != null) {
+                if (customListener != null)
                     customListener.onButtonClickListener(position, temp);
-                }
-
             }
         });
 

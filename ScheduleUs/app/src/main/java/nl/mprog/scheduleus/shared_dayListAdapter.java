@@ -22,13 +22,11 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
     }
 
     private Context context;
-    private ArrayList<String> data = new ArrayList<String>();
     private Map<String, ArrayList<int[]>> shared_availabilityMap = new HashMap<String, ArrayList<int[]>>();
     private Map<String, ArrayList<int[]>> personal_availabilityMap = new HashMap<String, ArrayList<int[]>>();
 
     public shared_dayListAdapter(Context context, ArrayList<String> dataItem, Map<String,ArrayList<int[]>> PersonalMap, Map<String,ArrayList<int[]>> SharedMap) {
         super(context, R.layout.list_times, dataItem);
-        this.data = dataItem;
         this.personal_availabilityMap = PersonalMap;
         this.shared_availabilityMap = SharedMap;
         this.context = context;
@@ -52,8 +50,6 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         final String temp_day = getItem(position);
-        /*Toast.makeText(getContext(), "" + temp_day,
-                Toast.LENGTH_SHORT).show();*/
 
         viewHolder.dsv.setSharedAvailabilityList(shared_availabilityMap.get(temp_day));
         viewHolder.dsv.setPersonalAvailabilityList(personal_availabilityMap.get(temp_day));
@@ -63,18 +59,16 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
 
             @Override
             public void onClick(View v) {
-                if (customListener != null) {
+                if (customListener != null)
                     customListener.onViewClickListener(position, temp_day);
-                }
-
             }
         });
-
         viewHolder.textView.setText(temp_day);
         viewHolder.textView.bringToFront();
 
         // Only show delete button when you're the initiator
-        //viewHolder.delete_button.setVisibility(View.INVISIBLE);
+        viewHolder.delete_button.setVisibility(View.INVISIBLE);
+
         // Clicked delete, remove the View
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
 
@@ -83,10 +77,8 @@ public class shared_dayListAdapter extends ArrayAdapter<String> {
                 if (customListener != null) {
                     customListener.onButtonClickListener(position, temp_day);
                 }
-
             }
         });
-
         return convertView;
     }
 

@@ -12,6 +12,11 @@
         android:layout_height="wrap_content"
         android:text="Invite"
         android:id="@+id/inviteButton"
+        android:textColor="@color/White"
+        android:textSize="32sp"
+        android:padding="16sp"
+        android:background="@color/DarkBlue"
+        android:textAllCaps="false"
         android:layout_centerHorizontal="true" />
 
     <ListView

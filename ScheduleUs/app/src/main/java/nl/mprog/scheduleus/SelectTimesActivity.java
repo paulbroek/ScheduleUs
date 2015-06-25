@@ -47,10 +47,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
 
     private String current_event_id;
     private String selected_day;
-    private String eventName;
 
-    private Set<String> participants;
-    private Set<String> dates;
     private ArrayList<String> timesList;
     private timeListAdapter adapter;
 
@@ -68,7 +65,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         ShowTimesButton = (Button) findViewById(R.id.ShowTimesButton);
         ConfirmTimesButton = (Button) findViewById(R.id.ConfirmTimesButton);
         ResetButton = (Button) findViewById(R.id.ResetButton);
-        final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
         final Intent getSelectDaysScreen = new Intent(this, SelectDaysActivity.class);
 
         final Application global = (Application)getApplication();
@@ -76,7 +72,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         selected_day = prefs.getString("selected_day",null);
         selected_dayView.setText(selected_day);
-        //participants = new HashSet<>();
 
         // We either come from a participants or an initiators perspective
         current_event_id = prefs.getString("event_id", null);
@@ -102,8 +97,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
                     // Update Availability Map and go to SelectDaysActivity
                     global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
                     startActivity(getSelectDaysScreen);
@@ -111,11 +104,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             });
         }
 
-        //dates = new HashSet<>(prefs.getStringSet("dates", null));
-        dates = new HashSet<>(global.getPersonalDaySet());
         timesList = new ArrayList<>();
-        eventName = prefs.getString("eventName", null);
-
         ResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {dv.reDraw();}});
@@ -155,9 +144,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                 timesListView.setAdapter(adapter);
             }
         });
-
-
-
     }
 
 

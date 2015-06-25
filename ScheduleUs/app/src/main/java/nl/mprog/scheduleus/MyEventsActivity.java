@@ -47,7 +47,6 @@ public class MyEventsActivity extends ActionBarActivity {
 
     ArrayList eventNameList;
     ArrayList EventsIdList;
-    ArrayList EventsPointerList;
 
     Application global;
     ProgressDialog dialog;
@@ -131,7 +130,6 @@ public class MyEventsActivity extends ActionBarActivity {
             public void done(List<ParseObject> timesObjectList,
                              ParseException e) {
                 if (e == null) {
-                    ArrayList<String> dayList = new ArrayList<String>();
                     global.clearSharedTimesIdMap();
                     for (int obj_n = 0; obj_n < timesObjectList.size(); obj_n++) {
 

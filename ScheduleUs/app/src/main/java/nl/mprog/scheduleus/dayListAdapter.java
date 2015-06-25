@@ -21,12 +21,10 @@ public class dayListAdapter extends ArrayAdapter<String> {
     }
 
     private Context context;
-    private ArrayList<String> data = new ArrayList<String>();
     private Map<String, ArrayList<int[]>> availabilityMap = new HashMap<String, ArrayList<int[]>>();
 
     public dayListAdapter(Context context, ArrayList<String> dataItem, Map<String,ArrayList<int[]>> mapItem) {
         super(context, R.layout.list_times, dataItem);
-        this.data = dataItem;
         this.availabilityMap = mapItem;
         this.context = context;
     }
@@ -65,16 +63,7 @@ public class dayListAdapter extends ArrayAdapter<String> {
 
             }
         });
-        String value = "";
-        try {
-            // value = "" + availabilityMap.get(temp_day).get(0)[0];
-            //value = "" + viewHolder.dsv.AvailableSlots.get(0)[0];
-            value = "" + viewHolder.dsv.height;
-        }
-        catch (NullPointerException e)
-        {
-            value = "avail list is empty";
-        }
+
         viewHolder.text.setText(temp_day);
         // Clicked delete, remove the View
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
@@ -91,9 +80,6 @@ public class dayListAdapter extends ArrayAdapter<String> {
         return convertView;
     }
 
-    public class DeleteDay {
-
-    }
 
     public class ViewHolder {
         DrawingShowView dsv;

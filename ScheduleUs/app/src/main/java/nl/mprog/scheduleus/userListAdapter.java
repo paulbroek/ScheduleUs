@@ -30,13 +30,9 @@ public class userListAdapter extends ArrayAdapter<String> {
     }
 
     private Context context;
-    private ArrayList<String> data = new ArrayList<String>();
-    public Map<String, Boolean> is_checkedMap = new HashMap<String,Boolean>();
-    public Set selected_namesSet  = new HashSet();
 
     public userListAdapter(Context context, ArrayList<String> dataItem) {
         super(context, R.layout.list_times, dataItem);
-        this.data = dataItem;
         this.context = context;
     }
 

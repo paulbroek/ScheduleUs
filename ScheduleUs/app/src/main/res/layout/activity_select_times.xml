@@ -27,6 +27,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text=""
+        android:textColor="@color/White"
+        android:textSize="20sp"
         android:id="@+id/selected_day_View"
         android:layout_below="@+id/mondayView"
         android:layout_alignParentLeft="true"
@@ -38,6 +40,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="9:00"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/White"
+        android:textSize="15sp"
         android:id="@+id/textView4"
         android:layout_alignTop="@+id/mondayView"
         android:layout_toRightOf="@+id/mondayView"
@@ -49,6 +53,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="24:00"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/White"
+        android:textSize="15sp"
         android:id="@+id/textView5"
         android:layout_above="@+id/selected_day_View"
         android:layout_toRightOf="@+id/mondayView"
@@ -77,18 +83,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show"
+            android:textColor="@color/White"
+            android:textSize="25sp"
+            android:padding="5sp"
+            android:layout_margin="5dp"
+            android:background="@color/DarkBlue"
+            android:textAllCaps="false"
             android:id="@+id/ShowTimesButton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reset"
+            android:textColor="@color/White"
+            android:textSize="25sp"
+            android:padding="5sp"
+            android:layout_margin="5dp"
+            android:background="@color/DarkBlue"
+            android:textAllCaps="false"
             android:id="@+id/ResetButton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Confirm"
+            android:textColor="@color/White"
+            android:textSize="25sp"
+            android:padding="5sp"
+            android:layout_margin="5dp"
+            android:background="@color/DarkBlue"
+            android:textAllCaps="false"
             android:id="@+id/ConfirmTimesButton" />
     </LinearLayout>
 

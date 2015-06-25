@@ -11,7 +11,7 @@
     <TextView android:text="Please select a day" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/White"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:id="@+id/days_textView" />
 
     <org.lucasr.twowayview.TwoWayView
@@ -39,6 +39,7 @@
         android:textSize="32sp"
         android:padding="16sp"
         android:background="@color/DarkBlue"
+        android:textAllCaps="false"
         android:id="@+id/select_timeButton"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true" />

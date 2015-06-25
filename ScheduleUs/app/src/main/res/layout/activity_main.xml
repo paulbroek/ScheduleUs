@@ -20,10 +20,11 @@
         android:id="@+id/NewEventButton"
         android:background="@color/DarkBlue"
         android:textColor="@color/White"
-        android:textSize="32sp"
-        android:padding="16sp"
+        android:textSize="35sp"
+        android:padding="12sp"
+        android:textAllCaps="false"
 
-        android:layout_below="@+id/MyEventsButton"
+        android:layout_below="@+id/outputView"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -32,11 +33,11 @@
         android:text="My events"
         android:id="@+id/MyEventsButton"
         android:textColor="@color/White"
-        android:textSize="32sp"
-        android:padding="16sp"
-        android:background="@color/DarkBlue"
-        android:layout_marginBottom="30dp"
-        android:layout_below="@+id/outputView"
+        android:textSize="35sp"
+        android:padding="12sp"
+        android:background="@color/blue"
+        android:textAllCaps="false"
+        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/NewEventButton"
         android:layout_alignStart="@+id/NewEventButton" />
 

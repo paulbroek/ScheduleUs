@@ -37,7 +37,6 @@ public class DrawingView extends View implements View.OnClickListener{
     private Path circlePath;
     private Paint mPaint;
     private Paint mLines;
-    private TextView up;
     private float pixels_per_hour;
     List <int[]> AvailableSlots;
 
@@ -95,8 +94,6 @@ public class DrawingView extends View implements View.OnClickListener{
 
         min_clocktime = 9;
         max_clocktime = 24;
-
-
     }
 
     public DrawingView(Context c, AttributeSet attrs, int defStyle) {
@@ -171,7 +168,6 @@ public class DrawingView extends View implements View.OnClickListener{
         mPath.lineTo(mX, mY);
         circlePath.reset();
         // commit the path to our offscreen
-        //mCanvas.drawPath(mPath,  mPaint);
 
         // kill this so we don't double draw
         mPath.reset();
@@ -214,12 +210,7 @@ public class DrawingView extends View implements View.OnClickListener{
             if (white_line)
                 lines++;
         }
-        /*int test = 0;
-        if (mBitmap.getWidth() > 3)
-            test = mBitmap.getWidth();
-        return test;*/
 
-        int test = mBitmap.getWidth();
         return (float) lines;
     }
 
@@ -246,7 +237,6 @@ public class DrawingView extends View implements View.OnClickListener{
 
     // Less than TIME_TOLERANCE will not be considered a time slot
     private static final int TIME_TOLERANCE = 5;
-    private static final int MINUTE_ENTITY = 15;
 
     // List with pairs of available times like (10,11)
     public List<int[]> getAvailabilityList() {
@@ -281,8 +271,6 @@ public class DrawingView extends View implements View.OnClickListener{
                         end_hour++;
                         end_quarter = 0;
                     }
-                    int begin_time = begin_hour * 100 + begin_quarter;
-                    int end_time = end_hour * 100 + end_quarter;
 
                     AvailableSlots.add(new int[]{begin_hour,begin_quarter,end_hour,end_quarter});
                 }

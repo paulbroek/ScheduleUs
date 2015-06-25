@@ -21,9 +21,7 @@ public class Application extends android.app.Application {
 
     public static SharedPreferences prefs;
     public static SharedPreferences.Editor editor;
-    public static List current_dateList;
 
-    private String current_user_name;
     private String current_event_name;
     private Set<String> personal_daySet;
     private Set<String> shared_daySet;
@@ -50,10 +48,6 @@ public class Application extends android.app.Application {
         this.personal_daySet = s;
     }
 
-    public void putSharedDaySet(Set<String> s) {
-        this.shared_daySet = s;
-    }
-
     public void putPersonalAvailabilityList(String day, ArrayList<int[]> l) {
         this.personal_daySet.add(day);
         this.personal_availabilityMap.put(day, l);
@@ -73,9 +67,6 @@ public class Application extends android.app.Application {
         this.shared_availabilityMap.put(day, l);
     }
 
-    public ArrayList<int[]> getSharedAvailabilityList(String day) {
-        return shared_availabilityMap.get(day);
-    }
     public void removeDay(String day) {
         this.personal_daySet.remove(day);
         this.personal_availabilityMap.remove(day);
@@ -85,16 +76,8 @@ public class Application extends android.app.Application {
         return this.personal_availabilityMap;
     }
 
-    public void setPersonalAvailabilityMap(Map<String, ArrayList<int[]>> m) {
-        this.personal_availabilityMap = m;
-    }
-
     public Map<String, ArrayList<int[]>> getSharedAvailabilityMap() {
         return this.shared_availabilityMap;
-    }
-
-    public void setSharedAvailabilityMap(Map<String, ArrayList<int[]>> m) {
-        this.shared_availabilityMap = m;
     }
 
     public void clearSharedAvailabilityMap() {
@@ -123,16 +106,7 @@ public class Application extends android.app.Application {
         this.current_event_name = i;
     }
 
-    public String getCurrentUserName(){
-        return this.current_user_name;
-    }
-
-    public void setCurrentUserName(String i){
-        this.current_user_name = i;
-    }
-
     public Application() {
-
     }
 
     @Override

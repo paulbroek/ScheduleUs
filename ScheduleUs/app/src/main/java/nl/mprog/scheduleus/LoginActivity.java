@@ -103,7 +103,6 @@ public class LoginActivity extends Activity{
                 } else {
                     // Start an intent for the login check activity and save current user name
                     final Application global = (Application)getApplication();
-                    global.setCurrentUserName(user.getUsername());
                     Intent intent = new Intent(LoginActivity.this, CheckLoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

@@ -41,7 +41,6 @@ public class SelectDaysActivity extends ActionBarActivity {
     private SharedPreferences.Editor editor;
 
     private Set<String> dateSet;
-    private String eventName;
     private String selected_day;
 
     ProgressDialog dialog;
@@ -52,7 +51,6 @@ public class SelectDaysActivity extends ActionBarActivity {
         // Deleting a day, so adapter, global and preferences need an update
         @Override
         public void onButtonClickListener(int position, String value) {
-
             global.removeDay(dayList.get(position));
             dayList.remove(position);
             dateSet = new HashSet(dayList);
@@ -97,7 +95,6 @@ public class SelectDaysActivity extends ActionBarActivity {
         // Clicked a day, go to SelectTimesActivity for this day
         @Override
         public void onViewClickListener(int position, String value) {
-
             selected_day = value;
             editor.putString("selected_day", selected_day).apply();
             final Intent getSelectTimesScreen = new Intent(SelectDaysActivity.this, SelectTimesActivity.class);
@@ -117,9 +114,7 @@ public class SelectDaysActivity extends ActionBarActivity {
         dialog = new ProgressDialog(SelectDaysActivity.this);
         global = (Application) getApplication();
 
-        final Intent getSelectTimesScreen = new Intent(this, SelectTimesActivity.class);
         final Intent getInviteScreen = new Intent(this, InviteActivity.class);
-        final Intent getMyEventsScreen = new Intent(this, MyEventsActivity.class);
 
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         editor = prefs.edit();
@@ -145,12 +140,7 @@ public class SelectDaysActivity extends ActionBarActivity {
 
             Toast.makeText(SelectDaysActivity.this, global.getSharedDaySet().toString(),
                     Toast.LENGTH_LONG).show();
-            int[] slot1 = {9, 0, 10, 0};
-            int[] slot2 = {12, 15, 15, 30};
-            ArrayList<int[]> test_list = new ArrayList<>();
-            test_list.add(slot1);
-            test_list.add(slot2);
-            //global.putSharedAvailabilityList("hoi", test_list);
+
             select_timeButton.setText("Merge data with cloud");
 
             select_timeButton.setOnClickListener(new View.OnClickListener() {
@@ -167,8 +157,6 @@ public class SelectDaysActivity extends ActionBarActivity {
                             JSONArray temp = new JSONArray(global.getPersonalAvailabilityList(day));
 
                             ParseObject AvailItem = new ParseObject("AvailItems");
-                            //ParseObject SharedTime = new ParseObject("SharedTimes");
-
 
                             AvailItem.put("User", ParseUser.getCurrentUser());
                             AvailItem.put("parent_event", ParseObject.createWithoutData("Events", calling_event_id));
@@ -192,7 +180,6 @@ public class SelectDaysActivity extends ActionBarActivity {
         }
         // Intent directly from MainActivity, an initiator is creating a new event
         else {
-            eventName = prefs.getString("event_name", null);
             dateSet = new HashSet<>(prefs.getStringSet("event_dates", null));
 
             // Make sure event_id is null
@@ -213,38 +200,6 @@ public class SelectDaysActivity extends ActionBarActivity {
                 }
             });
         }
-
-
-    }
-
-    // Gives shared available times, taken from personal user times
-    public ArrayList<int[]> CompareTimes(List<ArrayList<int[]>> L) {
-
-        int n_hours = 15;
-        int start = 9;
-        int end = 24;
-        ArrayList<int[]> result = new ArrayList<int[]>();
-        for (int hour = start; hour < n_hours; hour++) {
-
-            Boolean time_is_in_all_lists = true;
-
-            for (int person = 0; person < L.size(); person++) {
-
-                Boolean time_is_in_his_list = false;
-
-                for (int y = 0; y < L.get(person).size(); y++) {
-                    if (L.get(person).get(y)[0] >= hour & L.get(person).get(y)[3] <= hour + 1)
-                        time_is_in_his_list = true;
-                }
-                if (!time_is_in_his_list)
-                    time_is_in_all_lists = false;
-            }
-
-            int[] temp = {hour, 0, hour + 1, 0};
-            if (time_is_in_all_lists)
-                result.add(temp);
-        }
-        return result;
     }
 
     @Override

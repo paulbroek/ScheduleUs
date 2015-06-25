@@ -38,7 +38,6 @@ import java.util.Set;
 
 public class NewEventActivity extends ActionBarActivity {
 
-    private TextView textView;
     private Button SelectDateButton, AddDateButton;
     private AlertDialog.Builder dialogBuilder;
     private DatePicker datePicker;
@@ -57,7 +56,6 @@ public class NewEventActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
 
-        //textView = (TextView) findViewById(R.id.textView);
         AddDateButton = (Button) findViewById(R.id.AddDateButton);
         SelectDateButton = (Button) findViewById(R.id.SelectDateButton);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
@@ -107,8 +105,6 @@ public class NewEventActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (!dateList.isEmpty()) {
-                    // Unpin all items with the "new event" label, so we are certain to have only 1
-                    ParseObject.unpinAllInBackground();
 
                     // Saves (empty) days in prefs and global
                     Set dateSet = new HashSet(dateList);
@@ -124,8 +120,6 @@ public class NewEventActivity extends ActionBarActivity {
                     Events.put("eventName", eventName);
 
                     Events.pinInBackground("new event");
-                    //Events.saveInBackground();
-
 
                     startActivity(getSelectDaysScreen);
                 }
@@ -156,19 +150,6 @@ public class NewEventActivity extends ActionBarActivity {
     // Convert digital number to String with month name
     public String textMonth(int month) {
         return new DateFormatSymbols().getMonths()[month];
-    }
-
-    // Convert String to Date
-    public Date makeDate(String s) {
-        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
-        String input = s.length() == 0 ? s : null;
-        Date t;
-        try {
-            t = ft.parse(input);
-            return t;
-        } catch (ParseException e) {
-            return null;
-        }
     }
 
     private void eventNameDialog() {

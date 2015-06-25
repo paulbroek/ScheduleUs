@@ -30,16 +30,13 @@ import java.util.Set;
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private TextView outputView;
     private Button NewEventButton, MyEventsButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        outputView = (TextView) findViewById(R.id.outputView);
         NewEventButton = (Button) findViewById(R.id.NewEventButton);
         MyEventsButton = (Button) findViewById(R.id.MyEventsButton);
         final Intent getNewEventScreen = new Intent(this, NewEventActivity.class);
