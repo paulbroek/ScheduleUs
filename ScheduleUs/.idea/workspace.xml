@@ -46,23 +46,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d990d6f6-d35c-4c70-bff0-0a0c66855072" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingShowView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/DrawingView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MyEventsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/MyEventsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/NewEventActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/NewEventActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectDaysActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/SelectTimesActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_invite.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_invite.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_select_days.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_select_days.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_select_times.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_select_times.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/dayListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/shared_dayListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/shared_dayListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/timeListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/timeListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/userListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/nl/mprog/scheduleus/userListAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="43b605f2-418d-4dea-a82a-9d82a5d9ad5e" name="Failed commit: Default" comment="CheckLoginActivity" />
@@ -3512,42 +3495,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ScheduleUs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ScheduleUs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ScheduleUs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ScheduleUs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="AndroidView">
@@ -4028,7 +3975,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435226957805</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Alle commented code verwijderd">
+      <created>1435246949541</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1435246949541</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -4104,7 +4057,8 @@
     <MESSAGE value="folder cloud heeft het javascript bestand main.js dat runt bij elke server request" />
     <MESSAGE value="Commentaar verwijderen, code opschonen, menu's volledig gemaakt" />
     <MESSAGE value="Eén standaard layout voor alle activities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eén standaard layout voor alle activities" />
+    <MESSAGE value="Alle commented code verwijderd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alle commented code verwijderd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
