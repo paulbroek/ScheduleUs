@@ -59,6 +59,6 @@ Vergelijkbare applicaties
 
 Overzicht van activities
 ---------------
-![Eerste schets](docs/sketch_newevent.png =100x100)
+![Eerste schets](docs/sketch_newevent.png =200x)
 ![Eerste schets](docs/sketch2.png)
 ![Eerste schets](docs/sketch_events.png)
