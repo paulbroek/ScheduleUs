@@ -47,7 +47,7 @@ public class NewEventActivity extends ActionBarActivity {
     private List display_dateList;
     private String eventName = "";
     JSONArray dates;
-
+    Application global;
 
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -63,6 +63,7 @@ public class NewEventActivity extends ActionBarActivity {
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         datelistView = (ListView) findViewById(R.id.datelistView);
 
+        global = (Application) getApplication();
         final Intent getSelectDaysScreen = new Intent(this, SelectDaysActivity.class);
 
         dateList = new ArrayList();
@@ -96,7 +97,7 @@ public class NewEventActivity extends ActionBarActivity {
                 ArrayList outputList = new ArrayList<String>(display_dateList);
 
                 Collections.reverse(outputList);
-                ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, outputList);
+                ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_white_text, R.id.list_content, outputList);
                 datelistView.setAdapter(adapter_dates);
             }
         });
@@ -146,7 +147,7 @@ public class NewEventActivity extends ActionBarActivity {
                 ArrayList outputList = new ArrayList<String>(display_dateList);
 
                 Collections.reverse(outputList);
-                ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, outputList);
+                ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_white_text, R.id.list_content, outputList);
                 datelistView.setAdapter(adapter_dates);
             }
         });
@@ -181,18 +182,26 @@ public class NewEventActivity extends ActionBarActivity {
         dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                eventName = eventNameInput.getText().toString();
-                final Application global = (Application)getApplication();
-                global.setCurrentEventName(eventName);
+                if (eventNameInput.getText().toString().length() > 0) {
 
+                    eventName = eventNameInput.getText().toString();
+                    Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    eventName = "unnamed";
+                    Toast.makeText(getApplicationContext(), "Please enter an event name", Toast.LENGTH_SHORT).show();
+                }
+
+                global.setCurrentEventName(eventName);
                 Display();
-                Toast.makeText(getApplicationContext(), "Event has been named.", Toast.LENGTH_SHORT).show();
+
             }
         });
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 eventName = "unnamed";
+                global.setCurrentEventName(eventName);
                 Display();
                 Toast.makeText(getApplicationContext(), "Event has not been named.", Toast.LENGTH_SHORT).show();
             }
@@ -204,7 +213,7 @@ public class NewEventActivity extends ActionBarActivity {
     }
 
     public void Display() {
-        //textView.setText("Please pick some dates for " + eventName);
+        Toast.makeText(getApplicationContext(), "Please pick some dates for " + eventName, Toast.LENGTH_SHORT).show();
     }
 
     @Override

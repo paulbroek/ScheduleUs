@@ -34,10 +34,7 @@ import java.util.Set;
 public class InviteActivity extends Activity implements customCheckBoxListener {
     private Button inviteButton;
     private ListView userlistView;
-    //private SearchView searchView;
     private userListAdapter adapter;
-    private userListAdapter adapter2;
-
 
     private ArrayList<String> userList;
     private Set<String> participantsSet;
@@ -76,7 +73,6 @@ public class InviteActivity extends Activity implements customCheckBoxListener {
                         }
                         adapter = new userListAdapter(getApplicationContext(), userList);
                         adapter.setCustomCheckBoxListener(InviteActivity.this);
-                        adapter2 = new userListAdapter(getApplicationContext(), userList);
                         userlistView.setAdapter(adapter);
                     }
 

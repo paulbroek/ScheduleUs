@@ -65,18 +65,15 @@ public class MyEventsActivity extends ActionBarActivity {
 
         prefs = getSharedPreferences("nl.mprog.ScheduleUs", Context.MODE_PRIVATE);
         editor = prefs.edit();
-        Intent activityThatCalled = getIntent();
         getSelectDaysScreen = new Intent(getApplicationContext(), SelectDaysActivity.class);
         global = (Application)getApplication();
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
         query.whereEqualTo("participants", ParseUser.getCurrentUser().getUsername());
-        //query.fromLocalDatastore();
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> eventList,
                              ParseException e) {
                 if (e == null && eventList.size() > 0) {
-                    myEventsView.setText("" + eventList.get(0).getObjectId());
                     eventNameList = new ArrayList<String>();
                     EventsIdList = new ArrayList<>();
 
@@ -87,7 +84,7 @@ public class MyEventsActivity extends ActionBarActivity {
 
                     global.setMyEventsMap(EventsIdList,eventNameList);
 
-                    ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_black_text, R.id.list_content, eventNameList);
+                    ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_white_text, R.id.list_content, eventNameList);
                     myEvents_ListView.setAdapter(adapter_events);
                     Log.d("score", "Retrieved " + eventList.size());
                 } else {
@@ -104,19 +101,11 @@ public class MyEventsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // Hier of pas in SelectDays ophalen van dagenlijst?
-                //editor.putStringSet("shared_event_dates", ).apply();
                 // Set up a progress dialog
                 String event_id = EventsIdList.get(position).toString();
                 editor.putString("event_id", event_id).apply();
                 getSelectDaysScreen.putExtra("calling_event_id", event_id);
                 getEventData(event_id);
-
-
-
-
-                //if (!dialog.isShowing())
-
             }
         });
     }
@@ -133,17 +122,7 @@ public class MyEventsActivity extends ActionBarActivity {
         final ParseObject CurrentEvent = new ParseObject("Events");
         ParseQuery<ParseObject> query_event = ParseQuery.getQuery("Events");
         query_event.whereEqualTo("objectId", id);
-        /*query_event.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (object == null) {
-                    Log.d("event", "query_event failed");
-                } else {
-                    Log.d("event", "Retrieved event");
-                    CurrentEvent = object;
-                }
-            }
-        });
-*/
+
         // Now we can get all time slots for days that match the previous query and selected event id
         ParseQuery<ParseObject> query_timeslots = ParseQuery.getQuery("SharedTimes");
         query_timeslots.whereMatchesKeyInQuery("parent_event", "objectId", query_event);
@@ -165,9 +144,6 @@ public class MyEventsActivity extends ActionBarActivity {
                         if (jsonArrayTimes != null) {
                             try {
 
-                                /*Toast.makeText(MyEventsActivity.this, jsonArrayTimes.toString(),
-                                        Toast.LENGTH_LONG).show();*/
-
                                 JsonParser jsonParser = new JsonParser();
                                 JsonArray jsonArray = (JsonArray) jsonParser.parse(jsonArrayTimes.toString());
                                 Gson googleJson = new Gson();
@@ -180,7 +156,6 @@ public class MyEventsActivity extends ActionBarActivity {
                                         intList.add(dList.get(j).intValue());
                                     }
                                     int[] intArray = Ints.toArray(intList);
-                                    //int[] intArray = {9,0,10,0};
                                     timesList.add(intArray);
                                 }
 
@@ -192,9 +167,6 @@ public class MyEventsActivity extends ActionBarActivity {
 
                         // For this day we can put the list of SharedTimes
                         global.putSharedAvailabilityList(day, timesList);
-                        //dayList.add(day);
-                        /*Toast.makeText(MyEventsActivity.this, "" + day,
-                                Toast.LENGTH_SHORT).show();*/
                     }
 
                     // All data retrieved, close dialog, write log and go to SelectDays
@@ -202,8 +174,6 @@ public class MyEventsActivity extends ActionBarActivity {
                     // Clear the current personal map
                     global.clearPersonalAvailabilityMap();
                     Log.d("times", "Retrieved times: " + timesObjectList.size());
-                    //Set sharedDaySet = new HashSet(dayList);
-                    //global.putSharedDaySet(sharedDaySet);
                     startActivity(getSelectDaysScreen);
 
 

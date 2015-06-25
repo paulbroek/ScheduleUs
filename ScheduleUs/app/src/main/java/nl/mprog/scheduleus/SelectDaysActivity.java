@@ -177,9 +177,7 @@ public class SelectDaysActivity extends ActionBarActivity {
                             AvailItem.put("SharedTime", ParseObject.createWithoutData("SharedTimes",global.getSharedTimesId(day)));
 
                             AvailItem.saveInBackground();
-
-
-                            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         } catch ( Exception e) {
                             Toast.makeText(SelectDaysActivity.this, "json excep, " + day,
