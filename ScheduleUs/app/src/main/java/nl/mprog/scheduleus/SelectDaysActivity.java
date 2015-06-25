@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +31,7 @@ import java.util.Set;
  * pauliusbroek@hotmail.com
  * Activities that shows an overview of selected days and their filled in times.
  */
-public class SelectDaysActivity extends Activity {
+public class SelectDaysActivity extends ActionBarActivity {
 
     private TextView days_textView;
     private Button select_timeButton;

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  * pauliusbroek@hotmail.com
  * Activities that offers user friendly time input by swiping over screen, can parse swipes to time
  */
-public class SelectTimesActivity extends Activity implements customButtonListener{
+public class SelectTimesActivity extends ActionBarActivity implements customButtonListener{
     private DrawingView dv;
     private TextView outputView;
     private TextView availabilityView;

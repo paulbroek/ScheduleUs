@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +38,7 @@ import java.util.Set;
  * pauliusbroek@hotmail.com
  * Activities that offers event name input and date input
  */
-public class NewEventActivity extends Activity {
+public class NewEventActivity extends ActionBarActivity {
 
     private Button SelectDateButton, AddDateButton;
     private AlertDialog.Builder dialogBuilder;

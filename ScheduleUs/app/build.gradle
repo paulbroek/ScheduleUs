@@ -1,12 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-    /*dexOptions {
-        preDexLibraries = false
-    }*/
 
     defaultConfig {
         applicationId "nl.mprog.scheduleus"
@@ -39,6 +35,7 @@ dependencies {
 dependencies {
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
 }
+
 dependencies {
     compile 'com.google.android.gms:play-services:4.2.42'
     compile 'com.android.support:appcompat-v7:22.+'

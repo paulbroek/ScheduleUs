@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +38,7 @@ import java.util.List;
  * pauliusbroek@hotmail.com
  * Activities that lists user involved events, a click will create event to SelectDaysActivity
  */
-public class MyEventsActivity extends Activity {
+public class MyEventsActivity extends ActionBarActivity {
 
     private TextView myEventsView;
     private ListView myEvents_ListView;
