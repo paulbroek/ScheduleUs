@@ -13,6 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Created by Paul Broek on 20-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Adapter for accurate displaying DrawingShowView, TextView and delete Button in a TwoWayView list
+ */
 public class dayListAdapter extends ArrayAdapter<String> {
     ButtonListener customListener;
 

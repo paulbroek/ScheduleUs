@@ -21,7 +21,6 @@ import java.util.List;
  * pauliusbroek@hotmail.com
  * DrawingShowView is a showing a DrawingView, but user cannot swipe but only click it
  */
-
 public class DrawingShowView extends View {
 
     public int width;

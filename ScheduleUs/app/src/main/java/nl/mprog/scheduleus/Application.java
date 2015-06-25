@@ -4,17 +4,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.parse.Parse;
-import com.parse.ParseObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Paul on 9-6-2015.
+ * Created by Paul Broek on 9-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
  * Global application vars and connection with Parse.com are defined here
  */
 public class Application extends android.app.Application {

@@ -2,10 +2,10 @@ package nl.mprog.scheduleus;
 
 import nl.mprog.scheduleus.timeListAdapter.customButtonListener;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,24 +15,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Paul Broek on 1-6-2015.
  * 10279741
  * pauliusbroek@hotmail.com
+ * Activities that offers user friendly time input by swiping over screen, can parse swipes to time
  */
-
-public class SelectTimesActivity extends ActionBarActivity implements customButtonListener{
+public class SelectTimesActivity extends Activity implements customButtonListener{
     private DrawingView dv;
     private TextView outputView;
     private TextView availabilityView;

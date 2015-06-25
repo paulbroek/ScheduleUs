@@ -1,16 +1,10 @@
 package nl.mprog.scheduleus;
- /* taken from parse example app "anywall"
-  * https://github.com/ParsePlatform/AnyWall/tree/master/AnyWall-android
-  */
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -22,7 +16,13 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-
+/**
+ * Created by Paul Broek on 20-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Standard sign-up activity, taken from parse example app "anywall"
+ * https://github.com/ParsePlatform/AnyWall/tree/master/AnyWall-android
+ */
 public class SignUpActivity extends Activity {
 
     private EditText usernameEditText;
@@ -35,7 +35,7 @@ public class SignUpActivity extends Activity {
 
         setContentView(R.layout.activity_sign_up);
 
-        // Set up the signup form.
+        // Set up the sign-up form.
         usernameEditText = (EditText) findViewById(R.id.username_edit_text);
 
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);

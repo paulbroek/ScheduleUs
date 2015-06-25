@@ -1,23 +1,22 @@
 package nl.mprog.scheduleus;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+/**
+ * Created by Paul Broek on 20-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Adapter for displaying a list of ScheduleUs users with a checkbox next to every user name
+ */
 public class userListAdapter extends ArrayAdapter<String> {
     customCheckBoxListener customListener;
 

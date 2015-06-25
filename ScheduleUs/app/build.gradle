@@ -28,26 +28,16 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.google.guava:guava-jdk5:17.0'
-    //compile 'com.google.android.gms:play-services:7.5.+'
-    /*compile(group: 'com.google.api-client', name: 'google-api-client', version: '1.19.0') {
-        exclude(group: 'com.google.guava', module: 'guava-jdk5')*/
     compile 'com.google.code.gson:gson:2.3'
 }
 
 dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
-
 }
-
-/*repositories {
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-}*/
 
 dependencies {
     compile 'org.lucasr.twowayview:twowayview:0.1.4'
-    /*compile 'org.lucasr.twowayview:core:1.0.0-SNAPSHOT@aar'
-    compile 'org.lucasr.twowayview:layouts:1.0.0-SNAPSHOT@aar'*/
 }
 dependencies {
     compile 'com.google.android.gms:play-services:4.2.42'
@@ -55,8 +45,3 @@ dependencies {
 }
 
 
-/*dependencies {
-    //compile group: 'com.google.guava', name: 'guava', version: '18.0'
-    //compile 'com.google.guava:guava:16.0.1'
-    //compile files('libs/guava-18.0.jar')
-}*/

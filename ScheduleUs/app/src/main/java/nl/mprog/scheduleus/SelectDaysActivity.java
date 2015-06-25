@@ -1,11 +1,11 @@
 package nl.mprog.scheduleus;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.Parse;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.json.JSONArray;
@@ -24,10 +22,15 @@ import org.lucasr.twowayview.TwoWayView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-public class SelectDaysActivity extends ActionBarActivity {
+/**
+ * Created by Paul Broek on 1-6-2015.
+ * 10279741
+ * pauliusbroek@hotmail.com
+ * Activities that shows an overview of selected days and their filled in times.
+ */
+public class SelectDaysActivity extends Activity {
 
     private TextView days_textView;
     private Button select_timeButton;
@@ -211,9 +214,6 @@ public class SelectDaysActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch (id) {

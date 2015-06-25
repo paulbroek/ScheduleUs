@@ -51,7 +51,7 @@
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.mprog.scheduleus.MainActivity" />
+                android:value="nl.mprog.scheduleus.SelectDaysActivity" />
         </activity>
         <activity
             android:name=".SelectDaysActivity"

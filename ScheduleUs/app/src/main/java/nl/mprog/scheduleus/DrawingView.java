@@ -21,7 +21,6 @@ import java.util.List;
  * pauliusbroek@hotmail.com
  * DrawingViews are Views where user can draw a line for user time input
  */
-
 public class DrawingView extends View implements View.OnClickListener{
 
     public int width;

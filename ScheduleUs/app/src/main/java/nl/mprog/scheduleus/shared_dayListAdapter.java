@@ -12,8 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+/**
+ * Created by Paul Broek on 20-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Adapter for accurate display of  DrawingShowView and TextView in a TwoWayView list
+ */
 public class shared_dayListAdapter extends ArrayAdapter<String> {
     ButtonListener customListener;
 

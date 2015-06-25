@@ -1,11 +1,11 @@
 package nl.mprog.scheduleus;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseObject;
@@ -26,17 +25,19 @@ import org.json.JSONArray;
 
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
-public class NewEventActivity extends ActionBarActivity {
+/**
+ * Created by Paul Broek on 1-6-2015.
+ * 10279741
+ * pauliusbroek@hotmail.com
+ * Activities that offers event name input and date input
+ */
+public class NewEventActivity extends Activity {
 
     private Button SelectDateButton, AddDateButton;
     private AlertDialog.Builder dialogBuilder;

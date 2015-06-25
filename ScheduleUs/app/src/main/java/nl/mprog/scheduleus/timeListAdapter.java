@@ -11,6 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Created by Paul Broek on 12-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Adapter for accurate display of list of timeslots in SelectTimesActivity
+ */
 public class timeListAdapter extends ArrayAdapter<String> {
     customButtonListener customListener;
 

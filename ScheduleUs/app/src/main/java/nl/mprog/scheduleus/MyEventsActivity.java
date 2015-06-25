@@ -1,10 +1,10 @@
 package nl.mprog.scheduleus;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -30,14 +29,15 @@ import com.parse.ParseUser;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class MyEventsActivity extends ActionBarActivity {
+/**
+ * Created by Paul Broek on 1-6-2015.
+ * 10279741
+ * pauliusbroek@hotmail.com
+ * Activities that lists user involved events, a click will create event to SelectDaysActivity
+ */
+public class MyEventsActivity extends Activity {
 
     private TextView myEventsView;
     private ListView myEvents_ListView;
@@ -174,11 +174,9 @@ public class MyEventsActivity extends ActionBarActivity {
                     Log.d("times", "Retrieved times: " + timesObjectList.size());
                     startActivity(getSelectDaysScreen);
 
-
-                } else {
-                    // Data retrieval error
-                    Log.d("times", "Error, times: " + e.getMessage());
-                }
+                // Data retrieval error
+                } else
+                    Log.d("times", "Error " + e.getMessage());
             }
         });
     }
@@ -192,9 +190,6 @@ public class MyEventsActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch (id) {

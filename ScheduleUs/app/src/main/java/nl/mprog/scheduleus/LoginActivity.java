@@ -3,7 +3,6 @@ package nl.mprog.scheduleus;
 import android.app.ProgressDialog;
 import android.widget.EditText;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,16 +17,17 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-
 /**
- * A login screen that offers login via email/password
+ * Created by Paul Broek on 18-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Activity that offers login via email/password
  */
 public class LoginActivity extends Activity{
 
     // UI references.
     private EditText usernameEditText;
     private EditText passwordEditText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +99,7 @@ public class LoginActivity extends Activity{
                     // Show the error message
                     Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 } else {
-                    // Start an intent for the login check activity and save current user name
-                    final Application global = (Application)getApplication();
+                    // Start an intent for the login check
                     Intent intent = new Intent(LoginActivity.this, CheckLoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

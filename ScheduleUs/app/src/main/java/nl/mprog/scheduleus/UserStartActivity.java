@@ -3,14 +3,16 @@ package nl.mprog.scheduleus;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-
+/**
+ * Created by Paul Broek on 17-6-2015.
+ * pauliusbroek@hotmail.com
+ * 10279741
+ * Home screen for logged out state, shows Log In and Sign In buttons and ScheduleUs logo.
+ */
 public class UserStartActivity extends Activity {
 
     private TextView titleView;

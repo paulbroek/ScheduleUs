@@ -26,8 +26,8 @@ import java.util.Set;
  * Created by Paul Broek on 1-6-2015.
  * 10279741
  * pauliusbroek@hotmail.com
+ * Activities that shows New Event and My Events buttons
  */
-
 public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Button NewEventButton, MyEventsButton;
@@ -45,7 +45,6 @@ public class MainActivity extends Activity {
         NewEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(getNewEventScreen);
             }
         });
@@ -53,7 +52,6 @@ public class MainActivity extends Activity {
         MyEventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(getMyEventsScreen);
             }
         });
