@@ -28,7 +28,7 @@ import java.util.Set;
  * pauliusbroek@hotmail.com
  */
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Button NewEventButton, MyEventsButton;
 
