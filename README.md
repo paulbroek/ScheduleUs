@@ -37,7 +37,7 @@ Vergelijkbare applicaties
 * needtomeet.com lijkt het meest op mijn concept plan. Ze richten zich op grote groepen mensen, die allen per dag blokken selecteren waarin ze beschikbaar zijn.
 * 
 
-![](docs/new_event (Small).png)
+![](docs/new_event (Mobile).png)
 
 Eerste schetsen
 ---------------
