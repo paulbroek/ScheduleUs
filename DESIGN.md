@@ -59,6 +59,7 @@ Vergelijkbare applicaties
 
 Overzicht van activities
 ---------------
+<img src="docs/sketch_newevent.png" alt="Drawing" style="width: 200px;"/>
 ![Eerste schets](docs/sketch_newevent.png)
 ![Eerste schets](docs/sketch2.png)
 ![Eerste schets](docs/sketch_events.png)
