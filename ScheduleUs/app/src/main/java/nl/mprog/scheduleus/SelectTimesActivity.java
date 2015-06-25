@@ -69,6 +69,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
 
         // We either come from a participants or an initiators perspective
         current_event_id = prefs.getString("event_id", null);
+
         // Participant perspective
         if (current_event_id != null) {
             // Participant wants to enter his times
@@ -78,7 +79,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                 @Override
                 public void onClick(View v) {
 
-
                     // Update Availability Map, merge with database and go to SelectDaysActivity
                     global.putPersonalAvailabilityList(selected_day, new ArrayList<>(dv.getAvailabilityList()));
                     getSelectDaysScreen.putExtra("calling_event_id", current_event_id);
@@ -86,6 +86,7 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                 }
             });
         }
+
         // Initiator perspective
         else {
             ConfirmTimesButton.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +107,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
         ShowTimesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 outputView.setText("" + dv.getTimeSize());
                 timesList.clear();
 
@@ -150,9 +150,6 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch (id) {

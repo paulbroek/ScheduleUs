@@ -68,6 +68,7 @@ public class MyEventsActivity extends ActionBarActivity {
         getSelectDaysScreen = new Intent(getApplicationContext(), SelectDaysActivity.class);
         global = (Application)getApplication();
 
+        // Fetch all events related to the current user from Parse
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
         query.whereEqualTo("participants", ParseUser.getCurrentUser().getUsername());
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -77,13 +78,15 @@ public class MyEventsActivity extends ActionBarActivity {
                     eventNameList = new ArrayList<String>();
                     EventsIdList = new ArrayList<>();
 
+                    // Save the name and id of all event objects
                     for (int i = 0; i < eventList.size(); i++) {
-                        eventNameList.add("" + eventList.get(i).getString("event_name"));
+                        eventNameList.add(eventList.get(i).getString("event_name"));
                         EventsIdList.add(eventList.get(i).getObjectId());
                     }
 
                     global.setMyEventsMap(EventsIdList,eventNameList);
 
+                    // Set the adapter to display all events
                     ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_white_text, R.id.list_content, eventNameList);
                     myEvents_ListView.setAdapter(adapter_events);
                     Log.d("score", "Retrieved " + eventList.size());

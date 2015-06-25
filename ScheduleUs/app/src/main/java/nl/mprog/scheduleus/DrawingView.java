@@ -118,6 +118,7 @@ public class DrawingView extends View implements View.OnClickListener{
         width = w;
         height = h;
 
+        // Draw small lines for every hour in the View
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
             mCanvas.drawLine(w,i*h/n_lines,w-w/4,i*h/n_lines,mLines);
@@ -166,9 +167,8 @@ public class DrawingView extends View implements View.OnClickListener{
     private void touch_up() {
         mPath.lineTo(mX, mY);
         circlePath.reset();
-        // commit the path to our offscreen
 
-        // kill this so we don't double draw
+        // kill so we don't double draw
         mPath.reset();
     }
 
@@ -276,7 +276,6 @@ public class DrawingView extends View implements View.OnClickListener{
                 j = 0;
             }
         }
-
         return AvailableSlots;
     }
 
