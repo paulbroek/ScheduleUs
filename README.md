@@ -18,20 +18,20 @@ Features
 
 Data
 -------------
-Iedere gebruiker die is aangesloten bij een event levert zijn eigen 'data'. Een ArrayList<int[]> met 7 time items voor iedere gebruiker levert alle benodigde informatie om bijvoorbeeld een week weer te geven. Data wordt in Maps en ArrayLists opgeslagen. Daarnaast is er een vertaalslag naar de Parse database, waar alles in JSON objecten is. 
+Iedere gebruiker die is aangesloten bij een event levert zijn eigen 'data'. Een ArrayList<int[]> met 7 time items voor iedere gebruiker levert alle benodigde informatie om bijvoorbeeld een week weer te geven. Data wordt in Maps en ArrayLists opgeslagen. Daarnaast is er een vertaalslag naar de Parse database, waar alles in JSON objecten is.  
 
 Onderdelen
-------------
+-----------------
 * Openingsscherm met de mogelijkheid om een nieuw event aan te maken of eerdere events te wijzigen.
 * *New event* scherm waar de *initiator* een titel invoert en dagen selecteert.
 * Een *Select Days* scherm waar de gebruiker eerst alle mogelijke dagen ziet met datum. De *initiator* zal dit scherm als eerste zien en ziet daarom bovendien de mogelijkheid om globaal aan te geven wanneer deze afspraak plaats zal hebben (in dagen via een TimePicker). Daarna krijgt hij een blanco overzicht te zien van deze weekdagen. Als hij vervolgens op een van de dagen klikt kan hij finetunen op welke momenten hij op die dag kan door middel van swipes.
 * Een overzichts scherm *My Events* met alle events waar de gebruiker aan deelneemt.
 
 Bibliotheken en acknowledgements
-
-* Guava library v17.0
+-------------------------------------
+* Guava library v17.0, used under Apache License 2.0
 * Parse.com library en database utilities, code van example app AnyWall voor het registreren en inloggen van gebruikers https://github.com/ParsePlatform/AnyWall/tree/master/AnyWall-android
-* Google GSON library v2.3
+* Google GSON library v2.3, used under Apache License 2.0
 * **Lucasr TwoWayView**, voor het gebruik van een horizontale ListView. Copyright Lucas Rocha, 2013. 
 * Font **Unique.ttf**, Open Font License, gemaakt door designer Anna Pocius, http://openfontlibrary.org/en/font/unique
 
@@ -61,6 +61,22 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
+
+Apache license
+----------------
+Copyright [2015] [Paul Broek]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 Vergelijkbare applicaties
 -------------
