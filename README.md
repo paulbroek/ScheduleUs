@@ -56,7 +56,10 @@ Vergelijkbare applicaties
 * Doodle, werkt met vaste blokken en mensen uitnodigen per email. 
 * Calendly.com, synchroniseert met Google Calendar, zodat ook nieuwe gezamenlijke afspraken meteen worden "opgeschreven" in ieders agenda. Werkt handig met repeterende of periodieke afspraken. 
 * needtomeet.com lijkt het meest op mijn concept plan. Ze richten zich op grote groepen mensen, die allen per dag blokken selecteren waarin ze beschikbaar zijn.
-* 
+
+Screenshots
+----------------------------
+
 ![](docs/home (Mobile).png)
 ![](docs/log_in (Mobile).png)
 ![](docs/sign_up (Mobile).png)
