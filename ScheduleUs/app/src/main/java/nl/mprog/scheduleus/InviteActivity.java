@@ -174,18 +174,6 @@ public class InviteActivity extends ActionBarActivity implements customCheckBoxL
         editor = prefs.edit();
         participantsSet = prefs.getStringSet("participants_set", null);
 
-        if (participantsSet != null)
-            if (is_Checked) {
-                Toast.makeText(InviteActivity.this, "checked " + value,
-                        Toast.LENGTH_SHORT).show();
-                participantsSet.add(value);
-            }
-            else {
-                Toast.makeText(InviteActivity.this, "unchecked " + value,
-                        Toast.LENGTH_SHORT).show();
-                participantsSet.remove(value);
-            }
-
         // The initiator is also a participant, add him as well.
         participantsSet.add(ParseUser.getCurrentUser().getUsername());
         editor.putStringSet("participants_set", participantsSet).apply();
