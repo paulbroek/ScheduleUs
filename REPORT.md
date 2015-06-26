@@ -51,6 +51,7 @@ Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangs
 * **Google GSON library v2.3**, voor makkelijke conversie van **JSON object** (van Parse) naar  **List<List>** (Java)
 * **Lucasr TwoWayView**, voor het gebruik van een horizontale ListView, die niet beschikbaar is als CustomView.
 * Assets folder bevat **Unique.ttf**, de lettertype van ScheduleUs in het openingsscherm. 
+* values folder bevat: Strings.xml voor namen van knoppen en standaardberichten, styles.xml voor app theme en horizontale oriëntatie van de TwoWayView, colors.xml voor veelgebruikte kleuren en attrs.xml om mijn custom View DrawingView al resource the definiëren. 
 
 
 ### Problemen
