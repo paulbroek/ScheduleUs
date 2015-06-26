@@ -26,10 +26,10 @@ Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangs
 * **CheckLoginActivity**, schijn activity dat controleert of er een gebruiker is ingelogd. Verwijst vervolgens naar MainActivity of UserStartActivity. Heeft geen layout xml file.
 * **UserStartActivity**, laat gebruiker inloggen of een account creëren. 
 * **SignUpActivity**, registratie activity waar gebruiker een naam en wachtwoord opgeeft.
-* **LoginActivity**, maakt verbinding met Parse om gebruiker in te loggen, als er geen errors zijn volgt MainActivity
+* **LoginActivity**, maakt verbinding met Parse om gebruiker in te loggen, als er geen errors zijn volgt MainActivity.
 * **MainActivity**, geeft gebruiker mogelijkheid nieuw event te maken of zijn events te bekijken.
-* **NewEventActivity**, hier geeft de gebruiker een naam voor het event op. Daarnaast kan hij data prikken voor zijn event. Als hij tevreden is over deze lijst met data kan hij naar SelectDaysActivity
-* **SelectDaysActivity**, dit is een overzichts activity dat de zojuist gegeven dagen nog als leeg weergeeft. De gebruiker kan dagen verwijderen. Door op één van de dagen te klikken verschijnt SelectTimesActivity
+* **NewEventActivity**, hier geeft de gebruiker een naam voor het event op. Daarnaast kan hij data prikken voor zijn event. Als hij tevreden is over deze lijst met data kan hij naar SelectDaysActivity om tijden te specificeren.
+* **SelectDaysActivity**, dit is een overzicht activity dat de zojuist gegeven dagen eerst leeg weergeeft. De gebruiker kan dagen verwijderen door op X te klikken. Door op één van de dagen te klikken verschijnt SelectTimesActivity.
 * **SelectTimesActivity**, de activity waar de hele app in feite om draait. Hier swipe't de gebruiker over een dag om zijn tijden te specificeren. Door op *Show* te klikken leidt de app tijdsloten af. Er kan ook meteen op *Confirm* worden geklikt, dan worden de geselecteerde tijden opgeslagen en komen we terug bij SelectDaysActivity
 * **InviteActivity**, als de gebruiker klaar is met het selecteren van dagen en/of tijden, kan er op OK worden geklikt. Nu verschijnt er een lijst met ScheduleUs gebruikers die de gebruiker kan aanvinken om uit te nodigen. Als er op *Invite* wordt geklikt verschijnt er een *Toast* met wie er zijn uitgenodigd en komt de gebruiker terug bij MainActivity.
 * **MyEventsActivity**, geeft overzicht met events waar de gebruiker initiator of participant van is. Als er op een event wordt geklikt verschijnt opnieuw SelectDaysActivity, maar nu ingevuld met gemeenschappelijke tijden. 
@@ -38,19 +38,20 @@ Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangs
 
 * **Application.java**, verbinding maken met Parse database. Globale variabelen worden gedefiniëerd, zoals vele Maps om makkelijk van een datum de ingevulde tijden te vinden.
 * **DrawingView.java**, de zelfgemaakte View voor het invullen van beschikbare tijden. Als de gebruiker over dit object swipe't beweegt er een cursor mee en wordt een rechthoek getekent tot de plek waar de gebruiker loslaat. Er kan over een bestaande rechthoek worden getekent. De klasse bevat methodes om te tellen hoeveel ruimte is ingevuld en om de pixels in kloktijden te vertalen.
-* **DrawingShowView.java**, overeenkomstig met bovenstaande klasse, maar deze View dient enkel om een ArrayList<int[]> te tonen. Door de verhouding pixels per uur te berekenen na OnSizeChanged, worden te tijden altijd juist weergegeven. 
-
+* **DrawingShowView.java**, overeenkomstig met bovenstaande klasse, maar deze View dient enkel om een ArrayList<int[]> te tonen. Door de verhouding pixels per uur te berekenen na OnSizeChanged, worden te tijden altijd juist weergegeven.  
 * **dayListAdapter.java**, voor het weergeven van de combinatie DrawingView, TextView en delete Button
 * **shared_dayListAdapter.java**, voor het weergeven van de combinatie DrawingView, TextView
 * **timeListAdapter.java**, voor het weergeven van geselecteerde tijden.
 * **userListAdapter.java**, voor het weergeven van een TextView en een CheckBox
 
-### Externe bibliotheken en data
-* **Google Guava library v17.0**, voor makkelijke conversie van List<Integer> naar int[].
+### Externe bibliotheken en files
+* **Guava library v17.0**, voor makkelijke conversie van List<Integer> naar int[].
 * **Parse library**, voor gebruik van Parse functie om queries te verzenden, Parse objecten te creëren en gebruikers in te loggen.
 * **Google GSON library v2.3**, voor makkelijke conversie van **JSON object** (van Parse) naar  **List<List>** (Java)
 * **Lucasr TwoWayView**, voor het gebruik van een horizontale ListView, die niet beschikbaar is als CustomView.
 * Assets folder bevat **Unique.ttf**, de lettertype van ScheduleUs in het openingsscherm. 
+* values folder bevat: Strings.xml voor namen van knoppen en standaardberichten, styles.xml voor app theme en horizontale oriëntatie van de TwoWayView, colors.xml voor veelgebruikte kleuren en attrs.xml om mijn custom View DrawingView al resource the definiëren. 
+* cloud folder bevat main.js, het JavaScript bestand dat runt bij iedere server request omtrend een Availability Item van een persoon.
 
 
 ### Problemen
@@ -68,6 +69,10 @@ Android beschikt over widgets om meerdere items in lijsten te tonen en er vervol
 **Verwerking user input**  
 Aanvankelijk was ik van plan de gebruiker op twee manieren zijn tijden aan te laten geven, met rood kon hij aangeven wanneer hij niet kon en met groen wanneer hij wel kon. Ik heb al snel de overgestap gemaakt om alleen voor groen te kiezen. Dit maakt de app een stuk eenvoudiger en overzichtelijker. De witte ruimte kan worden opgevat als tijden waar één of meer mensen niet beschikbaar zijn.  
 De gebruiker kan ook in SelectTimesActivity op Show klikken, en kijken welke tijden dit in cijfers precies zijn. Deze vertaling bleek vrij eenvoudig te zijn, alleen voor het gevallen van 9 uur, zoals '9:15'moest er een '0' aan de string geplakt worden voor een mooie evenredige weergave. 
+
+**Meerdere scenario's per activity**  
+Zoals eerder aangegeven kan er in SelectDaysActivity of SelectTimes activity op twee manieren zijn 'binnengekomen'. Het belangrijkste verschil is dat een initiator altijd alleen zijn eigen ingevulde tijden te zien krijgt (er is immers nog geen cloud data beschikbaar) en een participant krijgt eigen én cloud data te zien. Dit verschil uit zich in licht groen voor tijden waar alleen de gebruiker kan en donker groen voor tijden waarin alle deelnemers beschikbaar zijn. Zo zien alle gebruikers in één oogopslag wanneer een afspraak plaats kan hebben. Aanvankelijk had ik in gedachte de gemeenschappelijke tijden als platte tekst te printen, maar deze visualisatie bleek meer overzicht te bieden voor de gebruiker.  
+Omdat in deze twee activities verschillende 'app statusen' bestaan controleer ik of er een *current_event_id* is meegegeven aan het begin van de activity. Als dit het geval is behandelt de app de gebruiker als participant en anders als initiator. Hieropvolgend worden de juiste Maps en ArrayLists gevuld. 
 
 **Gegevens opslaan naar database**
 Dit is de relatief makkelijke kant van het dataverkeer. In InviteActivity (voor nieuwe events) en SelectDaysActivity (voor bestaande events) worden Parse objecten aangemaakt met gegevens als datums, de initiator, de deelnemers, beschikbare tijden en de onderlinge verhoudingen tussen deze klassen. Het Event object wordt bijvoorbeeld aan ieder AvailItem meegegeven. Uiteindelijk worden alle objecten definitief opgeslagen door middel van *AvailItem.saveInBackground()*. 
