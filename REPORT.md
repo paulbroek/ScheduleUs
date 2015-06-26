@@ -1,4 +1,4 @@
-# Verslag
+# Verslag ScheduleUs
 Paul Broek <br>
 10279741 <br>
 **Android** <br>
@@ -22,7 +22,7 @@ De overlap tussen deze twee functionaliteiten zit in het het bekijken van gesele
 Core
 --------------------
 ### Activities
-Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangschikt op min of meer chronologische volgorde.
+Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangschikt op min of meer chronologische volgorde. Screenshots van alle activities en mogelijke screens per activity zijn te vinden in README.md
 * **CheckLoginActivity**, schijn activity dat controleert of er een gebruiker is ingelogd. Verwijst vervolgens naar MainActivity of UserStartActivity. Heeft geen layout xml file.
 * **UserStartActivity**, laat gebruiker inloggen of een account creëren. 
 * **SignUpActivity**, registratie activity waar gebruiker een naam en wachtwoord opgeeft.
@@ -80,14 +80,24 @@ Mijn database kennis stamde nog uit mijn middelbare schooltijd, het duurde dan o
 ![](docs/Event.png)
 **AvailItem** bevat van één dag alle tijdsloten van een gebruiker waarin hij beschikbaar is. Voor een nieuwe evenement van vijf dagen worden dus in InviteActivity vijf AvailItem objecten naar Parse gestuurd. 
 ![](docs/AvailItem.png)
-**SharedTime** is waar de app om draait. Dit is een samenvoeging van AvailItems voor één event en één betreffende dag. Het proces van overlap zoeken gaat door middel van Cloud code. 
+**SharedTime** is waar de app om draait. Dit is een samenvoeging van AvailItems voor één event en één betreffende dag. Het proces van overlap zoeken gaat door middel van Cloud code. De implementatie volgt in de volgende paragraaf.
 ![](docs/SharedTime.png)
 
-Deze schets geeft de relaties aan. 
+Deze schets geeft de relaties aan tussen de klassen. De vetgedrukte velden zijn referentie velden. Ze zijn of verwijzen naar een objectId. De blauwe velden bevatten arrays, hier ontstonden de grootste problemen, omdat ik in mijn app al een bepaald dataformaat had gekozen (ArrayList<int[]>) dat enige trucage benodigd om te verwerken. 
 ![](docs/database.png)
 
 ### Cloud code
-
+Aanvankelijk had ik een functie geschreven in MyEvents dat AvailItems kon vergelijken en gemeenschappelijke tijdsloten kon produceren. Het probleem was echter dat iedere telefoon dan een ander overlap rooster met zich meedraagt wat voor conflicten zorgt bij het uploaden van data. Om dit te kunnen verhelpen is de cloud code implementatie onvermijdelijk. Deze dienst van Parse.com faciliteert in onder andere een beforeSave en een afterSave functie die inkomende requests kunnen bewerken. Zo laat ik in main.js (JavaScript cloud code file, te vinden in de map ScheduleUs/cloud) een beforeSave functie triggeren als er een AvailItem wordt opgeslagen. Er wordt voor gezorgd dat alle oude AvailItems van de betreffende user worden verwijderd zodat er een uniek object bestaat voor een specifiek evenement en dag. De afterSave die vervolgens getriggerd wordt haalt alle AvailItems op van één event en één dag en vergelijkt alle gebruikersgegevens. Per kwartier wordt er gegekeken of bijvoorbeeld [9,0,9,15] bevat is in de AvailItems van alle participants. Als dit zo is wordt de array weggeschreven in SharedTime. Als nu een gebruiker zijn MyEventsActivity opent verschijnt dus de overlap tussen AvailItems die tot dusver zijn ingeveld door de participants. Deze methode garandeerd dat de database niet corrupt wordt omdat inkomende server requests één voor één verwerkt worden. 
 
 Conclusie
 --------------
+Uiteindelijk heb ik veel veranderingen doorgevoerd tijdens het ontwikkelen van deze app. Je zou kunnen zeggen dat alleen het basisidee 'swipen over weekdagen' is blijven hangen. Dit had te maken met dat ik toch niet volledig de user experience had uitgedacht. Ik wilde graag beginnen met programmeren en dat resulteerde in veel kleine trial en error overwinninkjes, daar waar ik het soms eerder over een totaal andere boeg had moeten gooien. Zo ontstonden er gaandeweg pas degelijke datastructuren, en besloot ik pas halverwege dit project om de belangrijkste data in Maps weg te schrijven. Het heeft me verbaasd hoe kleine functionaliteiten als een horizontale ListView en het weergeven van een lijst al snel veel en soms externe code vereisen.  
+Ik ben tevreden over de user experience van de app, omdat dit voor mij aanvankelijk het belangrijkste doel was. De gebruiker kan inderdaad in een letterlijke handomdraai zijn preferenties aangeven en makkelijk door de app navigeren met de back knop of het menu. De terkortkomingen van de app liggen in de gemiste extra opties. Zo zou het fijn zijn als een gebruiker van alle deelnemers kan zien wat hun beschikbare tijden zijn, dan kan geconstateerd worden dat bijvoorbeeld één persoon een bepaald tijdslot uitsluit, en na overleg dus alsnog een gemeenschappelijk tijdslot worden gevonden. Daarnaast had ik graag een slider toegevoegd die meebeweegt met de user input bij de DrawingView. Ook richtte ik me enkele dagen op het integreren van Google API voor friends invites. Gezien de vele scenario's van het verwerken van een deeplink invitatie en de bijbehorende complicaties heb ik daar na een tijdje van afgezien. 
+Al met al ben ik tevreden over het resultaat, gezien de korte duur van het project en de vele platformen die ik heb doorlopen: Parse database, JavaScript Cloud code, het hardcoded creëren van een Custom View en tijdelijk de Google API voor friend invites. Het is plezierig mijn ensemble leden voor het eerst te kunnen uitnodigen voor een repetitie met mijn eigen app.  
+
+Paul  
+26 juni, 2015
+
+![](docs/home (Mobile).png)
+![](docs/new_event (Mobile).png)
+![](docs/select_days_participant (Mobile).png)

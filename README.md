@@ -14,10 +14,11 @@ Features
 * User input vriendelijk verwerken, van getallen/swipes naar kloktijden
 * Andere ScheduleUs gebruikers inviten.
 * Synchroniseren met Parse database voor gebruikersdata en beschikbare tijden van gebruikers
+* My Events voor event overzicht en nieuwe time slot invoer
 
 Data
 -------------
-Iedere gebruiker die is aangesloten bij een event levert zijn eigen 'data'. Een ArrayList<Day> met 7 items voor iedere gebruiker levert alle benodigde informatie om bijvoorbeeld een week weer te geven. Daarnaast zal een SQLite implementatie nodig zijn om alle geregistreerde *events* op te slaan en op meerdere toestellen te raadplegen, eventueel uit te breiden met gebruikers gegevens.
+Iedere gebruiker die is aangesloten bij een event levert zijn eigen 'data'. Een ArrayList<int[]> met 7 time items voor iedere gebruiker levert alle benodigde informatie om bijvoorbeeld een week weer te geven. Data wordt in Maps en ArrayLists opgeslagen. Daarnaast is er een vertaalslag naar de Parse database, waar alles in JSON objecten is. 
 
 Onderdelen
 ------------
@@ -45,7 +46,9 @@ Vergelijkbare applicaties
 ![](docs/select_days (Mobile).png)
 ![](docs/select_days_filled (Mobile).png)
 ![](docs/select_times (Mobile).png)
+![](docs/invite (Mobile).png)
 ![](docs/my_events (Mobile).png)
+![](docs/select_days_participant (Mobile).png)
 
 
 Eerste schetsen
