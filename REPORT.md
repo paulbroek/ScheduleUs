@@ -38,20 +38,20 @@ Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangs
 
 * **Application.java**, verbinding maken met Parse database. Globale variabelen worden gedefiniëerd, zoals vele Maps om makkelijk van een datum de ingevulde tijden te vinden.
 * **DrawingView.java**, de zelfgemaakte View voor het invullen van beschikbare tijden. Als de gebruiker over dit object swipe't beweegt er een cursor mee en wordt een rechthoek getekent tot de plek waar de gebruiker loslaat. Er kan over een bestaande rechthoek worden getekent. De klasse bevat methodes om te tellen hoeveel ruimte is ingevuld en om de pixels in kloktijden te vertalen.
-* **DrawingShowView.java**, overeenkomstig met bovenstaande klasse, maar deze View dient enkel om een ArrayList<int[]> te tonen. Door de verhouding pixels per uur te berekenen na OnSizeChanged, worden te tijden altijd juist weergegeven. 
-
+* **DrawingShowView.java**, overeenkomstig met bovenstaande klasse, maar deze View dient enkel om een ArrayList<int[]> te tonen. Door de verhouding pixels per uur te berekenen na OnSizeChanged, worden te tijden altijd juist weergegeven.  
 * **dayListAdapter.java**, voor het weergeven van de combinatie DrawingView, TextView en delete Button
 * **shared_dayListAdapter.java**, voor het weergeven van de combinatie DrawingView, TextView
 * **timeListAdapter.java**, voor het weergeven van geselecteerde tijden.
 * **userListAdapter.java**, voor het weergeven van een TextView en een CheckBox
 
-### Externe bibliotheken en data
-* **Google Guava library v17.0**, voor makkelijke conversie van List<Integer> naar int[].
+### Externe bibliotheken en files
+* **Guava library v17.0**, voor makkelijke conversie van List<Integer> naar int[].
 * **Parse library**, voor gebruik van Parse functie om queries te verzenden, Parse objecten te creëren en gebruikers in te loggen.
 * **Google GSON library v2.3**, voor makkelijke conversie van **JSON object** (van Parse) naar  **List<List>** (Java)
 * **Lucasr TwoWayView**, voor het gebruik van een horizontale ListView, die niet beschikbaar is als CustomView.
 * Assets folder bevat **Unique.ttf**, de lettertype van ScheduleUs in het openingsscherm. 
 * values folder bevat: Strings.xml voor namen van knoppen en standaardberichten, styles.xml voor app theme en horizontale oriëntatie van de TwoWayView, colors.xml voor veelgebruikte kleuren en attrs.xml om mijn custom View DrawingView al resource the definiëren. 
+* cloud folder bevat main.js, het JavaScript bestand dat runt bij iedere server request omtrend een Availability Item van een persoon.
 
 
 ### Problemen
