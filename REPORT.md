@@ -22,7 +22,7 @@ De overlap tussen deze twee functionaliteiten zit in het het bekijken van gesele
 Core
 --------------------
 ### Activities
-Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangschikt op min of meer chronologische volgorde.
+Allereerst een bondig overzicht van alle aanwezige activities in de app, gerangschikt op min of meer chronologische volgorde. Screenshots van alle activities en mogelijke screens per activity zijn te vinden in README.md
 * **CheckLoginActivity**, schijn activity dat controleert of er een gebruiker is ingelogd. Verwijst vervolgens naar MainActivity of UserStartActivity. Heeft geen layout xml file.
 * **UserStartActivity**, laat gebruiker inloggen of een account creëren. 
 * **SignUpActivity**, registratie activity waar gebruiker een naam en wachtwoord opgeeft.
@@ -94,5 +94,10 @@ Conclusie
 Uiteindelijk heb ik veel veranderingen doorgevoerd tijdens het ontwikkelen van deze app. Je zou kunnen zeggen dat alleen het basisidee 'swipen over weekdagen' is blijven hangen. Dit had te maken met dat ik toch niet volledig de user experience had uitgedacht. Ik wilde graag beginnen met programmeren en dat resulteerde in veel kleine trial en error overwinninkjes, daar waar ik het soms eerder over een totaal andere boeg had moeten gooien. Zo ontstonden er gaandeweg pas degelijke datastructuren, en besloot ik pas halverwege dit project om de belangrijkste data in Maps weg te schrijven. Het heeft me verbaasd hoe kleine functionaliteiten als een horizontale ListView en het weergeven van een lijst al snel veel en soms externe code vereisen.  
 Ik ben tevreden over de user experience van de app, omdat dit voor mij aanvankelijk het belangrijkste doel was. De gebruiker kan inderdaad in een letterlijke handomdraai zijn preferenties aangeven en makkelijk door de app navigeren met de back knop of het menu. De terkortkomingen van de app liggen in de gemiste extra opties. Zo zou het fijn zijn als een gebruiker van alle deelnemers kan zien wat hun beschikbare tijden zijn, dan kan geconstateerd worden dat bijvoorbeeld één persoon een bepaald tijdslot uitsluit, en na overleg dus alsnog een gemeenschappelijk tijdslot worden gevonden. Daarnaast had ik graag een slider toegevoegd die meebeweegt met de user input bij de DrawingView. Ook richtte ik me enkele dagen op het integreren van Google API voor friends invites. Gezien de vele scenario's van het verwerken van een deeplink invitatie en de bijbehorende complicaties heb ik daar na een tijdje van afgezien. 
 Al met al ben ik tevreden over het resultaat, gezien de korte duur van het project en de vele platformen die ik heb doorlopen: Parse database, JavaScript Cloud code, het hardcoded creëren van een Custom View en tijdelijk de Google API voor friend invites. Het is plezierig mijn ensemble leden voor het eerst te kunnen uitnodigen voor een repetitie met mijn eigen app.  
+
 Paul  
 26 juni, 2015
+
+![](docs/home (Mobile).png)
+![](docs/new_event (Mobile).png)
+![](docs/select_days_participant (Mobile).png)
