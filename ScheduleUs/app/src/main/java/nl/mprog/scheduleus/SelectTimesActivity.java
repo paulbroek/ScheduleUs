@@ -104,10 +104,10 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             @Override
             public void onClick(View v) {dv.reDraw();}});
 
+        // Convert te swiped area to readable time slots in hours and minutes
         ShowTimesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                outputView.setText("" + dv.getTimeSize());
                 timesList.clear();
 
                 // Converting DrawingView output to Strings
@@ -132,14 +132,13 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                     outputView.setText("parse error");
                 }
 
-                // Setting adapter and listView
+                // Setting adapter and ListView
                 adapter = new timeListAdapter(getApplicationContext(), timesList);
                 adapter.setCustomButtonListener(SelectTimesActivity.this);
                 timesListView.setAdapter(adapter);
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

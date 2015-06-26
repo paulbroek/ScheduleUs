@@ -38,6 +38,7 @@ public class dayListAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
+
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.list_days, null);
@@ -49,12 +50,11 @@ public class dayListAdapter extends ArrayAdapter<String> {
             viewHolder.delete_button = (Button) convertView
                     .findViewById(R.id.child_delete_day_button);
             convertView.setTag(viewHolder);
-        } else {
+        } else
             viewHolder = (ViewHolder) convertView.getTag();
-        }
+
         final String temp_day = getItem(position);
         ArrayList<int[]> temp_availList = availabilityMap.get(temp_day);
-
 
         viewHolder.dsv.setPersonalAvailabilityList(temp_availList);
 
@@ -71,21 +71,19 @@ public class dayListAdapter extends ArrayAdapter<String> {
         });
 
         viewHolder.text.setText(temp_day);
+
         // Clicked delete, remove the View
         viewHolder.delete_button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (customListener != null) {
+                if (customListener != null)
                     customListener.onButtonClickListener(position, temp_day);
-                }
-
             }
         });
 
         return convertView;
     }
-
 
     public class ViewHolder {
         DrawingShowView dsv;

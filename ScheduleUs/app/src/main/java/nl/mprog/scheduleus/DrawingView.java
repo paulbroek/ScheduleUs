@@ -64,7 +64,6 @@ public class DrawingView extends View implements View.OnClickListener{
 
         min_clocktime = 9;
         max_clocktime = 24;
-
     }
 
     public DrawingView(Context c, AttributeSet attrs) {
@@ -100,13 +99,14 @@ public class DrawingView extends View implements View.OnClickListener{
         context = c;
     }
 
+    // User clicked 'reset', create new canvas and bitmap so user can swipe again
     void reDraw() {
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
 
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
-            mCanvas.drawLine(width,i*height/n_lines,width-width/4,i*height/n_lines,mLines);
+            mCanvas.drawLine(width, i*height/n_lines, width-width/4, i*height/n_lines, mLines);
     }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {

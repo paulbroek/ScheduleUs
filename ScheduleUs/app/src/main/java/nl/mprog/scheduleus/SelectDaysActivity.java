@@ -191,11 +191,9 @@ public class SelectDaysActivity extends ActionBarActivity {
             select_timeButton.setText("Select participants");
             dayList = new ArrayList<String>(dateSet);
 
-
             dayList_adapter = new dayListAdapter(this, dayList, global.getPersonalAvailabilityMap());
             dayList_adapter.setCustomButtonListener(new PersonalCustomListener());
             twListView.setAdapter(dayList_adapter);
-
 
             select_timeButton.setOnClickListener(new View.OnClickListener() {
                 @Override

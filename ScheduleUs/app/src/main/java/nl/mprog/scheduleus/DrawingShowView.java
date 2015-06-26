@@ -115,7 +115,7 @@ public class DrawingShowView extends View {
 
                 }
 
-        // Now draw shared slots (partly over personal slots)
+        // Now draw shared slots (partly overlapping personal slots)
         if (SharedAvailableSlots != null)
             for (int i = 0; i < SharedAvailableSlots.size(); i++) {
 
@@ -129,12 +129,11 @@ public class DrawingShowView extends View {
                 double n_pixels = n_hours*pixels_per_hour;
                 for (int j = 0; j < (int) n_pixels; j++)
                     mCanvas.drawLine(width,(int)begin+j,0,(int)begin+j,mPaint);
-
             }
 
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
-            mCanvas.drawLine(w,i*h/n_lines,w-w/4,i*h/n_lines,mLines);
+            mCanvas.drawLine(w, i*h/n_lines, w-w/4, i*h/n_lines, mLines);
     }
 
     @Override

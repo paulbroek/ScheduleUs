@@ -1,11 +1,11 @@
 package nl.mprog.scheduleus;
 
 import nl.mprog.scheduleus.userListAdapter.customCheckBoxListener;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +34,7 @@ import java.util.Set;
  * 10279741
  * Activity that lists ScheduleUs users, and shows its user names with checkboxes
  */
-public class InviteActivity extends Activity implements customCheckBoxListener {
+public class InviteActivity extends ActionBarActivity implements customCheckBoxListener {
     private Button inviteButton;
     private ListView userlistView;
     private userListAdapter adapter;

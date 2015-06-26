@@ -46,8 +46,6 @@ public class timeListAdapter extends ArrayAdapter<String> {
                     .findViewById(R.id.childTextView);
             viewHolder.delete_button = (Button) convertView
                     .findViewById(R.id.child_deleteButton);
-            viewHolder.edit_button = (Button) convertView
-                    .findViewById(R.id.child_editButton);
             convertView.setTag(viewHolder);
         } else
             viewHolder = (ViewHolder) convertView.getTag();
@@ -66,21 +64,11 @@ public class timeListAdapter extends ArrayAdapter<String> {
             }
         });
 
-        viewHolder.edit_button.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (customListener != null)
-                    customListener.onButtonClickListener(position, temp);
-            }
-        });
-
         return convertView;
     }
 
     public class ViewHolder {
         TextView text;
         Button delete_button;
-        Button edit_button;
     }
 }  
