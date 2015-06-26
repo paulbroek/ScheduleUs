@@ -194,25 +194,6 @@ public class DrawingView extends View implements View.OnClickListener{
         return true;
     }
 
-    // Returns number of white lines in the DrawableView
-    public float getWhiteLines() {
-        int lines = 0;
-
-        for (int y = 0; y < height; y++)
-        {
-            Boolean white_line = true;
-            for (int x = 0; x < width; x++)
-            {
-                if (mBitmap.getPixel(x,y) != 0)
-                    white_line = false;
-            }
-            if (white_line)
-                lines++;
-        }
-
-        return (float) lines;
-    }
-
     // Returns bool array with availability per pixel
     public Boolean[] getAvailabilityArray() {
         Boolean[] availArray = new Boolean[height];
@@ -221,12 +202,12 @@ public class DrawingView extends View implements View.OnClickListener{
         {
             availArray[y] = true;
             Boolean white_line = true;
+
+            // If some pixels have a color, save this in availArray
             for (int x = 0; x < 3; x++)
-            {
                 // Pixel not white
                 if (mBitmap.getPixel(x,y) != 0)
                     white_line = false;
-            }
 
                 availArray[y] = !white_line;
         }
@@ -237,7 +218,7 @@ public class DrawingView extends View implements View.OnClickListener{
     // Less than TIME_TOLERANCE will not be considered a time slot
     private static final int TIME_TOLERANCE = 5;
 
-    // List with pairs of available times like (10,11)
+    // List with pairs of available times like (10,15,12,30) mean available between 10:15 and 12:30
     public List<int[]> getAvailabilityList() {
         Boolean[] availArray = getAvailabilityArray();
 
@@ -254,18 +235,18 @@ public class DrawingView extends View implements View.OnClickListener{
 
                     int begin_hour = (int) (min_clocktime + (i-j) / pixels_per_hour);
                     int begin_minutes = (int)((((i-j) % pixels_per_hour)/pixels_per_hour)*60);
-                    int begin_quarter = (begin_minutes / 15)*15;
+                    int begin_quarter = (begin_minutes / 15) * 15;
                     if (Math.abs(begin_quarter - begin_minutes) > 7)
-                        begin_quarter+=15;
+                        begin_quarter += 15;
                     if (begin_quarter == 60) {
                         begin_hour++;
                         begin_quarter = 0;
                     }
                     int end_hour = (int) (min_clocktime + i / pixels_per_hour);
                     int end_minutes = (int)(((i % pixels_per_hour)/pixels_per_hour)*60);
-                    int end_quarter = (end_minutes / 15)*15;
+                    int end_quarter = (end_minutes / 15) * 15;
                     if (Math.abs(end_quarter-end_minutes) > 7)
-                        end_quarter+=15;
+                        end_quarter += 15;
                     if (end_quarter == 60) {
                         end_hour++;
                         end_quarter = 0;
@@ -277,9 +258,5 @@ public class DrawingView extends View implements View.OnClickListener{
             }
         }
         return AvailableSlots;
-    }
-
-    public float getTimeSize() {
-        return getWhiteLines();
     }
 }

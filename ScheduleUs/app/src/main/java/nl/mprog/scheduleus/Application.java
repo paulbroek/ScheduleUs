@@ -19,17 +19,29 @@ import java.util.Set;
  */
 public class Application extends android.app.Application {
 
+    // Preferences, used for local storage
     public static SharedPreferences prefs;
     public static SharedPreferences.Editor editor;
 
+    // Name of event that is currently created or being edited in the app
     private String current_event_name;
+
+    // Set of dates that are being entered, displayed in light green
     private Set<String> personal_daySet;
+
+    // Set of dates from the cloud, showing the overlap between availability of participants, displayed in darker green
     private Set<String> shared_daySet;
 
+    // Availability items of 1 user, mapping <String> Day to <ArrayList<int[]>> AvailabilityList
     private Map<String, ArrayList<int[]>> personal_availabilityMap;
+
+    // Overlapping availability items of all users together, mapping <String> Day to <ArrayList<int[]>> AvailabilityList
     private Map<String, ArrayList<int[]>> shared_availabilityMap;
+
+    // Mapping event objectId to event name
     private Map<String, String> myEventsMap;
 
+    // Mapping every date of an event <String> to the SharedTime objectId <String>
     private Map<String,String> SharedTimesIdMap;
 
     public void addSharedTimesId(String day, String id) {
@@ -113,6 +125,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
+        // Initialize global vars
         this.personal_availabilityMap = new HashMap<String, ArrayList<int[]>>();
         this.shared_availabilityMap = new HashMap<String, ArrayList<int[]>>();
         this.myEventsMap = new HashMap<>();
@@ -121,7 +134,7 @@ public class Application extends android.app.Application {
         this.shared_daySet = new HashSet<String>();
         this.current_event_name = "";
 
-        // Preferences
+        // Initialize preferences
         prefs = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
@@ -129,5 +142,4 @@ public class Application extends android.app.Application {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "M32kF53NOX8ARR2z4lYaXsAbZMjkqgzvrG7WSXPC", "caYeMJrgizDJlAnZ30slp8d4yLTPjrpOscLFk2ik");
     }
-
 }

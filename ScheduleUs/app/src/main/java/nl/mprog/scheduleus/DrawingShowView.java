@@ -98,39 +98,15 @@ public class DrawingShowView extends View {
 
         pixels_per_hour = (float) height / (max_clocktime-min_clocktime);
 
-        // First draw personal slots
+        // First draw personal slots in light green
         if (PersonalAvailableSlots != null)
-            for (int i = 0; i < PersonalAvailableSlots.size(); i++) {
+            drawSlots(PersonalAvailableSlots, mPaintPersonal);
 
-                int beginhours = PersonalAvailableSlots.get(i)[0];
-                int beginquarters = PersonalAvailableSlots.get(i)[1];
-                int endhours = PersonalAvailableSlots.get(i)[2];
-                int endquarters = PersonalAvailableSlots.get(i)[3];
-                double n_hours = endhours + endquarters/60.0 - beginhours - beginquarters/60.0;
-
-                double begin = (beginhours + beginquarters / 60.0 - min_clocktime)*pixels_per_hour;
-                double n_pixels = n_hours*pixels_per_hour;
-                for (int j = 0; j < (int) n_pixels; j++)
-                    mCanvas.drawLine(width,(int)begin+j,0,(int)begin+j,mPaintPersonal);
-
-                }
-
-        // Now draw shared slots (partly overlapping personal slots)
+        // Now draw shared slots in darker green (partly overlapping personal slots)
         if (SharedAvailableSlots != null)
-            for (int i = 0; i < SharedAvailableSlots.size(); i++) {
+            drawSlots(SharedAvailableSlots, mPaint);
 
-                int beginhours = SharedAvailableSlots.get(i)[0];
-                int beginquarters = SharedAvailableSlots.get(i)[1];
-                int endhours = SharedAvailableSlots.get(i)[2];
-                int endquarters = SharedAvailableSlots.get(i)[3];
-                double n_hours = endhours + endquarters/60.0 - beginhours - beginquarters/60.0;
-
-                double begin = (beginhours + beginquarters / 60.0 - min_clocktime)*pixels_per_hour;
-                double n_pixels = n_hours*pixels_per_hour;
-                for (int j = 0; j < (int) n_pixels; j++)
-                    mCanvas.drawLine(width,(int)begin+j,0,(int)begin+j,mPaint);
-            }
-
+        // Draw the lines that depict hours
         int n_lines = max_clocktime - min_clocktime;
         for (int i = 0; i < n_lines; i++)
             mCanvas.drawLine(w, i*h/n_lines, w-w/4, i*h/n_lines, mLines);
@@ -142,6 +118,23 @@ public class DrawingShowView extends View {
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         canvas.drawPath(mPath, mPaint);
         canvas.drawPath(circlePath, circlePaint);
+    }
+
+    public void drawSlots(List<int[]> slots, Paint paint) {
+        for (int i = 0; i < slots.size(); i++) {
+
+            int beginhours = slots.get(i)[0];
+            int beginquarters = slots.get(i)[1];
+            int endhours = slots.get(i)[2];
+            int endquarters = slots.get(i)[3];
+            double n_hours = endhours + endquarters/60.0 - beginhours - beginquarters/60.0;
+
+            // Where to start drawing depends on how many pixels represent one hour of clock time
+            double begin = (beginhours + beginquarters / 60.0 - min_clocktime)*pixels_per_hour;
+            double n_pixels = n_hours*pixels_per_hour;
+            for (int j = 0; j < (int) n_pixels; j++)
+                mCanvas.drawLine(width, (int)begin + j, 0, (int)begin + j, paint);
+        }
     }
 
     public void setSharedAvailabilityList(ArrayList<int[]> l) {

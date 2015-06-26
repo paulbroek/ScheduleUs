@@ -11,7 +11,7 @@ import android.widget.TextView;
  * Created by Paul Broek on 17-6-2015.
  * pauliusbroek@hotmail.com
  * 10279741
- * Home screen for logged out state, shows Log In and Sign In buttons and ScheduleUs logo.
+ * Home screen for logged out state, shows Log In and Sign Up buttons and ScheduleUs logo.
  */
 public class UserStartActivity extends Activity {
 
@@ -30,7 +30,7 @@ public class UserStartActivity extends Activity {
     // Either let user log in or create an account
     public void goLogIn(View view) {
 
-        // create intent for create Event activity
+        // Create intent for create Event activity
         Intent getLoginScreen = new Intent(this, LoginActivity.class);
 
         // Go to login screen
@@ -38,7 +38,7 @@ public class UserStartActivity extends Activity {
     }
     public void goSignUp(View view) {
 
-        // create intent for create Event activity
+        // Create intent for create Event activity
         Intent getSignUpScreen = new Intent(this, SignUpActivity.class);
 
         // Go to go to sign up screen

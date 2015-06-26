@@ -10,5 +10,4 @@ public interface ButtonListener {
 
     public void onButtonClickListener(int position, String value);
     public void onViewClickListener(int position, String value);
-
 }

@@ -90,6 +90,8 @@ public class MyEventsActivity extends ActionBarActivity {
                     ArrayAdapter<String> adapter_events = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_white_text, R.id.list_content, eventNameList);
                     myEvents_ListView.setAdapter(adapter_events);
                     Log.d("score", "Retrieved " + eventList.size());
+
+                // Could not fetch event objects from Parse, user is new or error is real
                 } else {
                     if (e != null)
                         Log.d("event", "Error: " + e.getMessage());
@@ -104,7 +106,7 @@ public class MyEventsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // Set up a progress dialog
+                // Set up a progress dialog during this process
                 String event_id = EventsIdList.get(position).toString();
                 editor.putString("event_id", event_id).apply();
                 getSelectDaysScreen.putExtra("calling_event_id", event_id);
@@ -140,23 +142,28 @@ public class MyEventsActivity extends ActionBarActivity {
                         final String day = timesObjectList.get(obj_n).getString("Day");
                         global.addSharedTimesId(day, timesObjectList.get(obj_n).getObjectId());
 
+                        // Convert plain object to JSON array
                         JSONArray jsonArrayTimes = timesObjectList.get(obj_n).getJSONArray("Times");
                         ArrayList<int[]> timesList = new ArrayList<int[]>();
 
+                        // Try adding JSON array elements to Java ArrayList<int[]>
                         if (jsonArrayTimes != null) {
                             try {
-
                                 JsonParser jsonParser = new JsonParser();
                                 JsonArray jsonArray = (JsonArray) jsonParser.parse(jsonArrayTimes.toString());
                                 Gson googleJson = new Gson();
 
+                                // Google Json needed to get an ArrayList<Integer>
                                 final ArrayList<ArrayList> doubleList = googleJson.fromJson(jsonArray, ArrayList.class);
+
                                 for (int i = 0; i < doubleList.size(); i++) {
                                     ArrayList<Double> dList = doubleList.get(i);
                                     ArrayList intList = new ArrayList();
-                                    for (int j = 0; j < dList.size(); j++) {
+
+                                    for (int j = 0; j < dList.size(); j++)
                                         intList.add(dList.get(j).intValue());
-                                    }
+
+                                    // Guava library supports List<Integer> to int[] conversion support
                                     int[] intArray = Ints.toArray(intList);
                                     timesList.add(intArray);
                                 }

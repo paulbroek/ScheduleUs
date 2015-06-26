@@ -85,7 +85,7 @@ public class NewEventActivity extends ActionBarActivity {
                 String date = selected_day + "-" + selected_month + "-" + selected_year;
                 String display_date = datePicker.getDayOfMonth() + " " +  textMonth(Integer.parseInt(selected_month)) + ", " + selected_year;
 
-                // Check whether date was added earlier
+                // Check whether date was added before
                 if (!dateList.contains(date)) {
                     dateList.add(date);
                     display_dateList.add(display_date);
@@ -96,6 +96,7 @@ public class NewEventActivity extends ActionBarActivity {
                 // Copy ArrayList and sort it, newest up
                 ArrayList outputList = new ArrayList<String>(display_dateList);
 
+                // Sort list and display it in ListView
                 Collections.reverse(outputList);
                 ArrayAdapter<String> adapter_dates = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_white_text, R.id.list_content, outputList);
                 datelistView.setAdapter(adapter_dates);
@@ -114,14 +115,6 @@ public class NewEventActivity extends ActionBarActivity {
                     global.putPersonalDaySet(dateSet);
                     editor.putStringSet("event_dates", dateSet).apply();
                     editor.putString("event_name",eventName).apply();
-
-                    ParseObject Events = new ParseObject("Events");
-                    Events.put("number_of_dates", dateList.size());
-                    dates = new JSONArray(dateList);
-                    Events.put("dates", dates);
-                    Events.put("eventName", eventName);
-
-                    Events.pinInBackground("new event");
 
                     startActivity(getSelectDaysScreen);
                 }
@@ -154,6 +147,7 @@ public class NewEventActivity extends ActionBarActivity {
         return new DateFormatSymbols().getMonths()[month];
     }
 
+    // Dialog asks user for an event name, if dismissed, call it 'unnamed'
     private void eventNameDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final EditText eventNameInput = new EditText(this);

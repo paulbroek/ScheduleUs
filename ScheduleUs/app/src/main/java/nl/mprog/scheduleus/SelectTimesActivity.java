@@ -110,27 +110,8 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
             public void onClick(View v) {
                 timesList.clear();
 
-                // Converting DrawingView output to Strings
-                try {
-                    for (int i = 0; i < dv.getAvailabilityList().size(); i++) {
-                        String time1 = "" + dv.getAvailabilityList().get(i)[0] + dv.getAvailabilityList().get(i)[1];
-                        if (time1.endsWith("0"))
-                            time1 += "0";
-                        if (time1.startsWith("9"))
-                            time1 = "0" + time1;
-                        String time2 = "" + dv.getAvailabilityList().get(i)[2] + dv.getAvailabilityList().get(i)[3];
-                        if (time2.endsWith("0"))
-                            time2 += "0";
-                        if (time2.startsWith("9"))
-                            time2 = "0" + time2;
-                        time1 = time1.substring(0,2) + ":" + time1.substring(2,4);
-                        time2 = time2.substring(0,2) + ":" + time2.substring(2,4);
-                        timesList.add(time1 + " till " + time2);
-                    }
-
-                } catch (Exception e) {
-                    outputView.setText("parse error");
-                }
+                // Parsing clock times from the swiped area in DrawingView
+                ParseTextFromView();
 
                 // Setting adapter and ListView
                 adapter = new timeListAdapter(getApplicationContext(), timesList);
@@ -138,6 +119,30 @@ public class SelectTimesActivity extends ActionBarActivity implements customButt
                 timesListView.setAdapter(adapter);
             }
         });
+    }
+
+    // Converting DrawingView output to Strings
+    public void ParseTextFromView() {
+        try {
+            for (int i = 0; i < dv.getAvailabilityList().size(); i++) {
+                String time1 = "" + dv.getAvailabilityList().get(i)[0] + dv.getAvailabilityList().get(i)[1];
+                if (time1.endsWith("0"))
+                    time1 += "0";
+                if (time1.startsWith("9"))
+                    time1 = "0" + time1;
+                String time2 = "" + dv.getAvailabilityList().get(i)[2] + dv.getAvailabilityList().get(i)[3];
+                if (time2.endsWith("0"))
+                    time2 += "0";
+                if (time2.startsWith("9"))
+                    time2 = "0" + time2;
+                time1 = time1.substring(0,2) + ":" + time1.substring(2,4);
+                time2 = time2.substring(0,2) + ":" + time2.substring(2,4);
+                timesList.add(time1 + " till " + time2);
+            }
+
+        } catch (Exception e) {
+            outputView.setText("parse error");
+        }
     }
 
     @Override

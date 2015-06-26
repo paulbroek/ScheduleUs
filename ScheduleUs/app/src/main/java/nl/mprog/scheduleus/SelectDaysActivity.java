@@ -50,6 +50,7 @@ public class SelectDaysActivity extends ActionBarActivity {
     ProgressDialog dialog;
     Application global;
 
+    // Listener when creating a new event
     class PersonalCustomListener implements ButtonListener {
 
         // Deleting a day, so adapter, global and preferences need an update
@@ -78,6 +79,7 @@ public class SelectDaysActivity extends ActionBarActivity {
         }
     }
 
+    // Listener when editing an existing event
     class SharedCustomListener implements ButtonListener {
 
         // Deleting a day, so adapter, global and preferences need an update
@@ -128,22 +130,13 @@ public class SelectDaysActivity extends ActionBarActivity {
 
             final String calling_event_id = getIntent().getStringExtra("calling_event_id");
             String calling_event_name = global.getMyEventsMap().get(calling_event_id);
-            Toast.makeText(SelectDaysActivity.this, "Came from MyEvents, extra: " + calling_event_name + " " + calling_event_id,
-                    Toast.LENGTH_SHORT).show();
-
 
             days_textView.setText("These are the selected days for event " + calling_event_name + ". The green blocks show when other participants of this event are available. Please click on one of them to enter your availability data.");
 
             dayList = new ArrayList<String>(global.getSharedDaySet());
-            Toast.makeText(SelectDaysActivity.this, "" + dayList.size(),
-                    Toast.LENGTH_SHORT).show();
             shared_dayListAdapter = new shared_dayListAdapter(getApplicationContext(), dayList, global.getPersonalAvailabilityMap(), global.getSharedAvailabilityMap());
-
             shared_dayListAdapter.setCustomButtonListener(new SharedCustomListener());
             twListView.setAdapter(shared_dayListAdapter);
-
-            Toast.makeText(SelectDaysActivity.this, global.getSharedDaySet().toString(),
-                    Toast.LENGTH_LONG).show();
 
             select_timeButton.setText("Merge data with cloud");
 
@@ -179,7 +172,6 @@ public class SelectDaysActivity extends ActionBarActivity {
                     dialog.dismiss();
                 }
             });
-
 
         }
         // Intent directly from MainActivity, an initiator is creating a new event
