@@ -174,6 +174,12 @@ public class InviteActivity extends ActionBarActivity implements customCheckBoxL
         editor = prefs.edit();
         participantsSet = prefs.getStringSet("participants_set", null);
 
+        if (participantsSet != null)
+            if (is_Checked)
+                participantsSet.add(value);
+            else
+                participantsSet.remove(value);
+
         // The initiator is also a participant, add him as well.
         participantsSet.add(ParseUser.getCurrentUser().getUsername());
         editor.putStringSet("participants_set", participantsSet).apply();
