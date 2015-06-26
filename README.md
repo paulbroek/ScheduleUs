@@ -45,7 +45,9 @@ Vergelijkbare applicaties
 ![](docs/select_days (Mobile).png)
 ![](docs/select_days_filled (Mobile).png)
 ![](docs/select_times (Mobile).png)
+![](docs/invite (Mobile).png)
 ![](docs/my_events (Mobile).png)
+![](docs/select_days_participant (Mobile).png)
 
 
 Eerste schetsen
