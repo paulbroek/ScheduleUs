@@ -1,8 +1,8 @@
 # ScheduleUs
-Programmeerproject UvA, juni 2015
-Paul Broek
-10279741
-OS: Android
+Programmeerproject UvA, juni 2015  
+Paul Broek  
+10279741  
+OS: **Android**
 
 Probleemomschrijving
 ------------
@@ -27,9 +27,40 @@ Onderdelen
 * Een *Select Days* scherm waar de gebruiker eerst alle mogelijke dagen ziet met datum. De *initiator* zal dit scherm als eerste zien en ziet daarom bovendien de mogelijkheid om globaal aan te geven wanneer deze afspraak plaats zal hebben (in dagen via een TimePicker). Daarna krijgt hij een blanco overzicht te zien van deze weekdagen. Als hij vervolgens op een van de dagen klikt kan hij finetunen op welke momenten hij op die dag kan door middel van swipes.
 * Een overzichts scherm *My Events* met alle events waar de gebruiker aan deelneemt.
 
-Platform
--------------
-Voor het uitnodigen van vrienden wordt de invitable_friends API van Facebook gebruikt; zeer gangbaar en goed gedocumenteerd. Daarnaast biedt Android nuttige *Views* zoals *CalendarView* en *DatePicker* voor de eerste handmatige invoer van de initiator. 
+Bibliotheken en acknowledgements
+
+* Guava library v17.0
+* Parse.com library en database utilities, code van example app AnyWall voor het registreren en inloggen van gebruikers https://github.com/ParsePlatform/AnyWall/tree/master/AnyWall-android
+* Google GSON library v2.3
+* **Lucasr TwoWayView**, voor het gebruik van een horizontale ListView. Copyright Lucas Rocha, 2013. 
+* Font **Unique.ttf**, Open Font License, gemaakt door designer Anna Pocius, http://openfontlibrary.org/en/font/unique
+
+Unlicense statement
+--------------
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <http://unlicense.org/>
 
 Vergelijkbare applicaties
 -------------
