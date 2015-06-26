@@ -4,7 +4,7 @@ Paul Broek
 10279741  
 OS: **Android**
 
-Probleemomschrijving
+Omschrijving
 ------------
 Bij het maken van een gezamenlijke afspraak loopt men tegen het probleem aan dat de overlap tussen lege ruimtes in agenda's pas te achterhalen valt als men alle agenda's kent. Deze app zal er om draaien om door middel van het swipen over de weekdagen, vrije tijden af te leiden waarin afspraken (*events*) kunnen worden gepland. Een *initiator* van een *event* kan vrienden uitnodigen om tot gezamenlijke tijdsloten te komen. De meerwaarde van deze app zal zijn dat de gebruikers zo snel en gerieflijk mogelijk tot een gemeenschappelijk tijdslot komen. 
 
@@ -32,8 +32,8 @@ Bibliotheken en acknowledgements
 * Guava library v17.0, used under Apache License 2.0
 * Parse.com library en database utilities, code van example app AnyWall voor het registreren en inloggen van gebruikers https://github.com/ParsePlatform/AnyWall/tree/master/AnyWall-android
 * Google GSON library v2.3, used under Apache License 2.0
-* **Lucasr TwoWayView**, voor het gebruik van een horizontale ListView. Copyright Lucas Rocha, 2013. 
-* Font **Unique.ttf**, Open Font License, gemaakt door designer Anna Pocius, http://openfontlibrary.org/en/font/unique
+* Lucasr TwoWayView, voor het gebruik van een horizontale ListView. Copyright Lucas Rocha, 2013. Directory *libs/TwoWayView*
+* Font Unique.ttf, Open Font License, gemaakt door designer Anna Pocius, http://openfontlibrary.org/en/font/unique
 
 Apache license
 ----------------
